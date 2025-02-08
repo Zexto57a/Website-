@@ -3,442 +3,137 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>LuxRide Premium Ratings</title>
+  <title>LuxRide - Home</title>
   <!-- Inter Font -->
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
   <style>
-    /* --- Base Variables and Theme --- */
     :root {
       --deep-space: #0a0a0a;
       --quantum-red: #ff4d4d;
       --neon-blue: #64b5ff;
       --silver-white: #e0e0e0;
       --hud-text: #00ff00;
-      --terminal-border: rgba(125, 100, 255, 0.3);
-      --cyber-glow: 0 0 20px rgba(125, 100, 255, 0.5);
+      --cyber-glow: 0 0 20px rgba(125,100,255,0.5);
     }
     * { box-sizing: border-box; }
     body {
-      background: radial-gradient(circle, var(--deep-space), black);
-      color: var(--hud-text);
-      font-family: 'Inter', sans-serif;
       margin: 0;
       padding: 0;
+      font-family: 'Inter', sans-serif;
+      background: radial-gradient(circle, var(--deep-space), black);
+      color: var(--hud-text);
       min-height: 100vh;
       overflow-x: hidden;
     }
-    /* --- Navigation Bar --- */
     nav {
       position: fixed;
       top: 0;
       width: 100%;
       background: rgba(10,10,10,0.95);
       box-shadow: var(--cyber-glow);
-      z-index: 1500;
+      padding: 1rem;
       display: flex;
       justify-content: center;
-      padding: 0.5rem 0;
+      gap: 1rem;
+      z-index: 1000;
     }
     nav a {
       color: var(--silver-white);
       text-decoration: none;
-      margin: 0 1rem;
-      font-size: 1rem;
-      transition: color 0.3s ease;
+      padding: 0.5rem 1rem;
+      transition: background 0.3s;
     }
     nav a:hover {
-      color: var(--quantum-red);
+      background: var(--quantum-red);
+      border-radius: 4px;
     }
-    /* --- Sections --- */
-    section {
-      padding: 6rem 2rem 2rem;
-    }
-    /* --- Home Section --- */
-    #home {
+    header {
       text-align: center;
       padding: 8rem 2rem 2rem;
       animation: fadeIn 1s ease forwards;
     }
-    #home .logo, #home .moto {
+    header img {
+      max-width: 80%;
       margin: 1rem auto;
-      max-width: 90%;
+      display: block;
       animation: float 3s ease-in-out infinite;
     }
-    #home h1 {
+    header h1 {
+      color: var(--silver-white);
       font-size: 2.8rem;
       margin: 1rem 0;
-      color: var(--silver-white);
     }
-    #home .about-us {
+    .about {
       max-width: 800px;
       margin: 1rem auto;
       font-size: 1.1rem;
-      color: var(--hud-text);
       line-height: 1.6;
-      opacity: 0.9;
+      color: var(--hud-text);
     }
-    #home .cta-button {
+    .cta-buttons {
       margin-top: 2rem;
-      padding: 0.8rem 1.5rem;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+      justify-content: center;
+    }
+    .cta-buttons a {
       background: var(--quantum-red);
       color: var(--silver-white);
-      border: none;
+      padding: 0.8rem 1.5rem;
       border-radius: 4px;
-      font-size: 1rem;
+      text-decoration: none;
       font-weight: 600;
-      cursor: pointer;
-      transition: background 0.3s ease, transform 0.3s ease;
+      transition: background 0.3s, transform 0.3s;
     }
-    #home .cta-button:hover {
+    .cta-buttons a:hover {
       background: var(--neon-blue);
       transform: scale(1.05);
     }
-    /* --- Keyframes --- */
-    @keyframes fadeIn {
-      from { opacity: 0; }
-      to { opacity: 1; }
+    footer {
+      text-align: center;
+      margin-top: 2rem;
+      padding: 1rem;
+      color: var(--silver-white);
+      opacity: 0.8;
+      font-size: 0.8rem;
     }
     @keyframes float {
       0% { transform: translateY(0); }
       50% { transform: translateY(-5px); }
       100% { transform: translateY(0); }
     }
-    /* --- Rating Terminal (Form) --- */
-    .rating-terminal {
-      background: rgba(10,10,10,0.95);
-      border: 2px solid var(--terminal-border);
-      border-radius: 16px;
-      padding: 2rem;
-      width: min(600px, 90%);
-      margin: 6rem auto 2rem;
-      box-shadow: var(--cyber-glow);
-      backdrop-filter: blur(10px);
-      text-align: center;
-      transition: transform 0.3s ease;
-    }
-    .rating-terminal:hover {
-      transform: scale(1.01);
-    }
-    .input-group, .textarea-group {
-      position: relative;
-      margin: 1.5rem 0;
-    }
-    .input-holofield, .input-textarea {
-      width: 100%;
-      padding: 1rem;
-      background: rgba(0,0,0,0.3);
-      border: 2px solid var(--neon-blue);
-      border-radius: 8px;
-      color: var(--hud-text);
-      transition: 0.3s;
-      outline: none;
-    }
-    .input-holofield:focus, .input-textarea:focus {
-      border-color: var(--quantum-red);
-      box-shadow: 0 0 10px var(--quantum-red);
-    }
-    .input-group label, .textarea-group label {
-      position: absolute;
-      top: 50%;
-      left: 1rem;
-      transform: translateY(-50%);
-      pointer-events: none;
-      color: var(--neon-blue);
-      transition: all 0.3s ease;
-      opacity: 0.8;
-      background: transparent;
-      padding: 0 0.3rem;
-    }
-    .input-holofield:focus + label, .input-holofield:not(:placeholder-shown) + label,
-    .input-textarea:focus + label, .input-textarea:not(:placeholder-shown) + label {
-      top: -0.5rem;
-      left: 0.8rem;
-      font-size: 0.8rem;
-      opacity: 1;
-      background: rgba(10,10,10,0.95);
-    }
-    .rate-title {
-      font-size: 1.2rem;
-      margin: 1rem 0;
-      color: var(--silver-white);
-    }
-    .star-matrix {
-      display: flex;
-      justify-content: center;
-      gap: 1rem;
-      margin-bottom: 1.5rem;
-    }
-    .star-node {
-      cursor: pointer;
-      font-size: 2.5rem;
-      color: rgba(125,100,255,0.3);
-      transition: transform 0.3s ease, color 0.3s ease;
-    }
-    .star-node:hover {
-      transform: scale(1.1);
-    }
-    .star-node.active {
-      color: var(--quantum-red);
-      filter: drop-shadow(0 0 10px var(--quantum-red));
-      animation: pulse 1s infinite;
-    }
-    .submit-core {
-      position: relative;
-      overflow: hidden;
-      width: 100%;
-      padding: 1rem;
-      background: linear-gradient(135deg, var(--neon-blue), var(--quantum-red));
-      border: none;
-      border-radius: 8px;
-      color: var(--silver-white);
-      font-weight: 700;
-      text-transform: uppercase;
-      cursor: pointer;
-      transition: transform 0.3s ease;
-    }
-    .submit-core:hover {
-      transform: scale(1.05);
-    }
-    .submit-core:disabled {
-      opacity: 0.6;
-      cursor: not-allowed;
-    }
-    .submit-core::after {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: -75%;
-      width: 50%;
-      height: 100%;
-      background: linear-gradient(120deg, rgba(255,255,255,0.2) 0%, rgba(255,255,255,0.8) 50%, rgba(255,255,255,0.2) 100%);
-      transform: skewX(-25deg);
-    }
-    .submit-core:hover::after {
-      animation: shine 1.5s ease-in-out infinite;
-    }
-    .success-popup {
-      position: fixed;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      background: rgba(10,10,10,0.98);
-      padding: 2rem;
-      border-radius: 16px;
-      box-shadow: var(--cyber-glow);
-      z-index: 1000;
-      text-align: center;
-      color: var(--silver-white);
-      opacity: 0;
-      pointer-events: none;
-      transition: opacity 1s ease;
-    }
-    .success-popup.show {
-      opacity: 1;
-      pointer-events: auto;
-      animation: fadeOut 1s ease 2s forwards;
-    }
-    /* --- Footer --- */
-    footer {
-      margin-top: 2rem;
-      font-size: 0.8rem;
-      color: var(--silver-white);
-      text-align: center;
-      opacity: 0.8;
-      padding-bottom: 1rem;
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
     }
   </style>
 </head>
 <body>
-  <!-- Navigation Bar -->
   <nav>
-    <a href="#home">Home</a>
-    <a href="#ratings">Rate</a>
-    <a href="#join">Join</a>
-    <a href="#complaint">Complaint</a>
-    <a href="#contact">Contact</a>
+    <a href="index.html">Home</a>
+    <a href="complaint.html">Complaint</a>
+    <a href="apply.html">Apply</a>
+    <a href="rate.html">Rate</a>
     <a href="admin.html">Admin</a>
   </nav>
-  
-  <!-- Home Section -->
-  <section id="home">
-    <!-- Logo Image -->
+  <header id="home">
     <img class="logo" src="https://luxride.neocities.org/Image%20/Logo.png" alt="LuxRide Logo">
-    <!-- Moto Image -->
-    <img class="moto" src="https://luxride.neocities.org/Image%20/Moto.png" alt="Company Motto">
-    <!-- About Us -->
-    <div class="about-us">
-      <h1>Welcome to LuxRide</h1>
+    <img class="moto" src="https://luxride.neocities.org/Image%20/Moto.png" alt="Motto">
+    <h1>Welcome to LuxRide</h1>
+    <div class="about">
       <p>
-        LuxRide is your in-game taxi group hub. We are dedicated to ensuring an exceptional and fun gaming experience for our members. Rate your rides, join our group, and even file complaints if a driver doesn’t meet the standards.
+        Welcome to LuxRide, your in-game taxi group hub. Here you can register complaints against drivers, apply for a job, or rate our drivers. Enjoy our dynamic platform and join our community!
       </p>
-      <button class="cta-button" onclick="location.href='#complaint'">
-        Press here to Complaint against a driver
-      </button>
     </div>
-  </section>
-  
-  <!-- Ratings Section -->
-  <section id="ratings">
-    <div class="rating-terminal">
-      <form id="ratingForm">
-        <div class="input-group">
-          <input type="text" id="fullName" class="input-holofield" placeholder=" " pattern="^[A-Za-z]+_[A-Za-z]+$" required>
-          <label for="fullName">Full Name (John_Doe)</label>
-        </div>
-        <div class="input-group">
-          <input type="text" id="discordID" class="input-holofield" placeholder=" " required>
-          <label for="discordID">Discord ID (e.g., Ank57)</label>
-        </div>
-        <div class="input-group">
-          <input type="text" id="driverName" class="input-holofield" placeholder=" " required>
-          <label for="driverName">Driver Name</label>
-        </div>
-        <div class="textarea-group">
-          <textarea id="feedback" class="input-textarea" placeholder=" " rows="3"></textarea>
-          <label for="feedback">Feedback (Optional)</label>
-        </div>
-        <div class="rate-title">Rate the Driver:</div>
-        <div class="star-matrix">
-          <span class="star-node" data-value="1">⭐</span>
-          <span class="star-node" data-value="2">⭐</span>
-          <span class="star-node" data-value="3">⭐</span>
-          <span class="star-node" data-value="4">⭐</span>
-          <span class="star-node" data-value="5">⭐</span>
-        </div>
-        <button type="submit" class="submit-core" id="submitButton">Submit</button>
-      </form>
+    <div class="cta-buttons">
+      <a href="complaint.html">Register a Complaint</a>
+      <a href="apply.html">Apply for a Job</a>
+      <a href="rate.html">Rate Our Driver</a>
     </div>
-  </section>
-  
-  <!-- Join Section (Placeholder) -->
-  <section id="join">
-    <h2>Join Our Group</h2>
-    <p>Application system coming soon – stay tuned!</p>
-  </section>
-  
-  <!-- Complaint Section -->
-  <section id="complaint">
-    <h2>Complaint Submission</h2>
-    <p>Here you can file a complaint against a driver. (Feature coming soon.)</p>
-  </section>
-  
-  <!-- Contact Section -->
-  <section id="contact" class="contact-section">
-    <h2>Contact Us</h2>
-    <img class="contact-card" src="https://luxride.neocities.org/Image%20/Card.png" alt="Business Card">
-  </section>
-  
-  <!-- Footer -->
+  </header>
   <footer>
     © LuxRide Inc. All rights reserved.
   </footer>
-  
-  <!-- Global Error Logging -->
-  <script>
-    window.onerror = function(message, source, lineno, colno, error) {
-      console.error("Error: " + message + " at " + source + ":" + lineno + ":" + colno, error);
-    };
-    window.addEventListener('unhandledrejection', function(event) {
-      console.error("Unhandled Rejection: ", event.reason);
-    });
-  </script>
-  
-  <!-- Public Site: Glitch Backend Integration & Anti-Spam -->
-  <script>
-    // --- Star Rating Logic ---
-    document.querySelectorAll('.star-node').forEach(function(star) {
-      star.addEventListener('click', function() {
-        var selectedValue = parseInt(star.dataset.value);
-        document.querySelectorAll('.star-node').forEach(function(s) {
-          s.classList.toggle('active', parseInt(s.dataset.value) <= selectedValue);
-        });
-        window.selectedRating = selectedValue;
-      });
-    });
-    
-    // --- Anti-Spam ---
-    var lastSubmissionTime = 0;
-    function canSubmit() {
-      var now = Date.now();
-      if (now - lastSubmissionTime < 30000) { // 30-second cooldown
-        return false;
-      }
-      lastSubmissionTime = now;
-      return true;
-    }
-    function checkDuplicateSubmission(discordID) {
-      const lastSub = localStorage.getItem('lastSubmissionData');
-      const now = Date.now();
-      if (lastSub) {
-        const data = JSON.parse(lastSub);
-        if (data.discordID === discordID && (now - data.time) < 60000) { // 60-second duplicate check
-          return true;
-        }
-      }
-      localStorage.setItem('lastSubmissionData', JSON.stringify({ discordID: discordID, time: now }));
-      return false;
-    }
-    
-    // --- Submit Rating Data ---
-    async function submitRatingData(ratingData) {
-      if (!canSubmit()) {
-        alert("Please wait at least 30 seconds between submissions.");
-        return;
-      }
-      if (checkDuplicateSubmission(ratingData.discordID)) {
-        alert("You have already submitted a rating recently. Please wait before submitting again.");
-        return;
-      }
-      try {
-        console.log("Now sending data to Glitch backend...", ratingData);
-        var response = await fetch('https://evening-gratis-xenon.glitch.me/submit-rating', {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify(ratingData)
-        });
-        var result = await response.json();
-        console.log("Response from Glitch:", result);
-        if (result.result === 'success') {
-          showSuccessPopup();
-        } else {
-          alert("Submission failed: " + result.message);
-        }
-      } catch(err) {
-        console.error("Error during submitRatingData:", err);
-        alert("Submission failed: " + err.message);
-      }
-    }
-    
-    function showSuccessPopup() {
-      var popup = document.getElementById('successPopup');
-      popup.classList.add('show');
-      setTimeout(function() {
-        popup.classList.remove('show');
-      }, 3000);
-    }
-    
-    document.getElementById("ratingForm").addEventListener("submit", async function(e) {
-      e.preventDefault();
-      var fullName = document.getElementById('fullName').value.trim();
-      var discordID = document.getElementById('discordID').value.trim();
-      var driverName = document.getElementById('driverName').value.trim();
-      var feedback = document.getElementById('feedback').value.trim();
-      var rating = window.selectedRating || 0;
-      if (!fullName || !discordID || !driverName || rating === 0) {
-        alert("Please fill in all required fields and select a rating.");
-        return;
-      }
-      var ratingData = {
-        fullName: fullName,
-        discordID: discordID,
-        driverName: driverName,
-        rating: rating,
-        feedback: feedback,
-        location: "Unknown Location",
-        timestamp: new Date().toISOString()
-      };
-      await submitRatingData(ratingData);
-    });
-  </script>
 </body>
 </html>
