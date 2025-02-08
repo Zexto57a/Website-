@@ -1,0 +1,652 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>LuxRide Premium Ratings</title>
+  <!-- Inter Font -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <style>
+    /* --- Base Variables and Theme --- */
+    :root {
+      --deep-space: #0a0a0a;
+      --quantum-red: #ff4d4d;
+      --neon-blue: #64b5ff;
+      --silver-white: #e0e0e0;
+      --hud-text: #00ff00;
+      --terminal-border: rgba(125, 100, 255, 0.3);
+      --cyber-glow: 0 0 20px rgba(125, 100, 255, 0.5);
+    }
+    * { box-sizing: border-box; }
+    body {
+      background: radial-gradient(circle, var(--deep-space), black);
+      color: var(--hud-text);
+      font-family: 'Inter', sans-serif;
+      margin: 0;
+      padding: 2rem;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      overflow-x: hidden;
+      position: relative;
+    }
+    
+    /* --- Animations --- */
+    @keyframes float {
+      0% { transform: translateY(0); }
+      50% { transform: translateY(-5px); }
+      100% { transform: translateY(0); }
+    }
+    @keyframes pulse {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.2); }
+    }
+    @keyframes shine {
+      from { left: -75%; }
+      to { left: 125%; }
+    }
+    @keyframes fadeOut {
+      from { opacity: 1; }
+      to { opacity: 0; }
+    }
+    
+    /* --- Header and Logo --- */
+    .header-logo img {
+      width: 200px;
+      filter: drop-shadow(0 0 10px var(--neon-blue));
+      transition: transform 0.3s ease;
+      animation: float 3s ease-in-out infinite;
+    }
+    .header-logo img:hover {
+      transform: scale(1.05) rotate(-2deg);
+      filter: drop-shadow(0 0 15px var(--quantum-red));
+    }
+    .glowing-line {
+      width: 80%;
+      height: 3px;
+      background: linear-gradient(90deg, var(--neon-blue), var(--quantum-red));
+      margin: 20px 0;
+      box-shadow: 0 0 15px var(--quantum-red);
+    }
+    .company-motto img {
+      width: 250px;
+      filter: drop-shadow(0 0 10px var(--quantum-red));
+      transition: transform 0.3s ease;
+      animation: float 3s ease-in-out infinite;
+    }
+    .company-motto img:hover {
+      transform: scale(1.05);
+    }
+    
+    /* --- Rating Terminal --- */
+    .rating-terminal {
+      background: rgba(10,10,10,0.95);
+      border: 2px solid var(--terminal-border);
+      border-radius: 16px;
+      padding: 2rem;
+      width: min(600px, 90%);
+      box-shadow: var(--cyber-glow);
+      backdrop-filter: blur(10px);
+      text-align: center;
+      margin-bottom: 20px;
+      transition: transform 0.3s ease;
+    }
+    .rating-terminal:hover {
+      transform: scale(1.01);
+    }
+    .input-group, .textarea-group {
+      position: relative;
+      margin: 1.5rem 0;
+    }
+    .input-holofield, .input-textarea {
+      width: 100%;
+      padding: 1rem;
+      background: rgba(0,0,0,0.3);
+      border: 2px solid var(--neon-blue);
+      border-radius: 8px;
+      color: var(--hud-text);
+      transition: 0.3s;
+      outline: none;
+    }
+    .input-holofield:focus, .input-textarea:focus {
+      border-color: var(--quantum-red);
+      box-shadow: 0 0 10px var(--quantum-red);
+    }
+    .input-group label, .textarea-group label {
+      position: absolute;
+      top: 50%;
+      left: 1rem;
+      transform: translateY(-50%);
+      pointer-events: none;
+      color: var(--neon-blue);
+      transition: all 0.3s ease;
+      opacity: 0.8;
+      background: transparent;
+      padding: 0 0.3rem;
+    }
+    .input-holofield:focus + label, .input-holofield:not(:placeholder-shown) + label,
+    .input-textarea:focus + label, .input-textarea:not(:placeholder-shown) + label {
+      top: -0.5rem;
+      left: 0.8rem;
+      font-size: 0.8rem;
+      opacity: 1;
+      background: rgba(10,10,10,0.95);
+    }
+    .rate-title {
+      font-size: 1.2rem;
+      margin: 1rem 0;
+      color: var(--silver-white);
+    }
+    .star-matrix {
+      display: flex;
+      justify-content: center;
+      gap: 1rem;
+      margin-bottom: 1.5rem;
+    }
+    .star-node {
+      cursor: pointer;
+      font-size: 2.5rem;
+      color: rgba(125,100,255,0.3);
+      transition: transform 0.3s ease, color 0.3s ease;
+    }
+    .star-node:hover {
+      transform: scale(1.1);
+    }
+    .star-node.active {
+      color: var(--quantum-red);
+      filter: drop-shadow(0 0 10px var(--quantum-red));
+      animation: pulse 1s infinite;
+    }
+    
+    /* --- Submit Button --- */
+    .submit-core {
+      position: relative;
+      overflow: hidden;
+      width: 100%;
+      padding: 1rem;
+      background: linear-gradient(135deg, var(--neon-blue), var(--quantum-red));
+      border: none;
+      border-radius: 8px;
+      color: var(--silver-white);
+      font-weight: 700;
+      text-transform: uppercase;
+      cursor: pointer;
+      transition: transform 0.3s ease;
+    }
+    .submit-core:hover {
+      transform: scale(1.05);
+    }
+    .submit-core:disabled {
+      opacity: 0.6;
+      cursor: not-allowed;
+    }
+    .submit-core::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -75%;
+      width: 50%;
+      height: 100%;
+      background: linear-gradient(120deg, rgba(255,255,255,0.2) 0%, rgba(255,255,255,0.8) 50%, rgba(255,255,255,0.2) 100%);
+      transform: skewX(-25deg);
+    }
+    .submit-core:hover::after {
+      animation: shine 1.5s ease-in-out infinite;
+    }
+    
+    /* --- Success Popup (Animated) --- */
+    .success-popup {
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      background: rgba(10,10,10,0.98);
+      padding: 2rem;
+      border-radius: 16px;
+      box-shadow: var(--cyber-glow);
+      z-index: 1000;
+      text-align: center;
+      color: var(--silver-white);
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 1s ease;
+    }
+    .success-popup.show {
+      opacity: 1;
+      pointer-events: auto;
+      animation: fadeOut 1s ease 2s forwards;
+    }
+    
+    /* --- Admin Panel --- */
+    .admin-portal {
+      display: none;
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      background: rgba(10,10,10,0.98);
+      padding: 2rem;
+      border-radius: 16px;
+      box-shadow: var(--cyber-glow);
+      z-index: 1100;
+      width: 300px;
+      text-align: center;
+      max-height: 90vh;
+      overflow-y: auto;
+    }
+    .admin-portal button {
+      margin: 0.5rem;
+      padding: 0.5rem 1rem;
+      background: linear-gradient(135deg, var(--neon-blue), var(--quantum-red));
+      border: none;
+      border-radius: 8px;
+      color: var(--silver-white);
+      cursor: pointer;
+      transition: 0.3s;
+    }
+    .close-admin {
+      background: transparent;
+      border: none;
+      color: var(--quantum-red);
+      font-size: 1.2rem;
+      position: absolute;
+      top: 5px;
+      right: 10px;
+      cursor: pointer;
+    }
+    .admin-button {
+      position: fixed;
+      top: 20px;
+      left: 20px;
+      background: var(--quantum-red);
+      color: white;
+      border: none;
+      padding: 0.3rem 0.8rem;
+      border-radius: 5px;
+      cursor: pointer;
+      box-shadow: 0 0 10px var(--quantum-red);
+      z-index: 1200;
+      font-size: 0.8rem;
+    }
+    
+    /* --- Contact Section and Footer --- */
+    .contact-section {
+      margin-top: 2rem;
+      text-align: center;
+    }
+    .contact-section h2 {
+      font-size: 1.8rem;
+      margin-bottom: 1rem;
+      color: var(--silver-white);
+      text-shadow: 0 0 10px var(--quantum-red);
+    }
+    .contact-card {
+      width: 300px;
+      animation: fadeIn 2s ease-in-out infinite alternate;
+      filter: drop-shadow(0 0 10px var(--neon-blue));
+    }
+    @keyframes fadeIn {
+      from { opacity: 0.7; transform: scale(0.95); }
+      to { opacity: 1; transform: scale(1.05); }
+    }
+    footer {
+      margin-top: 2rem;
+      font-size: 0.8rem;
+      color: var(--silver-white);
+      text-align: center;
+      opacity: 0.8;
+    }
+  </style>
+</head>
+<body>
+  <!-- Admin Panel Button (Top Left) -->
+  <button class="admin-button" onclick="toggleAdminPortal()">Admin</button>
+  
+  <!-- Header Section -->
+  <div class="header-logo">
+    <img src="https://luxride.neocities.org/Image%20/Logo.png" alt="Company Logo">
+  </div>
+  <div class="glowing-line"></div>
+  <div class="company-motto">
+    <img src="https://luxride.neocities.org/Image%20/Moto.png" alt="Company Motto">
+  </div>
+  
+  <!-- Rating Terminal Form -->
+  <main class="rating-terminal">
+    <form id="ratingForm">
+      <div class="input-group">
+        <input type="text" id="fullName" class="input-holofield" placeholder=" " pattern="^[A-Za-z]+_[A-Za-z]+$" required>
+        <label for="fullName">Full Name (John_Doe)</label>
+      </div>
+      <div class="input-group">
+        <input type="text" id="discordID" class="input-holofield" placeholder=" " pattern="^[a-zA-Z0-9._]+$" required>
+        <label for="discordID">Discord ID (e.g., Ank57)</label>
+      </div>
+      <div class="input-group">
+        <input type="text" id="driverName" class="input-holofield" placeholder=" " required>
+        <label for="driverName">Driver Name</label>
+      </div>
+      <div class="textarea-group">
+        <textarea id="feedback" class="input-textarea" placeholder=" " rows="3"></textarea>
+        <label for="feedback">Feedback (Optional)</label>
+      </div>
+      <div class="rate-title">Rate the Driver:</div>
+      <div class="star-matrix">
+        <span class="star-node" data-value="1">⭐</span>
+        <span class="star-node" data-value="2">⭐</span>
+        <span class="star-node" data-value="3">⭐</span>
+        <span class="star-node" data-value="4">⭐</span>
+        <span class="star-node" data-value="5">⭐</span>
+      </div>
+      <button type="submit" class="submit-core" id="submitButton">Submit</button>
+    </form>
+  </main>
+  
+  <!-- Animated Success Popup -->
+  <div class="success-popup" id="successPopup">
+    <p>Thank you for your rating!</p>
+  </div>
+  
+  <!-- Admin Portal Modal -->
+  <div class="admin-portal" id="adminPortal">
+    <button class="close-admin" onclick="toggleAdminPortal()">✖</button>
+    <div id="adminLoginSection">
+      <h3>Admin Login</h3>
+      <div class="input-group">
+        <input type="text" id="adminUser" class="input-holofield" placeholder=" " required>
+        <label for="adminUser">Username</label>
+      </div>
+      <div class="input-group">
+        <input type="password" id="adminPass" class="input-holofield" placeholder=" " required>
+        <label for="adminPass">Password</label>
+      </div>
+      <button onclick="adminLogin()">Login</button>
+    </div>
+    <div id="adminControlsSection" style="display:none;">
+      <h3>Admin Controls</h3>
+      <button onclick="deleteAllRatings()">Delete Data</button>
+      <button onclick="exportSummaryToDiscord()">Export Summary to Discord</button>
+      <button onclick="banUser()">Ban User</button>
+      <button onclick="lockService()">Lock Service</button>
+      <button onclick="adminLogout()">Logout</button>
+      <div id="adminDataSection" style="margin-top:1rem; text-align:left;"></div>
+      <div id="logOutput" style="max-height:200px; overflow:auto; background:#111; color:#0f0; font-family: monospace; padding:10px; margin-top:10px;"></div>
+    </div>
+  </div>
+  
+  <!-- Contact Us Section and Footer -->
+  <section class="contact-section">
+    <h2>Contact Us</h2>
+    <img class="contact-card" src="https://luxride.neocities.org/Image%20/Card.png" alt="Business Card">
+  </section>
+  <footer>
+    © LuxRide Inc. All rights reserved.
+  </footer>
+  
+  <!-- Global Error Logging -->
+  <script>
+    window.onerror = function(message, source, lineno, colno, error) {
+      var logOutput = document.getElementById('logOutput');
+      if (logOutput) {
+        logOutput.innerText += "Error: " + message + " at " + source + ":" + lineno + ":" + colno + "\n";
+        if (error && error.stack) {
+          logOutput.innerText += error.stack + "\n";
+        }
+      }
+    };
+
+    window.addEventListener('unhandledrejection', function(event) {
+      var logOutput = document.getElementById('logOutput');
+      if (logOutput) {
+        logOutput.innerText += "Unhandled Rejection: " + event.reason + "\n";
+      }
+    });
+  </script>
+  
+  <!-- Glitch Backend Integration Script -->
+  <script>
+    // --- Star Rating Logic ---
+    document.querySelectorAll('.star-node').forEach(function(star) {
+      star.addEventListener('click', function() {
+        var selectedValue = parseInt(star.dataset.value);
+        document.querySelectorAll('.star-node').forEach(function(s) {
+          s.classList.toggle('active', parseInt(s.dataset.value) <= selectedValue);
+        });
+        window.selectedRating = selectedValue;
+      });
+    });
+    
+    // --- Submit Rating Data (No Delay) & Animated Success Popup ---
+    async function submitRatingData(ratingData) {
+      try {
+        console.log("Now sending data to Glitch backend...", ratingData);
+        var response = await fetch('https://evening-gratis-xenon.glitch.me/submit-rating', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(ratingData)
+        });
+        var result = await response.json();
+        console.log("Response from Glitch:", result);
+        if (result.result === 'success') {
+          showSuccessPopup();
+        } else {
+          alert("Submission failed: " + result.message);
+        }
+      } catch(err) {
+        console.error("Error during submitRatingData:", err);
+        alert("Submission failed: " + err.message);
+      }
+    }
+    
+    function showSuccessPopup() {
+      var popup = document.getElementById('successPopup');
+      popup.classList.add('show');
+      setTimeout(function() {
+        popup.classList.remove('show');
+      }, 3000);
+    }
+    
+    // --- Form Submission Handler ---
+    document.getElementById("ratingForm").addEventListener("submit", async function(e) {
+      e.preventDefault();
+      var fullName = document.getElementById('fullName').value.trim();
+      var discordID = document.getElementById('discordID').value.trim();
+      var driverName = document.getElementById('driverName').value.trim();
+      var feedback = document.getElementById('feedback').value.trim();
+      var rating = window.selectedRating || 0;
+      if (!fullName || !discordID || !driverName || rating === 0) {
+        alert("Please fill in all required fields and select a rating.");
+        return;
+      }
+      var ratingData = {
+        fullName: fullName,
+        discordID: discordID,
+        driverName: driverName,
+        rating: rating,
+        feedback: feedback,
+        location: "Unknown Location",
+        timestamp: new Date().toISOString()
+      };
+      await submitRatingData(ratingData);
+    });
+    
+    /* ---------------------------
+       Admin Panel Functions
+    --------------------------- */
+    var adminCredentials = { username: "LuxRide", password: "kian" };
+    
+    function adminLogin() {
+      var username = document.getElementById("adminUser").value.trim();
+      var password = document.getElementById("adminPass").value;
+      if (username === adminCredentials.username && password === adminCredentials.password) {
+        document.getElementById("adminLoginSection").style.display = "none";
+        document.getElementById("adminControlsSection").style.display = "block";
+        loadAdminData();
+      } else {
+        alert("Invalid admin credentials.");
+      }
+    }
+    
+    function adminLogout() {
+      document.getElementById("adminUser").value = "";
+      document.getElementById("adminPass").value = "";
+      document.getElementById("adminLoginSection").style.display = "block";
+      document.getElementById("adminControlsSection").style.display = "none";
+      document.getElementById("adminDataSection").innerHTML = "";
+    }
+    
+    function toggleAdminPortal() {
+      var portal = document.getElementById('adminPortal');
+      if (portal.style.display === "block") {
+        portal.style.display = "none";
+        console.log("Admin panel closed");
+      } else {
+        portal.style.display = "block";
+        document.getElementById("adminLoginSection").style.display = "block";
+        document.getElementById("adminControlsSection").style.display = "none";
+        document.getElementById("adminDataSection").innerHTML = "";
+        console.log("Admin panel opened");
+      }
+    }
+    
+    async function loadAdminData() {
+      var adminDataSection = document.getElementById('adminDataSection');
+      adminDataSection.innerHTML = '<h4>Driver Ratings Summary:</h4>';
+      try {
+        var response = await fetch('https://evening-gratis-xenon.glitch.me/ratings');
+        var records = await response.json();
+        if (!records || records.length === 0) {
+          adminDataSection.innerHTML += '<p>No driver data found.</p>';
+          return;
+        }
+        records.forEach(function(record) {
+          var recordElem = document.createElement('div');
+          recordElem.style.marginBottom = '10px';
+          recordElem.innerHTML = `
+            <strong>${record.driverName}</strong><br>
+            Full Name: ${record.fullName}<br>
+            Discord ID: ${record.discordID}<br>
+            Rating: ${record.rating}<br>
+            Feedback: ${record.feedback || 'No feedback'}<br>
+            Timestamp: ${record.timestamp}
+          `;
+          adminDataSection.appendChild(recordElem);
+        });
+      } catch (err) {
+        adminDataSection.innerHTML += '<p>Error loading data.</p>';
+        console.error("Error loading admin data:", err);
+      }
+    }
+    
+    async function deleteAllRatings() {
+      if (confirm("Are you sure you want to delete all ratings? This cannot be undone.")) {
+        try {
+          var result = await fetch('https://evening-gratis-xenon.glitch.me/delete-all', {
+            method: 'POST'
+          });
+          var resData = await result.json();
+          if (resData.result !== 'success') {
+            alert("Failed to delete data: " + resData.message);
+          } else {
+            alert("All ratings deleted.");
+            loadAdminData();
+          }
+        } catch (err) {
+          alert("Failed to delete data.");
+          console.error("Error deleting data:", err);
+        }
+      }
+    }
+    
+    async function exportSummaryToDiscord() {
+      try {
+        var response = await fetch('https://evening-gratis-xenon.glitch.me/ratings');
+        var records = await response.json();
+        if (!records || records.length === 0) {
+          alert("No data to export.");
+          return;
+        }
+        // Group ratings by driver name
+        var drivers = {};
+        records.forEach(function(record) {
+          var driver = record.driverName;
+          if (!drivers[driver]) {
+            drivers[driver] = { count: 0, sum: 0, feedback: {} };
+          }
+          drivers[driver].count++;
+          drivers[driver].sum += record.rating;
+          var fb = record.feedback ? record.feedback.trim() : "";
+          if (fb) {
+            drivers[driver].feedback[fb] = (drivers[driver].feedback[fb] || 0) + 1;
+          }
+        });
+        var exportText = "";
+        for (var driver in drivers) {
+          var data = drivers[driver];
+          var avg = (data.sum / data.count).toFixed(2);
+          var feedbackSummary = "No feedback";
+          var maxCount = 0;
+          for (var fb in data.feedback) {
+            if (data.feedback[fb] > maxCount) {
+              maxCount = data.feedback[fb];
+              feedbackSummary = fb;
+            }
+          }
+          var suspicious = "";
+          if (data.count > 5 && (maxCount / data.count) > 0.8) {
+            suspicious = "⚠️ Suspicious activity detected";
+          }
+          exportText += `Driver Name: ${driver}\nAverage Rating: ${avg}\nGeneral Feedback: ${feedbackSummary}\n${suspicious}\n\n`;
+        }
+        // Discord embed description limit is 2048 characters; we enclose our text in a code block.
+        var description = "```json\n" + exportText;
+        if (description.length > 2000) {
+          description = description.substring(0, 2000) + "\n...[truncated]```";
+        } else {
+          description += "\n```";
+        }
+        var payload = {
+          content: "Driver Ratings Summary",
+          embeds: [{
+            title: "Driver Ratings Summary",
+            description: description
+          }]
+        };
+        var discordResponse = await fetch("https://discord.com/api/webhooks/1337136648768720956/5IrJtX4NAACmEAuNxwvGoP071_AwWB3-QxMfnyjKFFXJOKD3JwM83ZnytKNwl7HhHeCB", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(payload)
+        });
+        if (discordResponse.ok) {
+          alert("Summary exported to Discord successfully.");
+        } else {
+          let errorText = await discordResponse.text();
+          console.error("Discord response error:", errorText);
+          alert("Failed to export summary to Discord. Response: " + errorText);
+        }
+      } catch (err) {
+        console.error("Error exporting summary:", err);
+        alert("Failed to export summary: " + err.message);
+      }
+    }
+    
+    function banUser() {
+      alert("Ban User feature not implemented yet.");
+    }
+    
+    function lockService() {
+      alert("Lock Service feature not implemented yet.");
+    }
+    
+    // Expose functions for inline onclick attributes
+    window.toggleAdminPortal = toggleAdminPortal;
+    window.adminLogin = adminLogin;
+    window.adminLogout = adminLogout;
+    window.deleteAllRatings = deleteAllRatings;
+    window.exportSummaryToDiscord = exportSummaryToDiscord;
+    window.banUser = banUser;
+    window.lockService = lockService;
+  </script>
+</body>
+</html>
