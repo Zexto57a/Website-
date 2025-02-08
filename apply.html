@@ -8,7 +8,7 @@
   <style>
     :root {
       --bg-color: #121212;
-      --accent-color: #00adb5;
+      --accent: #00adb5;
       --border-color: #00adb5;
       --text-color: #ffffff;
     }
@@ -40,7 +40,7 @@
       transition: background 0.3s;
     }
     nav a:hover {
-      background: var(--accent-color);
+      background: var(--accent);
       border-radius: 4px;
     }
     .container {
@@ -66,7 +66,7 @@
       background: rgba(18,18,18,0.95);
       padding: 2rem;
       border-radius: 16px;
-      box-shadow: 0 0 20px var(--accent-color);
+      box-shadow: 0 0 20px var(--accent);
     }
     .form-container h2 {
       color: var(--text-color);
@@ -92,14 +92,14 @@
       outline: none;
     }
     .input-group input:focus, .input-group textarea:focus {
-      border-color: var(--accent-color);
-      box-shadow: 0 0 10px var(--accent-color);
+      border-color: var(--accent);
+      box-shadow: 0 0 10px var(--accent);
     }
     .submit-button {
       display: block;
       width: 100%;
       padding: 1rem;
-      background: var(--accent-color);
+      background: var(--accent);
       border: none;
       border-radius: 8px;
       color: var(--text-color);
@@ -165,7 +165,7 @@
     document.getElementById("applyForm").addEventListener("submit", function(e) {
       e.preventDefault();
       alert("Application submitted! (This feature will be integrated soon.)");
-      // TODO: Process and send application data.
+      // TODO: Process application data.
     });
   </script>
 </body>
