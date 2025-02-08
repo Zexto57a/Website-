@@ -1,4 +1,4 @@
-tgt<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
@@ -27,7 +27,7 @@ tgt<!DOCTYPE html>
       max-width: 1200px;
       border: 2px solid var(--neon-blue);
       border-radius: 8px;
-      padding: 1rem;
+      padding: 2rem;
       background: rgba(10,10,10,0.95);
     }
     header {
@@ -93,23 +93,18 @@ tgt<!DOCTYPE html>
       <button onclick="showSection('applications')">Applications to Join</button>
       <button onclick="showSection('complaints')">Last Complaint</button>
     </nav>
-    <!-- Section: Rate Our Drivers -->
     <section id="ratings" class="content" style="display:none;">
       <h2>Driver Ratings</h2>
-      <div id="ratingsData">
-        <!-- Ratings data will load here -->
-      </div>
+      <div id="ratingsData"></div>
       <button onclick="loadRatings()">Refresh Ratings</button>
       <button onclick="exportSummaryToDiscord()">Export Summary to Discord</button>
     </section>
-    <!-- Section: Applications to Join (Placeholder) -->
     <section id="applications" class="content" style="display:none;">
       <h2>Applications to Join</h2>
       <div id="applicationsData">
         <p>No applications yet.</p>
       </div>
     </section>
-    <!-- Section: Last Complaint Against a Driver (Placeholder) -->
     <section id="complaints" class="content" style="display:none;">
       <h2>Last Complaint Against a Driver</h2>
       <div id="complaintsData">
@@ -129,9 +124,7 @@ tgt<!DOCTYPE html>
     
     async function loadRatings() {
       try {
-        let response = await fetch('https://evening-gratis-xenxon.glitch.me/ratings');
-        // Note: If your Glitch URL is unchanged, use the correct URL:
-        response = await fetch('https://evening-gratis-xenon.glitch.me/ratings');
+        let response = await fetch('https://evening-gratis-xenon.glitch.me/ratings');
         let records = await response.json();
         let container = document.getElementById('ratingsData');
         if (!records || records.length === 0) {
