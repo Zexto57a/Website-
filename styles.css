@@ -1,0 +1,52 @@
+/* CSS Reset */
+body, h1, h2, h3, p, ul, li, form, input, textarea, button {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font-size: 100%;
+    font: inherit;
+    vertical-align: baseline;
+}
+
+ul {
+    list-style: none;
+}
+
+/* Variables */
+:root {
+    --base-bg: #111;       /* Dark Gray */
+    --primary-color: #222;    /* Slightly Lighter Gray */
+    --secondary-color: #eee;  /* Very Light Gray */
+    --accent-color: #64ffda;  /* Teal */
+    --highlight-color: #f9004d; /* Pink/Red */
+
+    --font-main: "Montserrat", sans-serif;
+    --font-header: "Cormorant Garamond", serif;
+}
+
+/* Base Styles */
+body {
+    font-family: var(--font-main);
+    /*  background: url('https://luxride.neocities.org/Image%20/download.jpeg') no-repeat center center fixed; */
+    background-color: #000;
+    background-size: cover;
+    color: var(--secondary-color);
+    line-height: 1.6;
+    overflow-x: hidden; /* Prevent horizontal scroll */
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2rem;
+}
+
+a {
+    color: var(--accent-color);
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+a:hover {
+    color: var(--highlight-color);
+}
