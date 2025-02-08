@@ -4,12 +4,14 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Rate Our Driver - LuxRide</title>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;700&family=Montserrat:wght@400;500&display=swap" rel="stylesheet">
   <style>
     :root {
       --bg-color: #121212;
       --accent: #00adb5;
-      --border-color: #00adb5;
       --text-color: #ffffff;
       --shadow: 0 0 20px rgba(0,173,181,0.5);
     }
@@ -17,7 +19,7 @@
     body {
       margin: 0;
       padding: 0;
-      font-family: 'Inter', sans-serif;
+      font-family: 'Montserrat', sans-serif;
       background: url('https://source.unsplash.com/1600x900/?samp,taxi') no-repeat center center fixed;
       background-size: cover;
       color: var(--text-color);
@@ -49,7 +51,7 @@
       margin: 6rem auto 2rem;
       max-width: 1200px;
       background: rgba(18,18,18,0.95);
-      border: 2px solid var(--border-color);
+      border: 2px solid var(--accent);
       border-radius: 8px;
       padding: 2rem;
     }
@@ -60,6 +62,7 @@
     header h1 {
       color: var(--text-color);
       font-size: 2rem;
+      font-family: 'Cormorant Garamond', serif;
       margin-bottom: 1rem;
     }
     .form-container {
@@ -74,6 +77,7 @@
     .form-container h2 {
       color: var(--text-color);
       text-align: center;
+      font-family: 'Cormorant Garamond', serif;
       margin-bottom: 1rem;
     }
     .input-group {
@@ -153,11 +157,11 @@
 </head>
 <body>
   <nav>
-    <a href="index.html">Home</a>
-    <a href="complaint.html">Complaint</a>
-    <a href="apply.html">Apply</a>
-    <a href="rate.html">Rate</a>
-    <a href="admin.html">Admin</a>
+    <a href="index.html"><i class="fa fa-home"></i> Home</a>
+    <a href="complaint.html"><i class="fa fa-exclamation-triangle"></i> Complaint</a>
+    <a href="apply.html"><i class="fa fa-briefcase"></i> Apply</a>
+    <a href="rate.html"><i class="fa fa-star"></i> Rate</a>
+    <a href="admin.html"><i class="fa fa-cog"></i> Admin</a>
   </nav>
   <div class="container">
     <header>
@@ -209,8 +213,9 @@
         window.selectedRating = selectedValue;
       });
     });
-    
+
     var lastSubmissionTime = 0;
+
     function canSubmit() {
       var now = Date.now();
       if (now - lastSubmissionTime < 30000) {
@@ -219,6 +224,7 @@
       lastSubmissionTime = now;
       return true;
     }
+
     function checkDuplicateSubmission(discordID) {
       const lastSub = localStorage.getItem('lastSubmissionData');
       const now = Date.now();
@@ -228,10 +234,13 @@
           return true;
         }
       }
-      localStorage.setItem('lastSubmissionData', JSON.stringify({ discordID: discordID, time: now }));
+      localStorage.setItem('lastSubmissionData', JSON.stringify({
+        discordID: discordID,
+        time: now
+      }));
       return false;
     }
-    
+
     async function submitRatingData(ratingData) {
       if (!canSubmit()) {
         alert("Please wait at least 30 seconds between submissions.");
@@ -245,7 +254,9 @@
         console.log("Sending data to backend...", ratingData);
         var response = await fetch('https://evening-gratis-xenon.glitch.me/submit-rating', {
           method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
+          headers: {
+            'Content-Type': 'application/json'
+          },
           body: JSON.stringify(ratingData)
         });
         var result = await response.json();
@@ -255,12 +266,12 @@
         } else {
           alert("Submission failed: " + result.message);
         }
-      } catch(err) {
+      } catch (err) {
         console.error("Error:", err);
         alert("Submission failed: " + err.message);
       }
     }
-    
+
     document.getElementById("ratingForm").addEventListener("submit", async function(e) {
       e.preventDefault();
       var fullName = document.getElementById('fullName').value.trim();
