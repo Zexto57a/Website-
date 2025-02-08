@@ -1,4 +1,4 @@
-yy<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
@@ -17,10 +17,11 @@ yy<!DOCTYPE html>
     body {
       margin: 0;
       font-family: 'Inter', sans-serif;
-      background: radial-gradient(circle, var(--deep-space), black);
+      /* Replace with your job application themed background */
+      background: url('https://example.com/apply_bg.jpg') no-repeat center center fixed;
+      background-size: cover;
       color: var(--hud-text);
       min-height: 100vh;
-      padding: 0;
       overflow-x: hidden;
     }
     nav {
@@ -49,12 +50,12 @@ yy<!DOCTYPE html>
       max-width: 1200px;
       border: 2px solid var(--neon-blue);
       border-radius: 8px;
-      padding: 1rem;
-      background: rgba(10,10,10,0.95);
+      padding: 2rem;
+      background: rgba(10,10,10,0.9);
     }
     header {
       text-align: center;
-      padding: 6rem 2rem 2rem;
+      padding: 2rem;
     }
     header h1 {
       color: var(--silver-white);
@@ -166,7 +167,7 @@ yy<!DOCTYPE html>
     document.getElementById("applyForm").addEventListener("submit", function(e) {
       e.preventDefault();
       alert("Application submitted! (This feature will be integrated soon.)");
-      // TODO: Process and send application data.
+      // Process and send application data here.
     });
   </script>
 </body>
