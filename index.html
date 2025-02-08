@@ -320,7 +320,8 @@
         <label for="fullName">Full Name (John_Doe)</label>
       </div>
       <div class="input-group">
-        <input type="text" id="discordID" class="input-holofield" placeholder=" " pattern="^[a-zA-Z0-9._]+$" required>
+        <!-- Removed pattern restriction for Discord ID -->
+        <input type="text" id="discordID" class="input-holofield" placeholder=" " required>
         <label for="discordID">Discord ID (e.g., Ank57)</label>
       </div>
       <div class="input-group">
@@ -375,7 +376,7 @@
     </div>
   </div>
   
-  <!-- Contact Us Section and Footer -->
+  <!-- Contact Us Section and Footer --->
   <section class="contact-section">
     <h2>Contact Us</h2>
     <img class="contact-card" src="https://luxride.neocities.org/Image%20/Card.png" alt="Business Card">
@@ -384,7 +385,7 @@
     © LuxRide Inc. All rights reserved.
   </footer>
   
-  <!-- Global Error Logging -->
+  <!-- Global Error Logging (displayed in Admin Panel) -->
   <script>
     window.onerror = function(message, source, lineno, colno, error) {
       var logOutput = document.getElementById('logOutput');
@@ -404,7 +405,7 @@
     });
   </script>
   
-  <!-- Glitch Backend Integration Script -->
+  <!-- Glitch Backend Integration and Anti-Spam Script -->
   <script>
     // --- Star Rating Logic ---
     document.querySelectorAll('.star-node').forEach(function(star) {
@@ -417,8 +418,24 @@
       });
     });
     
+    // --- Anti-Spam: Prevent submissions if less than 30 seconds since last submission ---
+    var lastSubmissionTime = 0;
+    function canSubmit() {
+      var now = Date.now();
+      // 30 seconds cooldown
+      if (now - lastSubmissionTime < 30000) {
+        return false;
+      }
+      lastSubmissionTime = now;
+      return true;
+    }
+    
     // --- Submit Rating Data (No Delay) & Animated Success Popup ---
     async function submitRatingData(ratingData) {
+      if (!canSubmit()) {
+        alert("Please wait at least 30 seconds between submissions.");
+        return;
+      }
       try {
         console.log("Now sending data to Glitch backend...", ratingData);
         var response = await fetch('https://evening-gratis-xenon.glitch.me/submit-rating', {
@@ -430,6 +447,8 @@
         console.log("Response from Glitch:", result);
         if (result.result === 'success') {
           showSuccessPopup();
+          // Automatically send updated summary to Discord after every successful submission
+          exportSummaryToDiscord();
         } else {
           alert("Submission failed: " + result.message);
         }
@@ -599,7 +618,6 @@
           }
           exportText += `Driver Name: ${driver}\nAverage Rating: ${avg}\nGeneral Feedback: ${feedbackSummary}\n${suspicious}\n\n`;
         }
-        // Discord embed description limit is 2048 characters; we enclose our text in a code block.
         var description = "```json\n" + exportText;
         if (description.length > 2000) {
           description = description.substring(0, 2000) + "\n...[truncated]```";
