@@ -1,0 +1,289 @@
+tt<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Rate Our Driver - LuxRide</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --deep-space: #0a0a0a;
+      --quantum-red: #ff4d4d;
+      --neon-blue: #64b5ff;
+      --silver-white: #e0e0e0;
+      --hud-text: #00ff00;
+      --terminal-border: rgba(125,100,255,0.3);
+      --cyber-glow: 0 0 20px rgba(125,100,255,0.5);
+    }
+    * { box-sizing: border-box; }
+    body {
+      background: radial-gradient(circle, var(--deep-space), black);
+      color: var(--hud-text);
+      font-family: 'Inter', sans-serif;
+      margin: 0;
+      padding: 0;
+      min-height: 100vh;
+      overflow-x: hidden;
+    }
+    nav {
+      background: rgba(10,10,10,0.95);
+      padding: 1rem;
+      display: flex;
+      justify-content: center;
+      gap: 1rem;
+      position: fixed;
+      top: 0;
+      width: 100%;
+      z-index: 1000;
+    }
+    nav a {
+      color: var(--silver-white);
+      text-decoration: none;
+      padding: 0.5rem 1rem;
+      transition: background 0.3s;
+    }
+    nav a:hover {
+      background: var(--quantum-red);
+      border-radius: 4px;
+    }
+    .container {
+      margin: 4rem auto 2rem;
+      max-width: 1200px;
+      border: 2px solid var(--neon-blue);
+      border-radius: 8px;
+      padding: 1rem;
+      background: rgba(10,10,10,0.95);
+    }
+    header {
+      text-align: center;
+      padding: 6rem 2rem 2rem;
+    }
+    header h1 {
+      color: var(--silver-white);
+      font-size: 2rem;
+      margin-bottom: 1rem;
+    }
+    .form-container {
+      max-width: 600px;
+      margin: 2rem auto;
+      background: rgba(10,10,10,0.95);
+      padding: 2rem;
+      border-radius: 16px;
+      box-shadow: var(--cyber-glow);
+      backdrop-filter: blur(10px);
+    }
+    .form-container h2 {
+      color: var(--silver-white);
+      text-align: center;
+      margin-bottom: 1rem;
+    }
+    .input-group {
+      margin: 1rem 0;
+      position: relative;
+    }
+    .input-group label {
+      display: block;
+      color: var(--silver-white);
+      margin-bottom: 0.5rem;
+    }
+    .input-group input, .input-group textarea {
+      width: 100%;
+      padding: 0.8rem;
+      border: 2px solid var(--neon-blue);
+      border-radius: 8px;
+      background: rgba(0,0,0,0.3);
+      color: var(--hud-text);
+      outline: none;
+      transition: 0.3s;
+    }
+    .input-group input:focus, .input-group textarea:focus {
+      border-color: var(--quantum-red);
+      box-shadow: 0 0 10px var(--quantum-red);
+    }
+    .star-matrix {
+      display: flex;
+      justify-content: center;
+      gap: 1rem;
+      margin-bottom: 1.5rem;
+    }
+    .star-node {
+      cursor: pointer;
+      font-size: 2.5rem;
+      color: rgba(125,100,255,0.3);
+      transition: transform 0.3s, color 0.3s;
+    }
+    .star-node:hover {
+      transform: scale(1.1);
+    }
+    .star-node.active {
+      color: var(--quantum-red);
+      filter: drop-shadow(0 0 10px var(--quantum-red));
+      animation: pulse 1s infinite;
+    }
+    @keyframes pulse {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.2); }
+    }
+    .submit-button {
+      display: block;
+      width: 100%;
+      padding: 1rem;
+      background: var(--quantum-red);
+      border: none;
+      border-radius: 8px;
+      color: var(--silver-white);
+      font-weight: 700;
+      text-transform: uppercase;
+      cursor: pointer;
+      margin-top: 1rem;
+      transition: background 0.3s, transform 0.3s;
+    }
+    .submit-button:hover {
+      background: var(--neon-blue);
+      transform: scale(1.05);
+    }
+    footer {
+      text-align: center;
+      margin-top: 2rem;
+      padding: 1rem;
+      color: var(--silver-white);
+      opacity: 0.8;
+      font-size: 0.8rem;
+    }
+  </style>
+</head>
+<body>
+  <nav>
+    <a href="index.html">Home</a>
+    <a href="complaint.html">Complaint</a>
+    <a href="apply.html">Apply</a>
+    <a href="rate.html">Rate</a>
+    <a href="admin.html">Admin</a>
+  </nav>
+  <div class="container">
+    <header>
+      <h1>Rate Our Driver</h1>
+    </header>
+    <div class="form-container">
+      <h2>Rating Form</h2>
+      <form id="ratingForm">
+        <div class="input-group">
+          <label for="fullName">Full Name (John_Doe)</label>
+          <input type="text" id="fullName" required pattern="^[A-Za-z]+_[A-Za-z]+$">
+        </div>
+        <div class="input-group">
+          <label for="discordID">Discord ID (e.g., Ank57)</label>
+          <input type="text" id="discordID" required>
+        </div>
+        <div class="input-group">
+          <label for="driverName">Driver Name</label>
+          <input type="text" id="driverName" required>
+        </div>
+        <div class="input-group">
+          <label for="feedback">Feedback (Optional)</label>
+          <textarea id="feedback" rows="3"></textarea>
+        </div>
+        <div class="input-group">
+          <label>Rate the Driver:</label>
+          <div class="star-matrix">
+            <span class="star-node" data-value="1">⭐</span>
+            <span class="star-node" data-value="2">⭐</span>
+            <span class="star-node" data-value="3">⭐</span>
+            <span class="star-node" data-value="4">⭐</span>
+            <span class="star-node" data-value="5">⭐</span>
+          </div>
+        </div>
+        <button type="submit" class="submit-button">Submit Rating</button>
+      </form>
+    </div>
+  </div>
+  <footer>
+    © LuxRide Inc. All rights reserved.
+  </footer>
+  <script>
+    document.querySelectorAll('.star-node').forEach(function(star) {
+      star.addEventListener('click', function() {
+        var selectedValue = parseInt(star.dataset.value);
+        document.querySelectorAll('.star-node').forEach(function(s) {
+          s.classList.toggle('active', parseInt(s.dataset.value) <= selectedValue);
+        });
+        window.selectedRating = selectedValue;
+      });
+    });
+    
+    var lastSubmissionTime = 0;
+    function canSubmit() {
+      var now = Date.now();
+      if (now - lastSubmissionTime < 30000) {
+        return false;
+      }
+      lastSubmissionTime = now;
+      return true;
+    }
+    function checkDuplicateSubmission(discordID) {
+      const lastSub = localStorage.getItem('lastSubmissionData');
+      const now = Date.now();
+      if (lastSub) {
+        const data = JSON.parse(lastSub);
+        if (data.discordID === discordID && (now - data.time) < 60000) {
+          return true;
+        }
+      }
+      localStorage.setItem('lastSubmissionData', JSON.stringify({ discordID: discordID, time: now }));
+      return false;
+    }
+    
+    async function submitRatingData(ratingData) {
+      if (!canSubmit()) {
+        alert("Please wait at least 30 seconds between submissions.");
+        return;
+      }
+      if (checkDuplicateSubmission(ratingData.discordID)) {
+        alert("You have already submitted a rating recently. Please wait before submitting again.");
+        return;
+      }
+      try {
+        console.log("Sending data to backend...", ratingData);
+        var response = await fetch('https://evening-gratis-xenon.glitch.me/submit-rating', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(ratingData)
+        });
+        var result = await response.json();
+        console.log("Response:", result);
+        if (result.result === 'success') {
+          alert("Rating submitted successfully!");
+        } else {
+          alert("Submission failed: " + result.message);
+        }
+      } catch(err) {
+        console.error("Error:", err);
+        alert("Submission failed: " + err.message);
+      }
+    }
+    
+    document.getElementById("ratingForm").addEventListener("submit", async function(e) {
+      e.preventDefault();
+      var fullName = document.getElementById('fullName').value.trim();
+      var discordID = document.getElementById('discordID').value.trim();
+      var driverName = document.getElementById('driverName').value.trim();
+      var feedback = document.getElementById('feedback').value.trim();
+      var rating = window.selectedRating || 0;
+      if (!fullName || !discordID || !driverName || rating === 0) {
+        alert("Please fill in all required fields and select a rating.");
+        return;
+      }
+      var ratingData = {
+        fullName: fullName,
+        discordID: discordID,
+        driverName: driverName,
+        rating: rating,
+        feedback: feedback,
+        location: "Unknown Location",
+        timestamp: new Date().toISOString()
+      };
+      await submitRatingData(ratingData);
+    });
+  </script>
+</body>
+</html>
