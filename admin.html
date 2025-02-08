@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+tgt<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
@@ -21,6 +21,14 @@
       margin: 0;
       padding: 2rem;
       min-height: 100vh;
+    }
+    .container {
+      margin: 2rem auto;
+      max-width: 1200px;
+      border: 2px solid var(--neon-blue);
+      border-radius: 8px;
+      padding: 1rem;
+      background: rgba(10,10,10,0.95);
     }
     header {
       text-align: center;
@@ -75,41 +83,43 @@
   </style>
 </head>
 <body>
-  <header>
-    <h1>LuxRide Admin Dashboard</h1>
-    <p>Welcome, LuxRide Admin.</p>
-  </header>
-  <nav>
-    <button onclick="showSection('ratings')">Rate Our Drivers</button>
-    <button onclick="showSection('applications')">Applications to Join</button>
-    <button onclick="showSection('complaints')">Last Complaint</button>
-  </nav>
-  <!-- Section: Rate Our Drivers -->
-  <section id="ratings" class="content" style="display:none;">
-    <h2>Driver Ratings</h2>
-    <div id="ratingsData">
-      <!-- Ratings data will load here -->
-    </div>
-    <button onclick="loadRatings()">Refresh Ratings</button>
-    <button onclick="exportSummaryToDiscord()">Export Summary to Discord</button>
-  </section>
-  <!-- Section: Applications to Join (Placeholder) -->
-  <section id="applications" class="content" style="display:none;">
-    <h2>Applications to Join</h2>
-    <div id="applicationsData">
-      <p>No applications yet.</p>
-    </div>
-  </section>
-  <!-- Section: Last Complaint Against a Driver (Placeholder) -->
-  <section id="complaints" class="content" style="display:none;">
-    <h2>Last Complaint Against a Driver</h2>
-    <div id="complaintsData">
-      <p>No complaints at this time.</p>
-    </div>
-  </section>
-  <footer>
-    © LuxRide Inc. All rights reserved.
-  </footer>
+  <div class="container">
+    <header>
+      <h1>LuxRide Admin Dashboard</h1>
+      <p>Welcome, LuxRide Admin.</p>
+    </header>
+    <nav>
+      <button onclick="showSection('ratings')">Rate Our Drivers</button>
+      <button onclick="showSection('applications')">Applications to Join</button>
+      <button onclick="showSection('complaints')">Last Complaint</button>
+    </nav>
+    <!-- Section: Rate Our Drivers -->
+    <section id="ratings" class="content" style="display:none;">
+      <h2>Driver Ratings</h2>
+      <div id="ratingsData">
+        <!-- Ratings data will load here -->
+      </div>
+      <button onclick="loadRatings()">Refresh Ratings</button>
+      <button onclick="exportSummaryToDiscord()">Export Summary to Discord</button>
+    </section>
+    <!-- Section: Applications to Join (Placeholder) -->
+    <section id="applications" class="content" style="display:none;">
+      <h2>Applications to Join</h2>
+      <div id="applicationsData">
+        <p>No applications yet.</p>
+      </div>
+    </section>
+    <!-- Section: Last Complaint Against a Driver (Placeholder) -->
+    <section id="complaints" class="content" style="display:none;">
+      <h2>Last Complaint Against a Driver</h2>
+      <div id="complaintsData">
+        <p>No complaints at this time.</p>
+      </div>
+    </section>
+    <footer>
+      © LuxRide Inc. All rights reserved.
+    </footer>
+  </div>
   
   <script>
     function showSection(sectionId) {
@@ -119,7 +129,9 @@
     
     async function loadRatings() {
       try {
-        let response = await fetch('https://evening-gratis-xenon.glitch.me/ratings');
+        let response = await fetch('https://evening-gratis-xenxon.glitch.me/ratings');
+        // Note: If your Glitch URL is unchanged, use the correct URL:
+        response = await fetch('https://evening-gratis-xenon.glitch.me/ratings');
         let records = await response.json();
         let container = document.getElementById('ratingsData');
         if (!records || records.length === 0) {
