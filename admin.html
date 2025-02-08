@@ -7,16 +7,15 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
   <style>
     :root {
-      --deep-space: #0a0a0a;
-      --quantum-red: #ff4d4d;
-      --neon-blue: #64b5ff;
-      --silver-white: #e0e0e0;
-      --hud-text: #00ff00;
+      --bg-color: #121212;
+      --accent-color: #00adb5;
+      --border-color: #00adb5;
+      --text-color: #ffffff;
     }
     * { box-sizing: border-box; }
     body {
-      background: radial-gradient(circle, var(--deep-space), black);
-      color: var(--hud-text);
+      background: radial-gradient(circle, var(--bg-color), #000);
+      color: var(--text-color);
       font-family: 'Inter', sans-serif;
       margin: 0;
       padding: 2rem;
@@ -25,10 +24,10 @@
     .container {
       margin: 2rem auto;
       max-width: 1200px;
-      border: 2px solid var(--neon-blue);
+      border: 2px solid var(--border-color);
       border-radius: 8px;
       padding: 2rem;
-      background: rgba(10,10,10,0.95);
+      background: rgba(18,18,18,0.95);
     }
     header {
       text-align: center;
@@ -36,7 +35,7 @@
     }
     header h1 {
       font-size: 2rem;
-      color: var(--silver-white);
+      color: var(--text-color);
     }
     nav {
       display: flex;
@@ -46,38 +45,38 @@
     }
     nav button {
       padding: 0.5rem 1rem;
-      background: var(--neon-blue);
+      background: var(--accent-color);
       border: none;
       border-radius: 4px;
-      color: var(--deep-space);
+      color: var(--bg-color);
       font-weight: 600;
       cursor: pointer;
-      transition: background 0.3s ease;
+      transition: background 0.3s;
     }
     nav button:hover {
-      background: var(--quantum-red);
+      background: #009d9e;
     }
     section {
       margin-bottom: 2rem;
     }
     section h2 {
       font-size: 1.5rem;
-      color: var(--silver-white);
-      border-bottom: 1px solid var(--neon-blue);
+      color: var(--text-color);
+      border-bottom: 1px solid var(--accent-color);
       padding-bottom: 0.5rem;
       margin-bottom: 1rem;
     }
     .content {
-      background: rgba(10,10,10,0.9);
+      background: rgba(18,18,18,0.9);
       padding: 1rem;
       border-radius: 8px;
-      color: var(--hud-text);
+      color: var(--text-color);
     }
     footer {
       text-align: center;
       margin-top: 2rem;
       font-size: 0.8rem;
-      color: var(--silver-white);
+      color: var(--text-color);
       opacity: 0.8;
     }
   </style>
@@ -86,25 +85,30 @@
   <div class="container">
     <header>
       <h1>LuxRide Admin Dashboard</h1>
-      <p>Welcome, LuxRide Admin.</p>
+      <p>Welcome, Administrator.</p>
     </header>
     <nav>
       <button onclick="showSection('ratings')">Rate Our Drivers</button>
       <button onclick="showSection('applications')">Applications to Join</button>
       <button onclick="showSection('complaints')">Last Complaint</button>
     </nav>
+    <!-- Section: Rate Our Drivers -->
     <section id="ratings" class="content" style="display:none;">
       <h2>Driver Ratings</h2>
-      <div id="ratingsData"></div>
+      <div id="ratingsData">
+        <!-- Ratings data will load here -->
+      </div>
       <button onclick="loadRatings()">Refresh Ratings</button>
       <button onclick="exportSummaryToDiscord()">Export Summary to Discord</button>
     </section>
+    <!-- Section: Applications to Join (Placeholder) -->
     <section id="applications" class="content" style="display:none;">
       <h2>Applications to Join</h2>
       <div id="applicationsData">
         <p>No applications yet.</p>
       </div>
     </section>
+    <!-- Section: Last Complaint Against a Driver (Placeholder) -->
     <section id="complaints" class="content" style="display:none;">
       <h2>Last Complaint Against a Driver</h2>
       <div id="complaintsData">
@@ -137,7 +141,7 @@
         });
       } catch (err) {
         console.error("Error loading ratings:", err);
-        alert("Error loading ratings: " + err.message);
+        // In admin, errors can be shown in the console only.
       }
     }
     
@@ -209,25 +213,6 @@
         console.error("Error exporting summary:", err);
         alert("Failed to export summary: " + err.message);
       }
-    }
-    
-    var adminCredentials = { username: "LuxRide", password: "kian" };
-    function adminLogin() {
-      let username = document.getElementById("adminUser").value.trim();
-      let password = document.getElementById("adminPass").value;
-      if (username === adminCredentials.username && password === adminCredentials.password) {
-        document.getElementById("adminLoginSection").style.display = "none";
-        document.getElementById("adminControlsSection").style.display = "block";
-        loadRatings();
-      } else {
-        alert("Invalid admin credentials.");
-      }
-    }
-    function adminLogout() {
-      document.getElementById("adminUser").value = "";
-      document.getElementById("adminPass").value = "";
-      document.getElementById("adminLoginSection").style.display = "block";
-      document.getElementById("adminControlsSection").style.display = "none";
     }
   </script>
 </body>
