@@ -7,25 +7,23 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
   <style>
     :root {
-      --deep-space: #0a0a0a;
-      --quantum-red: #ff4d4d;
-      --neon-blue: #64b5ff;
-      --silver-white: #e0e0e0;
-      --hud-text: #00ff00;
+      --bg-color: #121212;
+      --accent-color: #00adb5;
+      --border-color: #00adb5;
+      --text-color: #ffffff;
     }
     * { box-sizing: border-box; }
     body {
       margin: 0;
       font-family: 'Inter', sans-serif;
-      /* Replace with your job application themed background */
-      background: url('https://example.com/apply_bg.jpg') no-repeat center center fixed;
+      background: url('https://source.unsplash.com/1600x900/?samp,car') no-repeat center center fixed;
       background-size: cover;
-      color: var(--hud-text);
+      color: var(--text-color);
       min-height: 100vh;
       overflow-x: hidden;
     }
     nav {
-      background: rgba(10,10,10,0.95);
+      background: rgba(18,18,18,0.95);
       padding: 1rem;
       display: flex;
       justify-content: center;
@@ -36,42 +34,42 @@
       z-index: 1000;
     }
     nav a {
-      color: var(--silver-white);
+      color: var(--text-color);
       text-decoration: none;
       padding: 0.5rem 1rem;
       transition: background 0.3s;
     }
     nav a:hover {
-      background: var(--quantum-red);
+      background: var(--accent-color);
       border-radius: 4px;
     }
     .container {
-      margin: 4rem auto 2rem;
+      margin: 6rem auto 2rem;
       max-width: 1200px;
-      border: 2px solid var(--neon-blue);
+      background: rgba(18,18,18,0.95);
+      border: 2px solid var(--border-color);
       border-radius: 8px;
       padding: 2rem;
-      background: rgba(10,10,10,0.9);
     }
     header {
       text-align: center;
       padding: 2rem;
     }
     header h1 {
-      color: var(--silver-white);
+      color: var(--text-color);
       font-size: 2rem;
       margin-bottom: 1rem;
     }
     .form-container {
       max-width: 600px;
       margin: 2rem auto;
-      background: rgba(10,10,10,0.95);
+      background: rgba(18,18,18,0.95);
       padding: 2rem;
       border-radius: 16px;
-      box-shadow: 0 0 20px rgba(125,100,255,0.5);
+      box-shadow: 0 0 20px var(--accent-color);
     }
     .form-container h2 {
-      color: var(--silver-white);
+      color: var(--text-color);
       text-align: center;
       margin-bottom: 1rem;
     }
@@ -80,31 +78,31 @@
     }
     .input-group label {
       display: block;
-      color: var(--silver-white);
+      color: var(--text-color);
       margin-bottom: 0.5rem;
     }
     .input-group input, .input-group textarea {
       width: 100%;
       padding: 0.8rem;
-      border: 2px solid var(--neon-blue);
+      border: 2px solid var(--border-color);
       border-radius: 8px;
-      background: rgba(0,0,0,0.3);
-      color: var(--hud-text);
-      outline: none;
+      background: rgba(0,0,0,0.5);
+      color: var(--text-color);
       transition: 0.3s;
+      outline: none;
     }
     .input-group input:focus, .input-group textarea:focus {
-      border-color: var(--quantum-red);
-      box-shadow: 0 0 10px var(--quantum-red);
+      border-color: var(--accent-color);
+      box-shadow: 0 0 10px var(--accent-color);
     }
     .submit-button {
       display: block;
       width: 100%;
       padding: 1rem;
-      background: var(--quantum-red);
+      background: var(--accent-color);
       border: none;
       border-radius: 8px;
-      color: var(--silver-white);
+      color: var(--text-color);
       font-weight: 700;
       text-transform: uppercase;
       cursor: pointer;
@@ -112,14 +110,14 @@
       transition: background 0.3s, transform 0.3s;
     }
     .submit-button:hover {
-      background: var(--neon-blue);
+      background: #009d9e;
       transform: scale(1.05);
     }
     footer {
       text-align: center;
       margin-top: 2rem;
       padding: 1rem;
-      color: var(--silver-white);
+      color: var(--text-color);
       opacity: 0.8;
       font-size: 0.8rem;
     }
@@ -167,7 +165,7 @@
     document.getElementById("applyForm").addEventListener("submit", function(e) {
       e.preventDefault();
       alert("Application submitted! (This feature will be integrated soon.)");
-      // Process and send application data here.
+      // TODO: Process and send application data.
     });
   </script>
 </body>
