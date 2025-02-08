@@ -43,9 +43,17 @@
       background: var(--quantum-red);
       border-radius: 4px;
     }
+    .container {
+      margin: 4rem auto 2rem;
+      max-width: 1200px;
+      border: 2px solid var(--neon-blue);
+      border-radius: 8px;
+      padding: 1rem;
+      background: rgba(10,10,10,0.95);
+    }
     header {
       text-align: center;
-      padding: 6rem 2rem 2rem;
+      padding: 4rem 2rem 2rem;
     }
     header h1 {
       color: var(--silver-white);
@@ -123,30 +131,32 @@
     <a href="rate.html">Rate</a>
     <a href="admin.html">Admin</a>
   </nav>
-  <header>
-    <h1>Register a Complaint</h1>
-  </header>
-  <div class="form-container">
-    <h2>Complaint Form</h2>
-    <form id="complaintForm">
-      <div class="input-group">
-        <label for="compName">Your Full Name</label>
-        <input type="text" id="compName" required>
-      </div>
-      <div class="input-group">
-        <label for="compDiscord">Your Discord ID</label>
-        <input type="text" id="compDiscord" required>
-      </div>
-      <div class="input-group">
-        <label for="compDriver">Driver Name</label>
-        <input type="text" id="compDriver" required>
-      </div>
-      <div class="input-group">
-        <label for="compDetails">Complaint Details</label>
-        <textarea id="compDetails" rows="4" required></textarea>
-      </div>
-      <button type="submit" class="submit-button">Submit Complaint</button>
-    </form>
+  <div class="container">
+    <header>
+      <h1>Register a Complaint</h1>
+    </header>
+    <div class="form-container">
+      <h2>Complaint Form</h2>
+      <form id="complaintForm">
+        <div class="input-group">
+          <label for="compName">Your Full Name</label>
+          <input type="text" id="compName" required>
+        </div>
+        <div class="input-group">
+          <label for="compDiscord">Your Discord ID</label>
+          <input type="text" id="compDiscord" required>
+        </div>
+        <div class="input-group">
+          <label for="compDriver">Driver Name</label>
+          <input type="text" id="compDriver" required>
+        </div>
+        <div class="input-group">
+          <label for="compDetails">Complaint Details</label>
+          <textarea id="compDetails" rows="4" required></textarea>
+        </div>
+        <button type="submit" class="submit-button">Submit Complaint</button>
+      </form>
+    </div>
   </div>
   <footer>
     © LuxRide Inc. All rights reserved.
@@ -155,7 +165,7 @@
     document.getElementById("complaintForm").addEventListener("submit", function(e) {
       e.preventDefault();
       alert("Complaint submitted! (This feature will be integrated soon.)");
-      // Implement sending complaint data to your backend or Discord webhook here.
+      // TODO: Integrate sending complaint data to backend or Discord webhook.
     });
   </script>
 </body>
