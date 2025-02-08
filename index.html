@@ -23,15 +23,49 @@
       color: var(--hud-text);
       font-family: 'Inter', sans-serif;
       margin: 0;
-      padding: 2rem;
+      padding: 0;
       min-height: 100vh;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
       overflow-x: hidden;
-      position: relative;
     }
-    
+    /* --- Navigation Bar --- */
+    nav {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      background: rgba(10, 10, 10, 0.95);
+      box-shadow: var(--cyber-glow);
+      z-index: 1500;
+      display: flex;
+      justify-content: center;
+      padding: 0.5rem 0;
+    }
+    nav a {
+      color: var(--silver-white);
+      text-decoration: none;
+      margin: 0 1rem;
+      font-size: 1rem;
+      transition: color 0.3s ease;
+    }
+    nav a:hover {
+      color: var(--quantum-red);
+    }
+    /* --- Sections --- */
+    section {
+      padding: 6rem 2rem 2rem; /* extra top padding for nav offset */
+    }
+    #home {
+      text-align: center;
+      padding: 8rem 2rem 2rem;
+    }
+    #home h1 {
+      font-size: 2.5rem;
+      margin-bottom: 1rem;
+      color: var(--silver-white);
+    }
+    #home p {
+      font-size: 1.2rem;
+      color: var(--hud-text);
+    }
     /* --- Animations --- */
     @keyframes float {
       0% { transform: translateY(0); }
@@ -50,8 +84,7 @@
       from { opacity: 1; }
       to { opacity: 0; }
     }
-    
-    /* --- Header and Logo --- */
+    /* --- Header (for Ratings Section) --- */
     .header-logo img {
       width: 200px;
       filter: drop-shadow(0 0 10px var(--neon-blue));
@@ -66,7 +99,7 @@
       width: 80%;
       height: 3px;
       background: linear-gradient(90deg, var(--neon-blue), var(--quantum-red));
-      margin: 20px 0;
+      margin: 20px auto;
       box-shadow: 0 0 15px var(--quantum-red);
     }
     .company-motto img {
@@ -78,18 +111,17 @@
     .company-motto img:hover {
       transform: scale(1.05);
     }
-    
-    /* --- Rating Terminal --- */
+    /* --- Rating Terminal (Form) --- */
     .rating-terminal {
       background: rgba(10,10,10,0.95);
       border: 2px solid var(--terminal-border);
       border-radius: 16px;
       padding: 2rem;
       width: min(600px, 90%);
+      margin: 2rem auto;
       box-shadow: var(--cyber-glow);
       backdrop-filter: blur(10px);
       text-align: center;
-      margin-bottom: 20px;
       transition: transform 0.3s ease;
     }
     .rating-terminal:hover {
@@ -158,7 +190,6 @@
       filter: drop-shadow(0 0 10px var(--quantum-red));
       animation: pulse 1s infinite;
     }
-    
     /* --- Submit Button --- */
     .submit-core {
       position: relative;
@@ -194,8 +225,7 @@
     .submit-core:hover::after {
       animation: shine 1.5s ease-in-out infinite;
     }
-    
-    /* --- Success Popup (Animated) --- */
+    /* --- Animated Success Popup --- */
     .success-popup {
       position: fixed;
       top: 50%;
@@ -217,7 +247,6 @@
       pointer-events: auto;
       animation: fadeOut 1s ease 2s forwards;
     }
-    
     /* --- Admin Panel --- */
     .admin-portal {
       display: none;
@@ -269,7 +298,6 @@
       z-index: 1200;
       font-size: 0.8rem;
     }
-    
     /* --- Contact Section and Footer --- */
     .contact-section {
       margin-top: 2rem;
@@ -296,60 +324,97 @@
       color: var(--silver-white);
       text-align: center;
       opacity: 0.8;
+      padding-bottom: 1rem;
+    }
+    /* --- Section Headings --- */
+    section h2 {
+      font-size: 2rem;
+      color: var(--silver-white);
+      margin-bottom: 1rem;
     }
   </style>
 </head>
 <body>
-  <!-- Admin Panel Button (Top Left) -->
-  <button class="admin-button" onclick="toggleAdminPortal()">Admin</button>
+  <!-- Navigation Bar -->
+  <nav>
+    <a href="#home">Home</a>
+    <a href="#ratings">Rate</a>
+    <a href="#join">Join</a>
+    <a href="#campaign">Campaign</a>
+    <a href="#contact">Contact</a>
+  </nav>
   
-  <!-- Header Section -->
-  <div class="header-logo">
-    <img src="https://luxride.neocities.org/Image%20/Logo.png" alt="Company Logo">
-  </div>
-  <div class="glowing-line"></div>
-  <div class="company-motto">
-    <img src="https://luxride.neocities.org/Image%20/Moto.png" alt="Company Motto">
-  </div>
+  <!-- Home Section -->
+  <section id="home">
+    <h1>Welcome to LuxRide</h1>
+    <p>Your in-game taxi group hub. Rate your rides, join our group, and stay updated with our campaigns!</p>
+  </section>
   
-  <!-- Rating Terminal Form -->
-  <main class="rating-terminal">
-    <form id="ratingForm">
-      <div class="input-group">
-        <input type="text" id="fullName" class="input-holofield" placeholder=" " pattern="^[A-Za-z]+_[A-Za-z]+$" required>
-        <label for="fullName">Full Name (John_Doe)</label>
-      </div>
-      <div class="input-group">
-        <!-- Removed pattern restriction for Discord ID -->
-        <input type="text" id="discordID" class="input-holofield" placeholder=" " required>
-        <label for="discordID">Discord ID (e.g., Ank57)</label>
-      </div>
-      <div class="input-group">
-        <input type="text" id="driverName" class="input-holofield" placeholder=" " required>
-        <label for="driverName">Driver Name</label>
-      </div>
-      <div class="textarea-group">
-        <textarea id="feedback" class="input-textarea" placeholder=" " rows="3"></textarea>
-        <label for="feedback">Feedback (Optional)</label>
-      </div>
-      <div class="rate-title">Rate the Driver:</div>
-      <div class="star-matrix">
-        <span class="star-node" data-value="1">⭐</span>
-        <span class="star-node" data-value="2">⭐</span>
-        <span class="star-node" data-value="3">⭐</span>
-        <span class="star-node" data-value="4">⭐</span>
-        <span class="star-node" data-value="5">⭐</span>
-      </div>
-      <button type="submit" class="submit-core" id="submitButton">Submit</button>
-    </form>
-  </main>
+  <!-- Ratings Section -->
+  <section id="ratings">
+    <div class="header-logo">
+      <img src="https://luxride.neocities.org/Image%20/Logo.png" alt="Company Logo">
+    </div>
+    <div class="glowing-line"></div>
+    <div class="company-motto">
+      <img src="https://luxride.neocities.org/Image%20/Moto.png" alt="Company Motto">
+    </div>
+    <div class="rating-terminal">
+      <form id="ratingForm">
+        <div class="input-group">
+          <input type="text" id="fullName" class="input-holofield" placeholder=" " pattern="^[A-Za-z]+_[A-Za-z]+$" required>
+          <label for="fullName">Full Name (John_Doe)</label>
+        </div>
+        <div class="input-group">
+          <!-- Removed pattern for Discord ID -->
+          <input type="text" id="discordID" class="input-holofield" placeholder=" " required>
+          <label for="discordID">Discord ID (e.g., Ank57)</label>
+        </div>
+        <div class="input-group">
+          <input type="text" id="driverName" class="input-holofield" placeholder=" " required>
+          <label for="driverName">Driver Name</label>
+        </div>
+        <div class="textarea-group">
+          <textarea id="feedback" class="input-textarea" placeholder=" " rows="3"></textarea>
+          <label for="feedback">Feedback (Optional)</label>
+        </div>
+        <div class="rate-title">Rate the Driver:</div>
+        <div class="star-matrix">
+          <span class="star-node" data-value="1">⭐</span>
+          <span class="star-node" data-value="2">⭐</span>
+          <span class="star-node" data-value="3">⭐</span>
+          <span class="star-node" data-value="4">⭐</span>
+          <span class="star-node" data-value="5">⭐</span>
+        </div>
+        <button type="submit" class="submit-core" id="submitButton">Submit</button>
+      </form>
+    </div>
+  </section>
   
-  <!-- Animated Success Popup -->
-  <div class="success-popup" id="successPopup">
-    <p>Thank you for your rating!</p>
-  </div>
+  <!-- Join Section (Placeholder) -->
+  <section id="join">
+    <h2>Join Our Group</h2>
+    <p>Application system coming soon – stay tuned!</p>
+  </section>
   
-  <!-- Admin Portal Modal -->
+  <!-- Campaign Section (Placeholder) -->
+  <section id="campaign">
+    <h2>Campaign System</h2>
+    <p>Campaign features will be launched soon. Check back later for updates!</p>
+  </section>
+  
+  <!-- Contact Section -->
+  <section id="contact" class="contact-section">
+    <h2>Contact Us</h2>
+    <img class="contact-card" src="https://luxride.neocities.org/Image%20/Card.png" alt="Business Card">
+  </section>
+  
+  <!-- Footer -->
+  <footer>
+    © LuxRide Inc. All rights reserved.
+  </footer>
+  
+  <!-- Admin Panel (Accessible via "Admin" button) -->
   <div class="admin-portal" id="adminPortal">
     <button class="close-admin" onclick="toggleAdminPortal()">✖</button>
     <div id="adminLoginSection">
@@ -376,16 +441,7 @@
     </div>
   </div>
   
-  <!-- Contact Us Section and Footer --->
-  <section class="contact-section">
-    <h2>Contact Us</h2>
-    <img class="contact-card" src="https://luxride.neocities.org/Image%20/Card.png" alt="Business Card">
-  </section>
-  <footer>
-    © LuxRide Inc. All rights reserved.
-  </footer>
-  
-  <!-- Global Error Logging (displayed in Admin Panel) -->
+  <!-- Global Error Logging (Displayed in Admin Panel) -->
   <script>
     window.onerror = function(message, source, lineno, colno, error) {
       var logOutput = document.getElementById('logOutput');
@@ -396,7 +452,6 @@
         }
       }
     };
-
     window.addEventListener('unhandledrejection', function(event) {
       var logOutput = document.getElementById('logOutput');
       if (logOutput) {
@@ -418,22 +473,39 @@
       });
     });
     
-    // --- Anti-Spam: Prevent submissions if less than 30 seconds since last submission ---
+    // --- Anti-Spam Functions ---
     var lastSubmissionTime = 0;
     function canSubmit() {
       var now = Date.now();
-      // 30 seconds cooldown
-      if (now - lastSubmissionTime < 30000) {
+      if (now - lastSubmissionTime < 30000) { // 30-second global cooldown
         return false;
       }
       lastSubmissionTime = now;
       return true;
     }
+    function checkDuplicateSubmission(discordID) {
+      const lastSub = localStorage.getItem('lastSubmissionData');
+      const now = Date.now();
+      if (lastSub) {
+        const data = JSON.parse(lastSub);
+        if (data.discordID === discordID && (now - data.time) < 60000) { // 60-second duplicate check
+          return true;
+        }
+      }
+      localStorage.setItem('lastSubmissionData', JSON.stringify({ discordID: discordID, time: now }));
+      return false;
+    }
     
     // --- Submit Rating Data (No Delay) & Animated Success Popup ---
     async function submitRatingData(ratingData) {
+      // Check global cooldown
       if (!canSubmit()) {
         alert("Please wait at least 30 seconds between submissions.");
+        return;
+      }
+      // Check duplicate submission for same Discord ID within 60 seconds
+      if (checkDuplicateSubmission(ratingData.discordID)) {
+        alert("You have already submitted a rating recently. Please wait before submitting again.");
         return;
       }
       try {
@@ -447,8 +519,7 @@
         console.log("Response from Glitch:", result);
         if (result.result === 'success') {
           showSuccessPopup();
-          // Automatically send updated summary to Discord after every successful submission
-          exportSummaryToDiscord();
+          // Do not automatically export summary; admin can trigger export at night
         } else {
           alert("Submission failed: " + result.message);
         }
