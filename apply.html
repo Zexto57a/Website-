@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+yy<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
@@ -43,6 +43,14 @@
     nav a:hover {
       background: var(--quantum-red);
       border-radius: 4px;
+    }
+    .container {
+      margin: 4rem auto 2rem;
+      max-width: 1200px;
+      border: 2px solid var(--neon-blue);
+      border-radius: 8px;
+      padding: 1rem;
+      background: rgba(10,10,10,0.95);
     }
     header {
       text-align: center;
@@ -124,30 +132,32 @@
     <a href="rate.html">Rate</a>
     <a href="admin.html">Admin</a>
   </nav>
-  <header>
-    <h1>Apply for a Job</h1>
-  </header>
-  <div class="form-container">
-    <h2>Job Application Form</h2>
-    <form id="applyForm">
-      <div class="input-group">
-        <label for="applicantName">Your Full Name</label>
-        <input type="text" id="applicantName" required>
-      </div>
-      <div class="input-group">
-        <label for="applicantDiscord">Your Discord ID</label>
-        <input type="text" id="applicantDiscord" required>
-      </div>
-      <div class="input-group">
-        <label for="desiredRole">Desired Role</label>
-        <input type="text" id="desiredRole" required>
-      </div>
-      <div class="input-group">
-        <label for="applicantMessage">Tell Us About Yourself</label>
-        <textarea id="applicantMessage" rows="4" required></textarea>
-      </div>
-      <button type="submit" class="submit-button">Submit Application</button>
-    </form>
+  <div class="container">
+    <header>
+      <h1>Apply for a Job</h1>
+    </header>
+    <div class="form-container">
+      <h2>Job Application Form</h2>
+      <form id="applyForm">
+        <div class="input-group">
+          <label for="applicantName">Your Full Name</label>
+          <input type="text" id="applicantName" required>
+        </div>
+        <div class="input-group">
+          <label for="applicantDiscord">Your Discord ID</label>
+          <input type="text" id="applicantDiscord" required>
+        </div>
+        <div class="input-group">
+          <label for="desiredRole">Desired Role</label>
+          <input type="text" id="desiredRole" required>
+        </div>
+        <div class="input-group">
+          <label for="applicantMessage">Tell Us About Yourself</label>
+          <textarea id="applicantMessage" rows="4" required></textarea>
+        </div>
+        <button type="submit" class="submit-button">Submit Application</button>
+      </form>
+    </div>
   </div>
   <footer>
     © LuxRide Inc. All rights reserved.
@@ -156,7 +166,7 @@
     document.getElementById("applyForm").addEventListener("submit", function(e) {
       e.preventDefault();
       alert("Application submitted! (This feature will be integrated soon.)");
-      // Process and send application data here.
+      // TODO: Process and send application data.
     });
   </script>
 </body>
