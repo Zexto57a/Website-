@@ -17,7 +17,9 @@
     body {
       margin: 0;
       font-family: 'Inter', sans-serif;
-      background: radial-gradient(circle, var(--deep-space), black);
+      /* Replace with your complaint-themed background image URL */
+      background: url('https://example.com/complaint_bg.jpg') no-repeat center center fixed;
+      background-size: cover;
       color: var(--hud-text);
       min-height: 100vh;
       overflow-x: hidden;
@@ -48,12 +50,12 @@
       max-width: 1200px;
       border: 2px solid var(--neon-blue);
       border-radius: 8px;
-      padding: 1rem;
-      background: rgba(10,10,10,0.95);
+      padding: 2rem;
+      background: rgba(10,10,10,0.9);
     }
     header {
       text-align: center;
-      padding: 4rem 2rem 2rem;
+      padding: 2rem;
     }
     header h1 {
       color: var(--silver-white);
@@ -165,7 +167,7 @@
     document.getElementById("complaintForm").addEventListener("submit", function(e) {
       e.preventDefault();
       alert("Complaint submitted! (This feature will be integrated soon.)");
-      // TODO: Integrate sending complaint data to backend or Discord webhook.
+      // Here, you could send the complaint data to your backend or a Discord webhook.
     });
   </script>
 </body>
