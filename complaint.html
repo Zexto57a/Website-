@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Register Complaint - LuxRide</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --deep-space: #0a0a0a;
+      --quantum-red: #ff4d4d;
+      --neon-blue: #64b5ff;
+      --silver-white: #e0e0e0;
+      --hud-text: #00ff00;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: 'Inter', sans-serif;
+      background: radial-gradient(circle, var(--deep-space), black);
+      color: var(--hud-text);
+      min-height: 100vh;
+      overflow-x: hidden;
+    }
+    nav {
+      background: rgba(10,10,10,0.95);
+      padding: 1rem;
+      display: flex;
+      justify-content: center;
+      gap: 1rem;
+      position: fixed;
+      top: 0;
+      width: 100%;
+      z-index: 1000;
+    }
+    nav a {
+      color: var(--silver-white);
+      text-decoration: none;
+      padding: 0.5rem 1rem;
+      transition: background 0.3s;
+    }
+    nav a:hover {
+      background: var(--quantum-red);
+      border-radius: 4px;
+    }
+    header {
+      text-align: center;
+      padding: 6rem 2rem 2rem;
+    }
+    header h1 {
+      color: var(--silver-white);
+      font-size: 2rem;
+      margin-bottom: 1rem;
+    }
+    .form-container {
+      max-width: 600px;
+      margin: 2rem auto;
+      background: rgba(10,10,10,0.95);
+      padding: 2rem;
+      border-radius: 16px;
+      box-shadow: 0 0 20px rgba(125,100,255,0.5);
+    }
+    .form-container h2 {
+      color: var(--silver-white);
+      text-align: center;
+      margin-bottom: 1rem;
+    }
+    .input-group {
+      margin: 1rem 0;
+    }
+    .input-group label {
+      display: block;
+      color: var(--silver-white);
+      margin-bottom: 0.5rem;
+    }
+    .input-group input, .input-group textarea {
+      width: 100%;
+      padding: 0.8rem;
+      border: 2px solid var(--neon-blue);
+      border-radius: 8px;
+      background: rgba(0,0,0,0.3);
+      color: var(--hud-text);
+      transition: 0.3s;
+      outline: none;
+    }
+    .input-group input:focus, .input-group textarea:focus {
+      border-color: var(--quantum-red);
+      box-shadow: 0 0 10px var(--quantum-red);
+    }
+    .submit-button {
+      display: block;
+      width: 100%;
+      padding: 1rem;
+      background: var(--quantum-red);
+      border: none;
+      border-radius: 8px;
+      color: var(--silver-white);
+      font-weight: 700;
+      text-transform: uppercase;
+      cursor: pointer;
+      margin-top: 1rem;
+      transition: background 0.3s, transform 0.3s;
+    }
+    .submit-button:hover {
+      background: var(--neon-blue);
+      transform: scale(1.05);
+    }
+    footer {
+      text-align: center;
+      margin-top: 2rem;
+      padding: 1rem;
+      color: var(--silver-white);
+      opacity: 0.8;
+      font-size: 0.8rem;
+    }
+  </style>
+</head>
+<body>
+  <nav>
+    <a href="index.html">Home</a>
+    <a href="complaint.html">Complaint</a>
+    <a href="apply.html">Apply</a>
+    <a href="rate.html">Rate</a>
+    <a href="admin.html">Admin</a>
+  </nav>
+  <header>
+    <h1>Register a Complaint</h1>
+  </header>
+  <div class="form-container">
+    <h2>Complaint Form</h2>
+    <form id="complaintForm">
+      <div class="input-group">
+        <label for="compName">Your Full Name</label>
+        <input type="text" id="compName" required>
+      </div>
+      <div class="input-group">
+        <label for="compDiscord">Your Discord ID</label>
+        <input type="text" id="compDiscord" required>
+      </div>
+      <div class="input-group">
+        <label for="compDriver">Driver Name</label>
+        <input type="text" id="compDriver" required>
+      </div>
+      <div class="input-group">
+        <label for="compDetails">Complaint Details</label>
+        <textarea id="compDetails" rows="4" required></textarea>
+      </div>
+      <button type="submit" class="submit-button">Submit Complaint</button>
+    </form>
+  </div>
+  <footer>
+    © LuxRide Inc. All rights reserved.
+  </footer>
+  <script>
+    document.getElementById("complaintForm").addEventListener("submit", function(e) {
+      e.preventDefault();
+      alert("Complaint submitted! (This feature will be integrated soon.)");
+      // Implement sending complaint data to your backend or Discord webhook here.
+    });
+  </script>
+</body>
+</html>
