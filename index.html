@@ -53,32 +53,55 @@
     section {
       padding: 6rem 2rem 2rem;
     }
+    /* --- Home Section --- */
     #home {
       text-align: center;
       padding: 8rem 2rem 2rem;
+      animation: fadeIn 1s ease forwards;
+    }
+    #home .logo, #home .moto {
+      margin: 1rem auto;
+      max-width: 90%;
+      animation: float 3s ease-in-out infinite;
     }
     #home h1 {
-      font-size: 2.5rem;
-      margin-bottom: 1rem;
+      font-size: 2.8rem;
+      margin: 1rem 0;
       color: var(--silver-white);
     }
-    #home p {
-      font-size: 1.2rem;
+    #home .about-us {
+      max-width: 800px;
+      margin: 1rem auto;
+      font-size: 1.1rem;
       color: var(--hud-text);
+      line-height: 1.6;
+      opacity: 0.9;
     }
-    /* --- Animations --- */
+    #home .cta-button {
+      margin-top: 2rem;
+      padding: 0.8rem 1.5rem;
+      background: var(--quantum-red);
+      color: var(--silver-white);
+      border: none;
+      border-radius: 4px;
+      font-size: 1rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: background 0.3s ease, transform 0.3s ease;
+    }
+    #home .cta-button:hover {
+      background: var(--neon-blue);
+      transform: scale(1.05);
+    }
+    /* --- Keyframes --- */
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
     @keyframes float {
       0% { transform: translateY(0); }
       50% { transform: translateY(-5px); }
       100% { transform: translateY(0); }
-    }
-    @keyframes pulse {
-      0%, 100% { transform: scale(1); }
-      50% { transform: scale(1.2); }
-    }
-    @keyframes shine {
-      from { left: -75%; }
-      to { left: 125%; }
     }
     /* --- Rating Terminal (Form) --- */
     .rating-terminal {
@@ -214,6 +237,7 @@
       pointer-events: auto;
       animation: fadeOut 1s ease 2s forwards;
     }
+    /* --- Footer --- */
     footer {
       margin-top: 2rem;
       font-size: 0.8rem;
@@ -237,8 +261,20 @@
   
   <!-- Home Section -->
   <section id="home">
-    <h1>Welcome to LuxRide</h1>
-    <p>Your in-game taxi group hub. Rate your rides and stay tuned for group join applications and complaint submissions!</p>
+    <!-- Logo Image -->
+    <img class="logo" src="https://luxride.neocities.org/Image%20/Logo.png" alt="LuxRide Logo">
+    <!-- Moto Image -->
+    <img class="moto" src="https://luxride.neocities.org/Image%20/Moto.png" alt="Company Motto">
+    <!-- About Us -->
+    <div class="about-us">
+      <h1>Welcome to LuxRide</h1>
+      <p>
+        LuxRide is your in-game taxi group hub. We are dedicated to ensuring an exceptional and fun gaming experience for our members. Rate your rides, join our group, and even file complaints if a driver doesn’t meet the standards.
+      </p>
+      <button class="cta-button" onclick="location.href='#complaint'">
+        Press here to Complaint against a driver
+      </button>
+    </div>
   </section>
   
   <!-- Ratings Section -->
@@ -280,10 +316,10 @@
     <p>Application system coming soon – stay tuned!</p>
   </section>
   
-  <!-- Complaint Section (Placeholder) -->
+  <!-- Complaint Section -->
   <section id="complaint">
     <h2>Complaint Submission</h2>
-    <p>Submit complaints against drivers here – coming soon!</p>
+    <p>Here you can file a complaint against a driver. (Feature coming soon.)</p>
   </section>
   
   <!-- Contact Section -->
@@ -364,7 +400,6 @@
         console.log("Response from Glitch:", result);
         if (result.result === 'success') {
           showSuccessPopup();
-          // Note: Daily summary export to Discord is triggered separately via admin.
         } else {
           alert("Submission failed: " + result.message);
         }
