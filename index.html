@@ -3,82 +3,333 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>LuxRide - Premium GTA Taxi Service</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@400;500;600;700&family=Roboto:wght@300;400;500&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="style.css">
+    <title>LuxRide Inc | Elite Transport</title>
+    
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+
+    <style>
+        /* === CORE VARIABLES === */
+        :root {
+            --gold: #C5A47E;
+            --dark: #0A0A0A;
+            --darker: #050505;
+            --transition: cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        /* === BASE STYLES === */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: var(--darker);
+            color: #fff;
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* === ANIMATION KEYFRAMES === */
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-20px); }
+        }
+
+        @keyframes glow {
+            0%, 100% { text-shadow: 0 0 10px var(--gold); }
+            50% { text-shadow: 0 0 30px var(--gold); }
+        }
+
+        /* === ENHANCED HEADER === */
+        header {
+            position: fixed;
+            width: 100%;
+            padding: 1rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: rgba(10,10,10,0.97);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            animation: headerEntry 1s var(--transition);
+        }
+
+        @keyframes headerEntry {
+            from { transform: translateY(-100%); }
+            to { transform: translateY(0); }
+        }
+
+        .logo {
+            height: 50px;
+            margin-left: 1rem;
+            filter: drop-shadow(0 0 10px var(--gold));
+        }
+
+        .menu-btn {
+            font-size: 2rem;
+            color: var(--gold);
+            margin-right: 1rem;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .menu-btn:hover {
+            animation: pulse 1s infinite;
+        }
+
+        /* === CINEMATIC HERO === */
+        .hero {
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding-top: 80px;
+            background: 
+                linear-gradient(rgba(0,0,0,0.9), rgba(0,0,0,0.9)),
+                url('https://luxride.neocities.org/Image%20/background.jpg');
+            background-size: cover;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::after {
+            content: '';
+            position: absolute;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(197,164,126,0.1) 0%, transparent 60%);
+            animation: rotateGlow 20s linear infinite;
+            filter: blur(60px);
+        }
+
+        .motto {
+            font-size: 2.5rem;
+            color: var(--gold);
+            text-align: center;
+            position: relative;
+            z-index: 1;
+            animation: float 6s ease-in-out infinite;
+        }
+
+        /* === CONTENT SECTIONS === */
+        .section {
+            padding: 4rem 1rem;
+            max-width: 1200px;
+            margin: 0 auto;
+            position: relative;
+        }
+
+        h2 {
+            color: var(--gold);
+            margin-bottom: 2rem;
+            border-left: 3px solid var(--gold);
+            padding-left: 1rem;
+        }
+
+        /* === 3D FLEET CARDS === */
+        .fleet-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            margin: 4rem 0;
+            perspective: 1000px;
+        }
+
+        .vehicle-card {
+            border: 2px solid var(--gold);
+            border-radius: 8px;
+            overflow: hidden;
+            transition: 1s var(--transition);
+            transform-style: preserve-3d;
+            position: relative;
+        }
+
+        .vehicle-card:hover {
+            transform: rotateX(5deg) rotateY(-5deg) translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+        }
+
+        .vehicle-card img {
+            width: 100%;
+            height: 300px;
+            object-fit: cover;
+            transition: 0.4s var(--transition);
+        }
+
+        .vs-credit {
+            padding: 1rem;
+            text-align: center;
+            color: var(--gold);
+            text-shadow: 0 0 10px rgba(197,164,126,0.3);
+        }
+
+        /* === HOLOGRAPHIC MENU === */
+        .nav-overlay {
+            position: fixed;
+            top: 0;
+            right: -100%;
+            width: 70%;
+            height: 100%;
+            background: rgba(10,10,10,0.98);
+            backdrop-filter: blur(25px);
+            box-shadow: -10px 0 40px rgba(0,0,0,0.5);
+            z-index: 999;
+            transition: 0.6s var(--transition);
+            padding-top: 4rem;
+        }
+
+        .nav-item {
+            padding: 1.5rem 2rem;
+            color: var(--gold);
+            border-bottom: 1px solid rgba(197,164,126,0.1);
+            transition: 0.4s var(--transition);
+        }
+
+        .nav-item:hover {
+            transform: translateX(20px);
+            text-shadow: 0 0 15px var(--gold);
+        }
+
+        /* === PREMIUM FOOTER === */
+        footer {
+            text-align: center;
+            padding: 4rem 2rem;
+            background: rgba(5,5,5,0.95);
+            border-top: 1px solid rgba(197,164,126,0.1);
+        }
+
+        .copyright {
+            font-family: Arial;
+            color: var(--gold);
+            font-size: 0.9rem;
+            letter-spacing: 0.5px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+        }
+
+        /* === ANIMATIONS === */
+        @keyframes rotateGlow {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+
+        @media (min-width: 768px) {
+            .nav-overlay { width: 300px; }
+            .motto { font-size: 3.5rem; }
+        }
+    </style>
 </head>
 <body>
-
-    <div class="bg-animation">
-        <div id="stars"></div>
-        <div id="stars2"></div>
-        <div id="stars3"></div>
-        <div id="stars4"></div>
-    </div>
-
-    <header class="glassmorphic">
-        <div class="logo-box">
-            <img src="https://luxride.neocities.org/Image%20/Logo.png" alt="LuxRide Logo">
-        </div>
-        <div class="moto-box">
-            <img src="https://luxride.neocities.org/Image%20/Moto.png" alt="LuxRide Moto">
-        </div>
+    <header>
+        <img src="https://luxride.neocities.org/Image%20/logo.png" class="logo" alt="LuxRide Inc">
+        <div class="menu-btn" onclick="toggleMenu()">☰</div>
     </header>
 
-    <nav class="glassmorphic" id="main-nav">
-        <div class="container">
-            <ul>
-                <li><a href="index.html"><i class="fas fa-home"></i><span>Home</span></a></li>
-                <li><a href="story.html"><i class="fas fa-info-circle"></i><span>Story</span></a></li>  <li><a href="services.html"><i class="fas fa-taxi"></i><span>Services</span></a></li>
-                <li><a href="vip.html"><i class="fas fa-crown"></i><span>VIP Info</span></a></li>
-                <li><a href="apply.html"><i class="fas fa-user-plus"></i><span>Join Us</span></a></li>
-                <li><a href="rate-driver.html"><i class="fas fa-star-half-alt"></i><span>Rate a Driver</span></a></li>
-                <li><a href="complaints.html"><i class="fas fa-exclamation-triangle"></i><span>Complaints</span></a></li>
-                <li><a href="contact.html"><i class="fas fa-envelope"></i><span>Contact Us</span></a></li>
-            </ul>
+    <div class="nav-overlay">
+        <div class="nav-item">VIP Booking</div>
+        <div class="nav-item">Rate Driver</div>
+        <div class="nav-item">File Complaint</div>
+        <div class="nav-item">Join Us</div>
+        <div class="nav-item">Contact HQ</div>
+    </div>
+
+    <section class="hero">
+        <h1 class="motto" data-aos="zoom-in">
+            <span style="display:block">Born from struggle</span>
+            <span style="display:block;font-size:1.2rem">Driven by excellence</span>
+        </h1>
+    </section>
+
+    <section class="section">
+        <h2>About Us</h2>
+        <p>LuxRide Inc 🚖 is a premium taxi service dedicated to providing the best in-game transportation experience...</p>
+    </section>
+
+    <section class="section">
+        <h2>Our Legacy</h2>
+        <blockquote>
+            "Enough of this. It's time for something greater..."
+            <cite style="display: block; margin-top: 1rem; color: var(--gold)">
+                - Miguel Escobar
+            </cite>
+        </blockquote>
+        <a href="https://forum.valrisegaming.com/index.php?/topic/40144-lri-luxride-inc/" 
+           style="display: inline-block; padding: 1rem 2rem; background: var(--gold); color: #000; text-decoration: none; margin-top: 1rem"
+           data-aos="fade-up">
+           Read Full Story
+        </a>
+    </section>
+
+    <section class="section">
+        <h2>Our Fleet</h2>
+        <div class="fleet-grid">
+            <div class="vehicle-card" data-aos="flip-left">
+                <img src="https://luxride.neocities.org/Image%20/limo.jpg" alt="Luxury Sedan">
+                <div class="vs-credit">V&S Tuning Edition</div>
+            </div>
+            <div class="vehicle-card" data-aos="flip-right">
+                <img src="https://luxride.neocities.org/Image%20/limo-interior.jpg" alt="Premium Interior">
+                <div class="vs-credit">V&S Tuning Edition</div>
+            </div>
         </div>
-    </nav>
-
-    <button class="hamburger-menu" id="hamburger-icon">
-        <i class="fas fa-bars"></i>
-    </button>
-
-    <main>
-        <section id="hero" class="glassmorphic">
-            <div class="container">
-                <div class="welcome-box">
-                    <h2>Welcome to LuxRide Inc.</h2>
-                    <p class="welcome-line">Your Destination, Our Priority.</p>
-                </div>
-                <div id="homepage-about">
-                    <div class="section-line"></div>
-                    <h2>About Us</h2>
-                    <p>LuxRide Inc. 🚖 is a premium taxi service dedicated to providing the best in-game transportation experience within Valrise Gaming. We are committed to delivering fast, reliable, and luxurious rides, ensuring every player reaches their destination in unparalleled style and comfort. Our team of highly-skilled drivers is always on standby, ready to provide assistance with utmost professionalism and a strong focus on your satisfaction.</p>
-                    <p>Whether you're seeking to become a part of our elite team or simply in need of a sophisticated ride, LuxRide Inc. is here to cater to all your transportation needs, setting a new standard for in-game travel.</p>
-                </div>
-            </div>
-        </section>
-
-        <div class="section-separator"></div>
-
-        <section id="contact" class="glassmorphic">
-            <div class="container">
-                <h2>Contact Us</h2>
-                <p>Connect with LuxRide Inc. for support or partnership opportunities.</p>
-                <div class="contact-icons">
-                    <a href="https://discord.gg/VqqShqxzNA" target="_blank"><img src="https://luxride.neocities.org/Image%20/discord.jpeg" alt="Discord"></a>
-                </div>
-            </div>
-        </section>
-    </main>
+    </section>
 
     <footer>
-        <p>&copy; 2025 LuxRide Inc. All Rights Reserved.</p>
+        <p class="copyright">
+            <span>2025 LuxRide Inc - All rights reserved</span>
+            <span style="color:var(--gold)">⚜️</span>
+        </p>
     </footer>
 
-    <script src="script.js"></script>
+    <script>
+        // Initialize AOS
+        AOS.init({
+            duration: 800,
+            once: true,
+            mirror: false
+        });
+
+        // Menu Control with GSAP
+        let menuActive = false;
+        function toggleMenu() {
+            const menu = document.querySelector('.nav-overlay');
+            menuActive = !menuActive;
+            gsap.to(menu, {
+                right: menuActive ? 0 : '-100%',
+                duration: 0.8,
+                ease: "power4.out"
+            });
+        }
+
+        // Hover Effects
+        document.querySelectorAll('.vehicle-card').forEach(card => {
+            card.addEventListener('mousemove', (e) => {
+                const rect = card.getBoundingClientRect();
+                const x = e.clientX - rect.left - rect.width/2;
+                const y = e.clientY - rect.top - rect.height/2;
+                
+                gsap.to(card, {
+                    rotationY: x*0.05,
+                    rotationX: -y*0.1,
+                    duration: 0.8,
+                    ease: "power2.out"
+                });
+            });
+
+            card.addEventListener('mouseleave', () => {
+                gsap.to(card, {
+                    rotationY: 0,
+                    rotationX: 0,
+                    duration: 1,
+                    ease: "elastic.out(1, 0.5)"
+                });
+            });
+        });
+    </script>
 </body>
 </html>
