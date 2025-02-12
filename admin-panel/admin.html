@@ -4,382 +4,259 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>LuxRide Admin Panel</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Cormorant+Garamond:wght@400;700&family=Montserrat:wght@400;500;700&display=swap" rel="stylesheet">
-    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     <style>
-        /* === GUARANTEED WORKING CSS - VERSION 38 - TEXT LOGO CONSISTENCY ACROSS PAGES === */
-    :root {
-            --gold: #D4AF37;
-            --gold-highlight: #FFD700;
-            --gold-refined: #C0AA66;
-            --gold-refined-highlight: #E0C888;
-            --dark-primary: #111;
-            --dark-secondary: #000;
-            --dark-rgb-values: 17, 17, 17;
-            --gold-rgb-values: 212, 175, 55;
-            --gold-highlight-rgb-values: 255, 215, 0;
-            --gold-refined-rgb-values: 192, 170, 102;
-            --gold-refined-highlight-rgb-values: 224, 200, 136;
-            --text-color-light: #eee;
-            --text-color-gold: var(--gold);
-        }
-
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
         body {
-            background: var(--dark-secondary)!important;
-            color: var(--text-color-light)!important;
-            font-family: 'Montserrat', sans-serif!important;
-            font-weight: 400;
-            overflow-x: hidden;
-            scroll-behavior: smooth;
-        }
-
-        h1, h2,.motto,.menu-btn,.logo-text {
-            font-family: 'Bebas Neue', sans-serif;
-            font-weight: normal;
-            text-transform: uppercase;
-            letter-spacing: 0.05em;
-        }
-
-        h2,.motto {
-            text-shadow: 0 0 5px var(--gold);
-        }
-
-    .motto {
-            font-weight: bold;
-            font-size: 3.5rem;
-            line-height: 1.2;
-            text-shadow: 0 0 8px var(--gold-highlight);
-            opacity: 0;
-            transform: translateY(20px);
-        }
-
-
-        header {
-            position: fixed;
-            width: 100%;
-            padding: 1rem;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            background-color: rgba(var(--dark-rgb-values), 0.85);
-            z-index: 1000;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.4);
-        }
-
-      .logo-text {
-            font-family: 'Cormorant Garamond', serif;
-            color: var(--gold-refined);
-            font-size: 1.7rem;
-            margin-left: 1rem;
-            letter-spacing: 0.08em;
-            text-shadow: 0 0 6px var(--gold-refined);
-            animation: logo-fade-pulse 4s ease-in-out infinite alternate;
-            opacity: 1;
-            text-decoration: none;
-            display: inline-block;
-        }
-
-
-      .logo-text:hover {
-            opacity: 1;
-            color: var(--gold-refined-highlight);
-            text-shadow: 0 0 8px var(--gold-refined-highlight);
-        }
-
-
-    .menu-btn {
-            font-size: 2.5rem;
-            color: var(--gold);
-            margin-right: 1.5rem;
-            cursor: pointer;
-            transition: color 0.3s ease, opacity 0.3s ease;
-        }
-
-    .menu-btn:hover {
-            opacity: 0.8;
-            color: var(--gold-highlight);
-        }
-
-
-    .hero {
-            height: 100vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            padding-top: 80px;
-            background: linear-gradient(rgba(0,0,0,0.85), rgba(0,0,0,0.85)),
-                url('https://luxride.neocities.org/Image%20/background-blurred.jpg');
-            background-size: cover;
-            text-align: center;
-            background-attachment: fixed;
-            background-position: center;
-        }
-
-
-    .section {
-            padding: 6rem 2rem;
-            max-width: 1200px;
-            margin: 0 auto;
-            background: linear-gradient(to bottom, var(--dark-primary), var(--dark-secondary));
-            box-shadow: 0 0 20px rgba(0, 0, 0, 0.3), 0 0 40px rgba(var(--gold-rgb-values), 0.3);
-            border-radius: 10px;
-            opacity: 0;
-            transform: translateY(30px);
-        }
-
-        h2 {
-            color: var(--gold);
-            margin-bottom: 2.5rem;
-            border-left: 2px solid var(--gold);
-            padding-left: 1.2rem;
-            font-size: 2.5rem;
-        }
-
-    .fleet-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 2rem;
-            margin: 3rem 0;
-        }
-
-    .vehicle-card {
-            border: none;
-            border-radius: 12px;
-            overflow: hidden;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-            background: var(--dark-primary);
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
-            opacity: 0;
-            transform: translateY(20px);
-        }
-
-    .vehicle-card:hover {
-            transform: scale(1.05) translateY(-5px);
-            box-shadow: 0 12px 25px rgba(0, 0, 0, 0.5), 0 0 50px rgba(var(--gold-highlight-rgb-values), 0.4);
-        }
-
-    .vehicle-card img {
-            width: 100%;
-            height: 300px;
-            object-fit: cover;
-            position: relative;
-        }
-
-    .vehicle-card::after {
-            content: '';
-            position: absolute;
-            left: 0;
-            bottom: 0;
-            width: 100%;
-            height: 50%;
-            background: linear-gradient(to bottom, rgba(0,0,0,0), rgba(0,0,0,0.4));
-            opacity: 0.4;
-            pointer-events: none;
-        }
-
-
-    .vs-credit {
-            padding: 1.2rem;
-            text-align: center;
-            color: var(--text-color-gold);
-            font-weight: 500;
-        }
-
-    .nav-overlay {
-            position: fixed;
-            top: 0;
-            right: -70%;
-            width: 70%;
-            height: 100%;
-            background-color: rgba(var(--dark-rgb-values), 0.85);
-            transition: right 0.6s easeInOutCubic;
-            z-index: 999;
-            padding-top: 5rem;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            box-shadow: -5px 0 15px rgba(0, 0, 0, 0.5);
-        }
-
-        @media (min-width: 768px) {
-        .nav-overlay { width: 350px; }
-        .menu-btn { margin-right: 2rem; }
-        .section { padding: 8rem 3rem; }
-            h2 { font-size: 2.8rem; }
-        .motto { font-size: 4rem; }
-            footer { padding: 4rem 2rem; }
-        .fleet-grid {
-                grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-                gap: 2.5rem;
-            }
-        .vehicle-card img { height: 350px; }
-        }
-
-        /* Admin Panel Specific Styles - Additions/Overrides */
-      .admin-container {
-            width: 95%;
-            max-width: 1400px;
-            margin: 30px auto;
-            padding: 30px;
-            background-color: rgba(var(--dark-primary), 0.9);
-            border-radius: 15px;
-            box-shadow: 0 0 25px rgba(0,0,0,0.2), 0 0 50px rgba(var(--gold-rgb-values), 0.2);
-        }
-
-      .admin-section {
-            margin-bottom: 30px;
+            background-color: #000;
+            color: #eee;
+            font-family: sans-serif;
             padding: 20px;
-            border: 1px solid var(--gold-refined);
+        }
+        .admin-section {
+            margin-bottom: 20px;
+            padding: 15px;
+            border: 1px solid #C0AA66;
             border-radius: 8px;
-            background-color: rgba(var(--dark-secondary), 0.8);
-            box-shadow: 0 2px 10px rgba(0,0,0,0.3);
         }
-
-      .admin-section h2 {
-            margin-bottom: 2rem;
-            color: var(--gold-highlight);
-            border-left-color: var(--gold-highlight);
-            font-size: 2.8rem;
+        .admin-section h2 {
+            color: #FFD700;
+            border-left: 2px solid #FFD700;
+            padding-left: 10px;
         }
-
-      .input-field {
-            background-color: rgba(255, 255, 255, 0.05);
-            border: 1px solid var(--gold-refined);
-            color: var(--text-color-light);
-            padding: 0.75rem;
-            margin-bottom: 1rem;
+        #driver-applications-area, #ratings-area {
+            padding: 10px;
+            background-color: #111;
             border-radius: 5px;
-            width: 100%;
         }
-
-      .input-field:focus {
-            border-color: var(--gold-highlight);
-            box-shadow: 0 0 8px rgba(var(--gold-highlight-rgb-values), 0.5);
-            outline: none;
-        }
-
-      .admin-button {
-            @extend.legacy-button;
-            background-color: var(--gold-highlight);
+        button {
+            padding: 10px 15px;
+            background-color: #FFD700;
             color: #111;
-            &:hover {
-                background-color: var(--gold-refined-highlight);
-            }
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: bold;
+        }
+        #log-output-area {
+            background-color: #222;
+            color: #ddd;
+            border: 1px dashed #555;
+            padding: 10px;
+            margin-top: 20px;
+            font-family: monospace;
+            white-space: pre-wrap;
+            overflow-x: auto;
+        }
+        #driver-applications-area p, #ratings-area p { /* Added style for paragraphs in both areas */
+            color: var(--text-color-light);
+            font-weight: bold;
+        }
+         #ratings-area ul {
+            list-style-type: none; /* Remove bullet points */
+            padding-left: 0; /* Remove default padding */
         }
 
-
+        #ratings-area li {
+            margin-bottom: 10px; /* Add spacing between rating entries */
+            padding: 10px;
+            border: 1px solid #777;
+            border-radius: 5px;
+            background-color: #1a1a1a;
+        }
     </style>
-    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            const supabaseUrl = 'https://kjovgmrzfoyvxorapson.supabase.co';
-            const supabaseKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Imtqb3ZnbXJ6Zm95dnhvcmFwc29uIiwicm9sZSI6ImFub24iLCJpYXQiOjE3MzkzNDg0NzksImV4cCI6MjA1NDkyNDQ3OX0.yri5zJEB3213v0nAqXPfyX-tgQycXS8o6eRktO7pih4';
-            const supabase = supabase.createClient(supabaseUrl, supabaseKey);
-
-            // --- Simplified: Fetch ONLY Driver Applications Data ---
-            function fetchDriverApplications() {
-                supabase
-                  .from('driver_applications') // ✅ Only fetching from driver_applications now
-                  .select('*')
-                  .then(response => {
-                        if (response.error) {
-                            console.error("Error fetching driver applications:", response.error);
-                        } else {
-                            console.log("Driver Applications Data:", response.data);
-                            displayDriverApplications(response.data); // Call function to display data
-                        }
-                    });
-            }
-
-            // --- Function to Display Driver Applications in UI ---
-            function displayDriverApplications(applications) {
-                const applicationsArea = document.getElementById('driver-applications-area');
-                if (!applicationsArea) return;
-
-                applicationsArea.innerHTML = ''; // Clear loading message
-
-                if (applications.length === 0) {
-                    applicationsArea.innerHTML = '<p>No driver applications found.</p>'; // ✅ Message for no data
-                    return;
-                }
-
-                const applicationsList = document.createElement('ul');
-                applications.forEach(app => {
-                    const appItem = document.createElement('li');
-                    appItem.textContent = `Application ID: ${app.id}, Applicant: ${app.applicant_name}, Date: ${app.application_date || 'Not specified'}, Status: ${app.status || 'Pending'}`;
-                    applicationsList.appendChild(appItem);
-                });
-                applicationsArea.appendChild(applicationsList);
-            }
-
-
-            // --- Call ONLY fetchDriverApplications when the page loads ---
-            fetchDriverApplications(); // ✅ Only calling fetchDriverApplications now
-        });
-    </script>
 </head>
 <body>
-    <header>
-        <a href="index.html" class="logo-text">LuxRide Inc Admin</a>
-        </header>
+    <h1>LuxRide Admin Panel</h1>
 
-    <div class="admin-container">
-        <h1>LuxRide Admin Panel</h1>
-
-        <div class="admin-section">
-            <h2>Driver Applications</h2>
-            <div id="driver-applications-area">
-                <p>Loading driver applications...</p>
-            </div>
-        </div>
-
-        <div class="admin-section">
-            <h2>Ratings Management</h2>
-            <div id="ratings-area"> {/*  Ratings Area - but data is NOT fetched in this simplified version */}
-                <p>Ratings data fetching is temporarily disabled for troubleshooting.</p> {/* ✅ Updated message */}
-            </div>
-        </div>
-
-        <div class="admin-section">
-            <h2>Complaint Management (To be implemented)</h2>
-            <p>Complaint management features will be added here in future steps.</p>
+    <div class="admin-section">
+        <h2>Driver Applications</h2>
+        <div id="driver-applications-area">
+            <p>Loading driver applications from Firebase...</p>
         </div>
     </div>
 
-    <footer>
-        <p>© 2025 LuxRide Inc - Admin Panel</p>
-    </footer>
+    <div class="admin-section">
+        <h2>Ratings Management</h2>
+        <div id="ratings-area">
+            <p>Loading ratings data from Firebase...</p>
+        </div>
+    </div>
 
-    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <button onclick="copyLogsToClipboard()">Copy Logs to Clipboard</button>
+    <div id="log-output-area"></div>
+
+    <script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore-compat.js"></script>
+
     <script>
-        AOS.init({
-            duration: 1200,
-            once: true,
-        });
+      // Firebase configuration
+      const firebaseConfig = {
+        apiKey: "AIzaSyBZGWpALej88GRjvHFdVB0efTO91N8d8YU",
+        authDomain: "luxride-a5962.firebaseapp.com",
+        projectId: "luxride-a5962",
+        storageBucket: "luxride-a5962.firebasestorage.app",
+        messagingSenderId: "1000272531695",
+        appId: "1:1000272531695:web:9518d3942cfb94bd938b1a",
+        measurementId: "G-597T0QXHC4"
+      };
 
-        const adminSections = gsap.utils.toArray('.admin-section');
-        adminSections.forEach(section => {
-            gsap.fromTo(section, {opacity: 0, y: 20}, {
-                opacity: 1,
-                y: 0,
-                duration: 1,
-                ease: "power2.out",
-                scrollTrigger: {
-                    trigger: section,
-                    start: "top 80%",
-                    once: true,
-                }
-            });
-        });
+      // Initialize Firebase
+      const app = firebase.initializeApp(firebaseConfig);
+      const db = firebase.firestore(app); // Firestore database
+      console.log("Firebase initialized:", firebase);
+      console.log("Firestore initialized:", db);
+
+
+      console.log("Admin script START - Very Early Log - BEFORE DOMContentLoaded");
+
+      let logMessages = [];
+      const originalConsoleLog = console.log;
+      const originalConsoleError = console.error;
+      const logOutputArea = document.getElementById('log-output-area');
+
+      function appendLogToPage(message) {
+          if (logOutputArea) {
+              logOutputArea.textContent += message + '\n';
+          }
+      }
+
+      console.log = function() {
+          let message = Array.from(arguments).join(' ');
+          logMessages.push(message);
+          originalConsoleLog.apply(console, arguments);
+          appendLogToPage(message);
+      };
+      console.error = function() {
+          let message = "ERROR: " + Array.from(arguments).join(' ');
+          logMessages.push(message);
+          originalConsoleError.apply(console, arguments);
+          appendLogToPage(message);
+          debugger;
+      };
+
+      document.addEventListener('DOMContentLoaded', function() {
+          console.log("DOMContentLoaded event listener - SCRIPT INSIDE EXECUTING");
+
+          try {
+              console.log("DOMContentLoaded - VERY VERY BEGINNING of listener function");
+
+
+              const applicationsArea = document.getElementById('driver-applications-area');
+              const ratingsArea = document.getElementById('ratings-area');
+
+              if (!applicationsArea) {
+                  console.error("applicationsArea element NOT FOUND!");
+                  return;
+              }
+              if (!ratingsArea) {
+                  console.error("ratingsArea element NOT FOUND!");
+                  return;
+              }
+              console.log("DOMContentLoaded - applicationsArea element:", applicationsArea);
+              console.log("DOMContentLoaded - ratingsArea element:", ratingsArea);
+
+
+              function fetchDriverApplications() {
+                  console.log("fetchDriverApplications() - FUNCTION START (Firebase)");
+                  console.log("Firestore object:", db);
+
+                  if (!db) {
+                      console.error("Firestore database is not initialized!");
+                      applicationsArea.innerHTML = '<p style="color:red; font-weight:bold;">Error: Firestore not initialized. Check console logs.</p>';
+                      return;
+                  }
+
+                  db.collection('driver_applications').get()
+                      .then((querySnapshot) => {
+                          console.log("Firestore data fetched successfully - Driver Applications!");
+                          const applicationsData = [];
+                          querySnapshot.forEach((doc) => {
+                              applicationsData.push(doc.data());
+                          });
+                          console.log("Applications data:", applicationsData);
+
+                          if (applicationsArea) {
+                              let applicationsHTML = '<ul>';
+                              applicationsData.forEach(app => {
+                                  applicationsHTML += `<li><strong>Name:</strong> ${app.name}, <strong>Discord ID:</strong> ${app.discordId}</li>`;
+                              });
+                              applicationsHTML += '</ul>';
+                              applicationsArea.innerHTML = applicationsHTML;
+                          }
+                      })
+                      .catch((error) => {
+                          console.error("Error fetching data from Firestore (Driver Applications):", error);
+                          applicationsArea.innerHTML = `<p style="color: red; font-weight: bold;">Firestore Error (Driver Apps): ${error.message || 'Unknown Firestore Error'}.</p>`;
+                      });
+                  console.log("fetchDriverApplications() - AFTER Firestore data fetch initiated");
+              }
+
+
+              function fetchRatingsData() {
+                  console.log("fetchRatingsData() - FUNCTION START (Firebase)");
+                  console.log("Firestore object:", db);
+
+                  if (!db) {
+                      console.error("Firestore database is not initialized!");
+                      ratingsArea.innerHTML = '<p style="color:red; font-weight:bold;">Error: Firestore not initialized. Check console logs.</p>';
+                      return;
+                  }
+
+                  db.collection('driver_ratings').get()
+                      .then((querySnapshot) => {
+                          console.log("Firestore data fetched successfully - Driver Ratings!");
+                          const ratingsData = [];
+                          querySnapshot.forEach((doc) => {
+                              const rating = doc.data();
+                              ratingsData.push(rating);
+                          });
+                          console.log("Ratings data:", ratingsData);
+
+                          if (ratingsArea) {
+                              let ratingsHTML = '<ul>';
+                              ratingsData.forEach(rating => {
+                                  ratingsHTML += `<li>
+                                                      <strong>Driver Discord ID:</strong> ${rating.driverDiscordId || 'N/A'},
+                                                      <strong>User ID:</strong> ${rating.userId || 'N/A'},
+                                                      <strong>Rating:</strong> ${rating.ratingValue || 'N/A'},
+                                                      <strong>Feedback:</strong> ${rating.ratingText || 'No feedback'}
+                                                  </li>`;
+                              });
+                              ratingsHTML += '</ul>';
+                              ratingsArea.innerHTML = ratingsHTML;
+                          }
+                      })
+                      .catch((error) => {
+                          console.error("Error fetching data from Firestore (Driver Ratings):", error);
+                          ratingsArea.innerHTML = `<p style="color: red; font-weight: bold;">Firestore Error (Ratings): ${error.message || 'Unknown Firestore Error'}.</p>`;
+                      });
+                  console.log("fetchRatingsData() - AFTER Firestore data fetch initiated");
+              }
+
+
+              fetchDriverApplications();
+              fetchRatingsData(); // Call fetchRatingsData to load ratings
+
+
+          } catch (e) {
+              console.error("ERROR in DOMContentLoaded event listener:", e);
+          }
+
+      });
+
+      console.log("Admin script END - After DOMContentLoaded listener setup");
+
+      function copyLogsToClipboard() {
+          const logText = logMessages.join('\n');
+          navigator.clipboard.writeText(logText)
+              .then(() => {
+                  alert('Console logs copied to clipboard!');
+              })
+              .catch(err => {
+                  alert('Failed to copy logs to clipboard. Please try again.');
+                  console.error('Error copying logs:', err);
+              });
+          }
     </script>
+
 </body>
 </html>
