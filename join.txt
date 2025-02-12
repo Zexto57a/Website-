@@ -1,0 +1,802 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Join Us - LuxRide Inc | Premium Transport</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Cormorant+Garamond:wght@400;700&family=Montserrat:wght@400;500;700&display=swap" rel="stylesheet">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <style>
+        /* ===  Join Page CSS - VERSION 38 - TEXT LOGO CONSISTENCY ACROSS PAGES === */
+    :root {
+            --gold: #D4AF37; /* A more vibrant, classic gold */
+            --gold-highlight: #FFD700; /* A brighter gold for highlights */
+            --gold-refined: #C0AA66; /* Refined, slightly muted gold */
+            --gold-refined-highlight: #E0C888; /* Highlight for refined gold */
+            --dark-primary: #111; /* Primary dark tone */
+            --dark-secondary: #000; /* Deeper secondary dark tone */
+            --dark-rgb-values: 17, 17, 17; /* RGB values for --dark-primary */
+            --gold-rgb-values: 212, 175, 55; /* RGB for --gold */
+            --gold-highlight-rgb-values: 255, 215, 0; /* RGB for --gold-highlight */
+            --gold-refined-rgb-values: 192, 170, 102; /* RGB for refined gold - TEXT LOGO */
+            --gold-refined-highlight-rgb-values: 224, 200, 136; /* RGB for refined highlight gold - TEXT LOGO */
+            --text-color-light: #eee; /* Light text color */
+            --text-color-gold: var(--gold); /* Gold text color */
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: var(--dark-secondary)!important;
+            color: var(--text-color-light)!important;
+            font-family: 'Montserrat', sans-serif!important;
+            font-weight: 400;
+            overflow-x: hidden;
+            scroll-behavior: smooth;
+        }
+
+        h1, h2,.motto,.menu-btn, .logo-text { /* Added .logo-text to font family */
+            font-family: 'Bebas Neue', sans-serif;
+            font-weight: normal;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        h2,.motto {
+            text-shadow: 0 0 5px var(--gold);
+        }
+
+    .motto {
+            font-weight: bold;
+            font-size: 3.5rem;
+            line-height: 1.2;
+            text-shadow: 0 0 8px var(--gold-highlight);
+            opacity: 0;
+            transform: translateY(20px);
+        }
+
+
+        header {
+            position: fixed;
+            width: 100%;
+            padding: 1rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: rgba(var(--dark-rgb-values), 0.85);
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.4);
+        }
+
+        /* --- VERSION 38 - Logo Text Style - Consistent Across Pages - TEXT ONLY LOGO - REVISED CSS SELECTORS & ANIMATION - FOR ALL PAGES --- */
+        .logo-text { /*  <--- CORRECTED SELECTOR:  .logo-text  - FOR ALL PAGES */
+            font-family: 'Cormorant Garamond', serif; /* Elegant Serif Font - LOGO ONLY */
+            color: var(--gold-refined); /* Refined Gold Color - LOGO ONLY */
+            font-size: 1.7rem; /* Slightly larger size - LOGO ONLY */
+            margin-left: 1rem;
+            letter-spacing: 0.08em; /* Reduced letter spacing - LOGO ONLY */
+            text-shadow: 0 0 6px var(--gold-refined); /* Subtle Glow - LOGO ONLY */
+            animation: logo-fade-pulse 4s ease-in-out infinite alternate; /* Gentle Fade Pulse Animation - LOGO ONLY */
+            opacity: 1;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+
+        .logo-text:hover { /*  <--- CORRECTED SELECTOR:  .logo-text:hover  - FOR ALL PAGES */
+            opacity: 1;
+            color: var(--gold-refined-highlight); /* Highlight on hover - LOGO ONLY */
+            text-shadow: 0 0 8px var(--gold-refined-highlight); /* Slightly stronger glow on hover - LOGO ONLY */
+        }
+
+
+    .menu-btn {
+            font-size: 2.5rem;
+            color: var(--gold);
+            margin-right: 1.5rem;
+            cursor: pointer;
+            transition: color 0.3s ease, opacity 0.3s ease;
+        }
+
+    .menu-btn:hover {
+            opacity: 0.8;
+            color: var(--gold-highlight);
+        }
+
+
+    .join-hero {
+            height: 80vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding-top: 80px;
+            background: linear-gradient(rgba(0,0,0,0.85), rgba(0,0,0,0.85)),
+                url('https://luxride.neocities.org/Image%20/join-background.webp');
+            background-size: cover;
+            text-align: center;
+            background-attachment: fixed;
+            background-position: center;
+            position: relative;
+        }
+
+        .join-hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(var(--dark-rgb-values), 0.6);
+            z-index: 1;
+        }
+
+        .join-hero .motto {
+            color: var(--text-color-gold);
+            position: relative;
+            z-index: 2;
+            text-shadow: 0 0 12px var(--gold-highlight);
+        }
+
+        .join-hero .motto span {
+            font-size: 1.5rem;
+            color: var(--text-color-light);
+        }
+
+
+    .section {
+            padding: 6rem 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+            background: linear-gradient(to bottom, var(--dark-primary), var(--dark-secondary));
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.3), 0 0 40px rgba(var(--gold-rgb-values), 0.3);
+            border-radius: 10px;
+            opacity: 0;
+            transform: translateY(30px);
+        }
+
+        .section.application-form-section {
+            background: var(--dark-primary);
+            box-shadow: 0 0 30px rgba(0, 0, 0, 0.5), 0 0 60px rgba(var(--gold-rgb-values), 0.5);
+        }
+
+
+        h2 {
+            color: var(--gold);
+            margin-bottom: 2.5rem;
+            border-left: 2px solid var(--gold);
+            padding-left: 1.2rem;
+            font-size: 2.5rem;
+        }
+
+        .section h2 {
+            text-align: center;
+            border: none;
+            padding-left: 0;
+            margin-bottom: 2rem;
+            font-size: 2.8rem;
+            letter-spacing: 0.08em;
+            text-shadow: 0 0 8px var(--gold-highlight);
+        }
+
+
+    .fleet-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            margin: 3rem 0;
+        }
+
+    .vehicle-card {
+            border: none;
+            border-radius: 12px;
+            overflow: hidden;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            background: var(--dark-primary);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+            opacity: 0;
+            transform: translateY(20px);
+        }
+
+    .vehicle-card:hover {
+            transform: scale(1.05) translateY(-5px);
+            box-shadow: 0 12px 25px rgba(0, 0, 0, 0.5), 0 0 50px rgba(var(--gold-highlight-rgb-values), 0.4);
+        }
+
+    .vehicle-card img {
+            width: 100%;
+            height: 300px;
+            object-fit: cover;
+            position: relative;
+        }
+
+    .vehicle-card::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            width: 100%;
+            height: 50%;
+            background: linear-gradient(to bottom, rgba(0,0,0,0), rgba(0,0,0,0.4));
+            opacity: 0.4;
+            pointer-events: none;
+        }
+
+
+    .vs-credit {
+            padding: 1.2rem;
+            text-align: center;
+            color: var(--text-color-gold);
+            font-weight: 500;
+        }
+
+    .nav-overlay {
+            position: fixed;
+            top: 0;
+            right: -70%;
+            width: 70%;
+            height: 100%;
+            background-color: rgba(var(--dark-rgb-values), 0.85);
+            transition: right 0.6s easeInOutCubic;
+            z-index: 999;
+            padding-top: 5rem;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            box-shadow: -5px 0 15px rgba(0, 0, 0, 0.5);
+        }
+
+        @media (min-width: 768px) {
+        .nav-overlay {
+                width: 300px;
+                right: -300px;
+            }
+        }
+
+
+    .nav-item {
+            padding: 1.5rem 2rem;
+            color: var(--text-color-light);
+            border-bottom: 1px solid var(--gold);
+            width: 100%;
+            text-align: center;
+            transition: opacity 0.3s ease, color 0.3s ease;
+        }
+
+    .nav-item:last-child {
+            border-bottom: none;
+        }
+
+    .nav-item:hover {
+            opacity: 0.9;
+            color: var(--gold-highlight);
+        }
+
+        footer {
+            text-align: center;
+            padding: 3rem 1rem;
+            border-top: 1px solid #333;
+            font-size: 0.9rem;
+            color: #777;
+            background: var(--dark-primary);
+        }
+
+        footer p:not(.service-status):hover {
+            color: var(--gold);
+        }
+
+
+        footer.service-status {
+            color: var(--gold);
+            font-size: 0.9rem;
+            margin-top: 0.5rem;
+            animation: fade-pulse 2s ease-in-out infinite alternate;
+        }
+
+        /* Button Styles - VERSION 38 - TEXT LOGO CONSISTENCY ACROSS PAGES */
+    .legacy-button {
+            display: inline-block;
+            padding: 1rem 2rem;
+            background: var(--gold);
+            color: #000;
+            text-decoration: none;
+            margin-top: 1rem;
+            border: none; /* Remove default button border */
+            border-radius: 8px; /* Button border-radius */
+            font-family: 'Bebas Neue', sans-serif; /* Use Bebas Neue for button text */
+            font-size: 1.2rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            cursor: pointer;
+            transition: background-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+    .legacy-button:hover {
+            background-color: var(--gold-highlight); /* Brighter gold on hover */
+            transform: scale(1.05); /* Slight scale up on hover */
+            box-shadow: 0 0 15px rgba(var(--gold-highlight-rgb-values), 0.6); /* Hover glow shadow */
+        }
+
+        .legacy-button:active {
+            transform: scale(0.98); /* Slight scale down on click */
+        }
+
+
+    .wave-effect:hover {
+            animation: wave 1.5s ease-in-out infinite;
+        }
+
+
+        /* Keyframes for animations - VERSION 38 - TEXT LOGO CONSISTENCY ACROSS PAGES  */
+        @keyframes logo-pulse { /* Reverted to logo-pulse for text logo - VERSION 38 */
+            0% { text-shadow: 0 0 8px var(--gold-refined); color: var(--gold-refined); }
+            50% { text-shadow: 0 0 15px var(--gold-refined-highlight); color: var(--gold-refined-highlight); }
+            100% { text-shadow: 0 0 8px var(--gold-refined); color: var(--gold-refined); }
+        }
+
+        @keyframes logo-fade-pulse { /* For Logo Text Only - Version 24 Style - REVISED for VERSION 38 - slightly faster pulse */
+            0% { text-shadow: 0 0 4px var(--gold-refined); color: var(--gold-refined); opacity: 0.95;}
+            100% { text-shadow: 0 0 6px var(--gold-refined-highlight); color: var(--gold-refined); opacity: 1;}
+        }
+
+
+        @keyframes fade-pulse { /* Reused from Version 22 */
+            0% { opacity: 0.6; }
+            50% { opacity: 1; }
+            100% { opacity: 0.6; }
+        }
+
+        @keyframes wave { /* Reused from Version 22 */
+            0% { transform: rotate(0deg); }
+            25% { transform: rotate(5deg); }
+            50% { transform: rotate(-5deg); }
+            75% { transform: rotate(5deg); }
+            100% { transform: rotate(0deg); }
+        }
+
+        @keyframes fadeInUp { /* Reused from Version 22 */
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+
+        @media (min-width: 768px) {
+        .nav-overlay { width: 350px; }
+        .menu-btn { margin-right: 2rem; }
+        .section { padding: 8rem 3rem; }
+            h2 { font-size: 2.8rem; }
+        .motto { font-size: 4rem; }
+            footer { padding: 4rem 2rem; }
+        .fleet-grid {
+                grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+                gap: 2.5rem;
+            }
+        .vehicle-card img { height: 350px; }
+        }
+
+        /* --- JOIN US PAGE SPECIFIC STYLES - VERSION 38 - TEXT LOGO CONSISTENCY ACROSS PAGES --- */
+
+        .join-section-intro {
+            color: var(--text-color-light);
+            font-size: 1.1rem;
+            line-height: 1.7;
+            margin-bottom: 2rem;
+            opacity: 0.9;
+            text-align: center;
+            max-width: 900px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .join-section-list {
+            list-style-type: disc;
+            padding-left: 2rem;
+            margin-top: 1rem;
+        }
+
+        .join-section-list li {
+            color: var(--text-color-light);
+            font-size: 1.05rem;
+            line-height: 1.8;
+            margin-bottom: 0.5rem;
+        }
+
+        .application-form-section h2 {
+            margin-bottom: 2.5rem;
+        }
+
+
+        .form-group {
+            margin-bottom: 2rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.8rem;
+            font-weight: 500;
+            color: var(--text-color-light);
+            opacity: 0.95;
+        }
+
+        .form-group input[type="text"],
+        .form-group input[type="email"],
+        .form-group textarea {
+            width: 100%;
+            padding: 1.2rem 1.5rem;
+            border: 2px solid #444;
+            border-radius: 8px;
+            background-color: #222;
+            color: var(--text-color-light);
+            font-size: 1.05rem;
+            transition: border-color 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .form-group input[type="text"]:focus,
+        .form-group input[type="email"]:focus,
+        .form-group textarea:focus {
+            border-color: var(--gold-highlight);
+            outline: none;
+            box-shadow: 0 0 12px rgba(var(--gold-highlight-rgb-values), 0.6);
+        }
+
+
+        /* --- VERSION 38 - Radio Button Styling (No Change - Version 22 Style) --- */
+        .form-group input[type="radio"] {
+            margin-right: 0.5rem;
+            transform: scale(1.1);
+            accent-color: var(--gold); /*  Radio button original gold color */
+        }
+
+        .form-group label[for="experienceYes"],
+        .form-group label[for="experienceNo"] {
+            display: inline;
+            font-weight: normal;
+            opacity: 0.85;
+            position: relative;
+            top: -2px; /* Minor adjustment for vertical alignment */
+        }
+
+        /* --- VERSION 38 - Radio Button Container (No Change - Version 22 Style) --- */
+        .radio-button-container {
+            display: flex;
+            align-items: center;
+        }
+
+
+        .legacy-button.submit-button {
+            margin-top: 2rem;
+            padding: 1.2rem 2.5rem;
+            font-size: 1.3rem;
+            box-shadow: 0 0 15px rgba(var(--gold-rgb-values), 0.7);
+        }
+
+        #applicationMessage {
+            margin-top: 2.5rem;
+            padding: 1.8rem 2rem;
+            background-color: rgba(var(--gold-rgb-values), 0.1);
+            border: 2px solid var(--gold); /* Original gold border */
+            border-radius: 10px;
+            text-align: center;
+            display: none;
+            animation: fadeInScale 0.5s ease-out forwards, pulseMessage 2s infinite alternate;
+            font-size: 1.1rem;
+            letter-spacing: 0.05rem;
+            box-shadow: 0 0 12px rgba(var(--gold-rgb-values), 0.6);
+        }
+
+        @keyframes fadeInScale {
+            0% {
+                opacity: 0;
+                transform: scale(0.95);
+            }
+            100% {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        @keyframes pulseMessage {
+            to {
+                box-shadow: 0 0 20px rgba(var(--gold-highlight-rgb-values), 0.8);
+            }
+        }
+
+
+        #applicationMessage.show {
+            display: block;
+        }
+
+        .error-message {
+            color: #ff8888;
+            font-size: 1rem;
+            margin-top: 0.6rem;
+            display: none;
+            animation: slideInLeft 0.3s ease-out forwards, slightBounce 0.4s ease-out;
+            transform: translateX(-10px);
+            opacity: 0;
+        }
+
+
+        @keyframes slideInLeft {
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        @keyframes slightBounce {
+            0%, 100% { transform: translateX(0); }
+            50% { transform: translateX(4px); }
+        }
+
+
+        .error-message.show {
+            display: block;
+        }
+
+        .word-count {
+            font-size: 0.9rem;
+            color: #aaa;
+            text-align: right;
+            margin-top: 0.3rem;
+            opacity: 0.7;
+        }
+
+
+        footer {
+            text-align: center;
+            padding: 3rem 1rem;
+            border-top: 1px solid #333;
+            font-size: 0.9rem;
+            color: #777;
+            background: var(--dark-primary);
+        }
+
+        footer p:not(.service-status):hover {
+            color: var(--gold);
+        }
+
+
+        footer.service-status {
+            color: var(--gold);
+            font-size: 0.9rem;
+            margin-top: 0.5rem;
+            animation: fade-pulse 2s ease-in-out infinite alternate;
+        }
+
+
+    </style>
+</head>
+<body>
+    <header>
+        <a href="index.html" class="logo-text">LuxRide Inc</a>
+        <div class="menu-btn" onclick="toggleMenu()">☰</div>
+    </header>
+
+    <div class="nav-overlay">
+        <a href="index.html" class="nav-item">Home</a>
+        <a href="vip.html" class="nav-item">VIP Booking</a>
+        <a href="rate.html" class="nav-item">Rate Driver</a>
+        <a href="complaint.html" class="nav-item">File Complaint</a>
+        <a href="join.html" class="nav-item">Join Us</a>
+        <a href="contact.html" class="nav-item">Contact Us</a>
+    </div>
+
+    <section class="join-hero">
+        <h1 class="motto">
+            Drive with LuxRide Inc<br>
+            <span style="font-size: 1.2rem; color: var(--text-color-light);">Join Our Premium Team</span>
+        </h1>
+    </section>
+
+    <section class="section application-process-section" id="application-process">
+        <h2 data-aos="fade-right" data-aos-duration="800">Application Process</h2>
+        <p data-aos="fade-up" data-aos-duration="1000" class="join-section-intro">
+            Joining LuxRide Inc as a driver is a straightforward process. We value professionalism and commitment to excellence. Please review the following steps to become a part of our team:
+        </p>
+        <ul class="join-section-list" data-aos="fade-up" data-aos-duration="1200" data-aos-delay="200">
+            <li><strong>Step 1: Application Submission</strong> - Fill out the driver application form below with accurate details.</li>
+            <li><strong>Step 2: Stats and Background Check</strong> - Provide a screenshot of your in-game stats and consent to a background check.</li>
+            <li><strong>Step 3: Interview</strong> - Successful applicants will be invited for a short Discord interview to discuss your application and suitability.</li>
+            <li><strong>Step 4: Onboarding</strong> - Upon passing all checks, you'll be onboarded and ready to start driving with LuxRide Inc.</li>
+        </ul>
+    </section>
+
+
+    <section class="section driver-requirements-section" id="driver-requirements">
+        <h2 data-aos="fade-right" data-aos-duration="800">Driver Requirements</h2>
+        <p data-aos="fade-up" data-aos-duration="1000" class="join-section-intro">
+            To maintain our standard of excellence, all LuxRide drivers must meet certain requirements. Please ensure you meet the following criteria before applying:
+        </p>
+        <ul class="join-section-list" data-aos="fade-up" data-aos-duration="1200" data-aos-delay="200">
+            <li>Valid driver's license and clean driving record in the game.</li>
+            <li>Minimum age of 25 years old in-game.</li>
+            <li>Professional in-game appearance and excellent customer service skills.</li>
+            <li>Willingness to adhere to LuxRide Inc's operational guidelines and service standards.</li>
+        </ul>
+    </section>
+
+    <section class="section application-form-section" id="application-form">
+        <h2 data-aos="fade-right" data-aos-duration="800">Driver Application Form</h2>
+        <form id="applicationForm">
+            <div class="form-group" data-aos="fade-up" data-aos-duration="800">
+                <label for="fullName">Full Name (INGAME):</label>
+                <input type="text" id="fullName" name="fullName" required>
+                <div class="error-message" id="fullNameError">Please enter your full in-game name.</div>
+            </div>
+
+            <div class="form-group" data-aos="fade-up" data-aos-duration="900" data-aos-delay="100">
+                <label for="discordId">Discord ID:</label>
+                <input type="text" id="discordId" name="discordId" placeholder="Your Discord ID" required>
+                <div class="error-message" id="discordIdError">Please enter your Discord ID.</div>
+            </div>
+
+            <div class="form-group" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="200">
+                <label for="statsUrl">URL to your in-game stats screenshot:</label>
+                <input type="text" id="statsUrl" name="statsUrl" placeholder="Paste URL of your screenshot here" required>
+                <div class="error-message" id="statsUrlError">Please enter a valid URL to your in-game stats screenshot.</div>
+            </div>
+
+            <div class="form-group" data-aos="fade-up" data-aos-duration="1100" data-aos-delay="300">
+                <label>Past experience in a taxi group?</label>
+                <div class="radio-button-container">
+                    <input type="radio" id="experienceYes" name="taxiExperience" value="yes" required>
+                    <label for="experienceYes">Yes</label>
+                    <input type="radio" id="experienceNo" name="taxiExperience" value="no" required>
+                    <label for="experienceNo">No</label>
+                </div>
+                <div class="error-message" id="taxiExperienceError">Please select Yes or No.</div>
+            </div>
+
+
+            <div class="form-group" data-aos="fade-up" data-aos-duration="1200" data-aos-delay="400">
+                <label for="joinReason">Why do you want to join us? (Min 150 words):</label>
+                <textarea id="joinReason" name="joinReason" rows="6" placeholder="Minimum 150 words explaining why you want to join LuxRide" required></textarea>
+                <div class="error-message" id="joinReasonError">Please explain why you want to join us (minimum 150 words).</div>
+                <div class="word-count" id="wordCount">0 words</div>
+            </div>
+
+            <button type="submit" class="legacy-button submit-button wave-effect">Submit Application</button>
+            <div id="applicationMessage" class="hidden">Thank you for your application! We will be in touch soon.</div>
+        </form>
+    </section>
+
+
+    <footer>
+        <p>© 2025 LuxRide Inc - All rights reserved</p>
+        <p class="service-status">24/7 Premium Service Available</p>
+    </footer>
+
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <script>
+        AOS.init({
+            duration: 1200,
+            once: true,
+        });
+
+        gsap.fromTo('.join-hero .motto', {opacity: 0, y: 20}, {opacity: 1, y: 0, duration: 1.5, ease: "power2.out", delay: 0.5});
+
+
+        const sections = gsap.utils.toArray('.section');
+        sections.forEach(section => {
+            gsap.fromTo(section, {opacity: 0, y: 30}, {
+                opacity: 1,
+                y: 0,
+                duration: 1,
+                ease: "power2.out",
+                scrollTrigger: {
+                    trigger: section,
+                    start: "top 80%",
+                    once: true,
+                }
+            });
+        });
+
+
+        function toggleMenu() {
+            const menu = document.querySelector('.nav-overlay');
+            gsap.to(menu, {right: menu.style.right === '0px'? (window.innerWidth < 768? '-70%': '-300px'): '0px', duration: 0.6, ease: "easeInOutCubic"});
+        }
+
+        document.addEventListener('click', function(e) {
+            const menu = document.querySelector('.nav-overlay');
+            if (!menu.contains(e.target) &&!e.target.closest('.menu-btn')) {
+                gsap.to(menu, {right: (window.innerWidth < 768? '-70%': '-300px'), duration: 0.5, ease: "easeInOutCubic"});
+            }
+        });
+
+
+        const applicationForm = document.getElementById('applicationForm');
+        const applicationMessage = document.getElementById('applicationMessage');
+        const fullNameInput = document.getElementById('fullName');
+        const discordIdInput = document.getElementById('discordId');
+        const statsUrlInput = document.getElementById('statsUrl');
+        const experienceYesInput = document.getElementById('experienceYes');
+        const experienceNoInput = document.getElementById('experienceNo');
+        const joinReasonInput = document.getElementById('joinReason');
+        const wordCountDisplay = document.getElementById('wordCount');
+
+
+        const fullNameError = document.getElementById('fullNameError');
+        const discordIdError = document.getElementById('discordIdError');
+        const statsUrlError = document.getElementById('statsUrlError');
+        const taxiExperienceError = document.getElementById('taxiExperienceError');
+        const joinReasonError = document.getElementById('joinReasonError');
+
+
+        joinReasonInput.addEventListener('input', function() {
+            const words = this.value.trim().split(/\s+/).filter(word => word !== '').length;
+            wordCountDisplay.textContent = `${words} words`;
+        });
+
+
+        applicationForm.addEventListener('submit', function(event) {
+            event.preventDefault();
+
+            let isValid = true;
+            let taxiExperienceSelected = false;
+
+
+            fullNameError.classList.remove('show');
+            discordIdError.classList.remove('show');
+            statsUrlError.classList.remove('show');
+            taxiExperienceError.classList.remove('show');
+            joinReasonError.classList.remove('show');
+
+
+            if (fullNameInput.value.trim() === '') {
+                fullNameError.classList.add('show');
+                isValid = false;
+            }
+
+            if (discordIdInput.value.trim() === '') {
+                discordIdError.classList.add('show');
+                isValid = false;
+            }
+
+            if (statsUrlInput.value.trim() === '' || !/^(ftp|http|https):\/\/[^ "]+$/.test(statsUrlInput.value)) {
+                statsUrlError.classList.add('show');
+                isValid = false;
+            }
+
+
+            if (!experienceYesInput.checked && !experienceNoInput.checked) {
+                taxiExperienceError.classList.add('show');
+                isValid = false;
+            } else {
+                taxiExperienceSelected = true;
+            }
+
+
+            const words = joinReasonInput.value.trim().split(/\s+/).filter(word => word !== '').length;
+            if (words < 150) {
+                joinReasonError.classList.add('show');
+                isValid = false;
+            }
+
+
+            if (isValid) {
+                applicationMessage.classList.add('show');
+
+                applicationForm.reset();
+                wordCountDisplay.textContent = '0 words';
+                experienceYesInput.checked = false;
+                experienceNoInput.checked = false;
+
+
+                setTimeout(() => {
+                    applicationMessage.classList.remove('show');
+                }, 3000);
+            }
+        });
+    </script>
+</body>
+</html>

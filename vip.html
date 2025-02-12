@@ -1,0 +1,427 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LuxRide VIP - Exclusive Transportation</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Cormorant+Garamond:wght@400;700&family=Montserrat:wght@400;500;700&display=swap" rel="stylesheet">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <style>
+        /* === VIP CSS - VERSION 35 - TEXT LOGO - REFINED GOLD - CONSISTENT STYLING === */
+      :root {
+            --gold: #D4AF37; /* Original Gold */
+            --gold-highlight: #FFD700; /* Highlight Gold */
+            --gold-refined: #C0AA66; /* Refined, slightly muted gold */
+            --gold-refined-highlight: #E0C888; /* Highlight for refined gold */
+            --dark-primary: #111;
+            --dark-secondary: #000;
+            --dark-rgb-values: 17, 17, 17;
+            --gold-rgb-values: 192, 170, 102; /* RGB for refined gold */
+            --gold-refined-highlight-rgb-values: 224, 200, 136; /* RGB for refined highlight gold */
+            --text-color-light: #eee;
+            --text-color-gold: var(--gold); /* Default gold is still original gold */
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: var(--dark-secondary)!important;
+            color: var(--text-color-light)!important; /* Explicitly set body text color */
+            font-family: 'Montserrat', sans-serif!important;
+            font-weight: 400;
+            overflow-x: hidden;
+            scroll-behavior: smooth;
+        }
+
+        h1, h2, h3,.vip-headline, .menu-btn, .legacy-button, .logo-text { /* Added h3 and.vip-headline */
+            font-family: 'Bebas Neue', sans-serif;
+            font-weight: normal;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        h2, h3,.vip-headline { /* Added h3 and.vip-headline */
+            text-shadow: 0 0 5px var(--gold);
+        }
+
+      .vip-headline { /* Style for VIP specific headlines */
+            font-size: 4rem; /* Larger for VIP headline */
+            line-height: 1.1;
+            text-shadow: 0 0 10px var(--gold-highlight); /* Stronger shadow for VIP headline */
+            margin-bottom: 1rem;
+        }
+
+
+        header {
+            position: fixed;
+            width: 100%;
+            padding: 1rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: rgba(var(--dark-rgb-values), 0.85); /* Transparent header */
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.4);
+        }
+
+        /* --- VERSION 34 - Logo Text Style - Consistent Across Pages - TEXT ONLY LOGO - CORRECTED CSS SELECTORS --- */
+        .logo-text { /*  <--- CORRECTED SELECTOR:  .logo-text  */
+            font-family: 'Cormorant Garamond', serif; /* Elegant Serif Font - LOGO ONLY */
+            color: var(--gold-refined); /* Refined Gold Color - LOGO ONLY */
+            font-size: 2.3rem; /* Slightly larger size - LOGO ONLY */
+            margin-left: 1rem;
+            letter-spacing: 0.08em; /* Reduced letter spacing - LOGO ONLY */
+            text-shadow: 0 0 6px var(--gold-refined); /* Subtle Glow - LOGO ONLY */
+            animation: logo-fade-pulse 4s ease-in-out infinite alternate; /* Gentle Fade Pulse Animation - LOGO ONLY */
+            opacity: 1;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+
+        .logo-text:hover { /*  <--- CORRECTED SELECTOR:  .logo-text:hover  */
+            opacity: 1;
+            color: var(--gold-refined-highlight); /* Highlight on hover - LOGO ONLY */
+            text-shadow: 0 0 8px var(--gold-refined-highlight); /* Slightly stronger glow on hover - LOGO ONLY */
+        }
+
+      .menu-btn {
+            font-size: 2.5rem;
+            color: var(--gold);
+            margin-right: 1.5rem;
+            cursor: pointer;
+            transition: color 0.3s ease, opacity 0.3s ease;
+        }
+
+      .menu-btn:hover {
+            opacity: 0.8;
+            color: var(--gold-highlight);
+        }
+
+
+      .vip-hero { /* VIP Hero Section Style */
+            height: 100vh;
+            display: flex;
+            flex-direction: column; /* Stack headline and intro vertically */
+            align-items: center;
+            justify-content: center;
+            padding-top: 80px;
+            /* Updated Hero Background */
+            background: linear-gradient(rgba(0,0,0,0.75), rgba(0,0,0,0.75)), /* Slightly darker hero overlay */
+                url('https://luxride.neocities.org/Image%20/background-blurred.jpg'); /* VIP Hero Background Image - using blurred background for consistency */
+            background-size: cover;
+            text-align: center;
+            background-attachment: fixed;
+            background-position: center;
+            color: var(--text-color-light); /* Ensure text color is light in hero */
+        }
+
+
+      .section {
+            padding: 6rem 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+            background: linear-gradient(to bottom, var(--dark-primary), var(--dark-secondary));
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.3), 0 0 40px rgba(var(--gold-rgb-values), 0.3); /* Section glow shadow */
+            border-radius: 10px;
+            opacity: 0;
+            transform: translateY(30px);
+            color: var(--text-color-light); /* Ensure text color is light in sections */
+        }
+
+        h2 {
+            color: var(--gold);
+            margin-bottom: 2.5rem;
+            border-left: 2px solid var(--gold);
+            padding-left: 1.2rem;
+            font-size: 2.5rem;
+        }
+
+        h3 { /* Style for VIP section sub-headings */
+            color: var(--gold-highlight); /* Brighter gold for sub-headings */
+            margin-bottom: 1.5rem;
+            font-size: 2rem;
+        }
+
+      .vip-experience-list { /* Style for VIP experience points */
+            list-style: none;
+            padding-left: 0;
+            margin-bottom: 2rem; /* Add margin below the list */
+        }
+
+      .vip-experience-list li {
+            margin-bottom: 1.5rem;
+            padding-left: 1.5rem;
+            position: relative;
+        }
+
+      .vip-experience-list li::before { /* Gold bullet point */
+            content: '>';
+            position: absolute;
+            left: 0,
+            top: 0;
+            color: var(--gold);
+            font-size: 1.2rem;
+        }
+
+
+      .nav-overlay {
+            position: fixed;
+            top: 0;
+            right: -70%; /* Reduced menu width for mobile */
+            width: 70%; /* Reduced menu width for mobile */
+            height: 100%;
+            background-color: rgba(var(--dark-rgb-values), 0.85); /* Transparent menu */
+            transition: right 0.6s easeInOutCubic;
+            z-index: 999;
+            padding-top: 5rem;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            box-shadow: -5px 0 15px rgba(0, 0, 0, 0.5);
+        }
+
+        @media (min-width: 768px) {
+          .nav-overlay {
+                width: 300px; /* Desktop menu width */
+                right: -300px; /* Adjust right position for desktop width */
+            }
+        }
+
+
+      .nav-item {
+            padding: 1.5rem 2rem;
+            color: var(--text-color-light);
+            border-bottom: 1px solid var(--gold); /* Gold border for menu items */
+            width: 100%;
+            text-align: center;
+            transition: opacity 0.3s ease, color 0.3s ease;
+        }
+
+      .nav-item:last-child { /* Remove border from last nav item */
+            border-bottom: none;
+        }
+
+      .nav-item:hover {
+            opacity: 0.9;
+            color: var(--gold-highlight);
+        }
+
+        footer {
+            text-align: center;
+            padding: 3rem 1rem;
+            border-top: 1px solid #333;
+            font-size: 0.9rem;
+            color: #777;
+            background: var(--dark-primary);
+        }
+
+        footer p:not(.service-status):hover { /* Subtle hover for footer text except status */
+            color: var(--gold);
+        }
+
+
+        footer.service-status {
+            color: var(--gold);
+            font-size: 0.9rem;
+            margin-top: 0.5rem;
+            animation: fade-pulse 2s ease-in-out infinite alternate; /* 24/7 text pulse */
+        }
+
+        /* Button Styles */
+      .vip-button,.legacy-button { /* Added.vip-button for VIP page buttons */
+            display: inline-block;
+            padding: 1rem 2rem;
+            background: var(--gold);
+            color: #000;
+            text-decoration: none;
+            margin-top: 1rem;
+            border: none;
+            border-radius: 8px;
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 1.2rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            cursor: pointer;
+            transition: background-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+      .vip-button:hover,.legacy-button:hover {
+            background-color: var(--gold-highlight);
+            transform: scale(1.05);
+            box-shadow: 0 0 15px rgba(var(--gold-highlight-rgb-values), 0.6);
+        }
+
+      .vip-button:active,.legacy-button:active {
+            transform: scale(0.98);
+        }
+
+      .wave-effect:hover { /* Apply wave animation on hover if class is added */
+            animation: wave 1.5s ease-in-out infinite;
+        }
+
+
+        /* Keyframes for animations */
+        @keyframes logo-pulse {
+            0% { text-shadow: 0 0 10px rgba(var(--gold-rgb-values), 0.6); }
+            50% { text-shadow: 0 0 20px rgba(var(--gold-highlight-rgb-values), 0.8); }
+            100% { box-shadow: 0 0 10px rgba(var(--gold-rgb-values), 0.6); }
+        }
+
+        @keyframes logo-fade-pulse { /* For Logo Text Only - Version 24 Style */
+            0% { text-shadow: 0 0 4px var(--gold-refined); color: var(--gold-refined); opacity: 0.95;}
+            100% { text-shadow: 0 0 6px var(--gold-refined-highlight); color: var(--gold-refined); opacity: 1;}
+        }
+
+
+        @keyframes fade-pulse {
+            0% { opacity: 0.6; }
+            50% { opacity: 1; }
+            100% { opacity: 0.6; }
+        }
+
+        @keyframes wave {
+            0% { transform: rotate(0deg); }
+            25% { transform: rotate(5deg); }
+            50% { transform: rotate(-5deg); }
+            75% { transform: rotate(5deg); }
+            100% { transform: rotate(0deg); }
+        }
+
+
+        @media (min-width: 768px) {
+          .nav-overlay { width: 350px; }
+          .menu-btn { margin-right: 2rem; }
+          .section { padding: 8rem 3rem; }
+            h2 { font-size: 2.8rem; }
+          .vip-headline { font-size: 5rem; } /* Larger VIP headline on desktop */
+            footer { padding: 4rem 2rem; }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <a href="index.html" class="logo-text">LuxRide Inc</a>
+        <div class="menu-btn" onclick="toggleMenu()">☰</div>
+    </header>
+
+    <div class="nav-overlay">
+        <a href="index.html" class="nav-item">Home</a>
+        <a href="vip.html" class="nav-item">VIP Booking</a>
+        <a href="rate.html" class="nav-item">Rate Driver</a>
+        <a href="complaint.html" class="nav-item">File Complaint</a>
+        <a href="join.html" class="nav-item">Join Us</a>
+        <a href="contact.html" class="nav-item">Contact Us</a>
+    </div>
+
+    <section class="vip-hero">
+        <h1 class="vip-headline">Welcome to LuxRide VIP</h1>
+        <p style="color: var(--text-color-light); opacity: 0.9; font-size: 1.3rem; max-width: 800px; margin: 1rem auto;">
+            Step into a realm of unparalleled luxury and bespoke transportation. LuxRide VIP is not just a service; it's an experience crafted for those who demand the very best. Discover the epitome of premium travel, designed to elevate your every journey.
+        </p>
+        <p style="color: var(--gold); font-size: 1.5rem; margin-top: 2rem; text-shadow: 0 0 5px var(--gold-highlight);">
+            Priced at $40,000 per week.
+        </p>
+    </section>
+
+    <section class="section" id="vip-experience">
+        <h2 data-aos="fade-right" data-aos-duration="800">The LuxRide VIP Package</h2>
+        <p data-aos="fade-up" data-aos-duration="900">
+            The LuxRide VIP package is designed to provide an all-encompassing luxury transportation solution for your scheduled events.  Each feature is meticulously curated to ensure an experience that is seamless, opulent, and utterly unforgettable.
+        </p>
+        <ul class="vip-experience-list" data-aos="fade-up" data-aos-duration="1000">
+            <li><h3>Dedicated Chauffeur & Concierge</h3>
+                <p>Your personal, highly-trained chauffeur is more than a driver. They are your dedicated concierge, anticipating your needs and ensuring seamless travel for scheduled events.</p>
+            </li>
+            <li><h3>Unrivaled Vehicle Selection</h3>
+                <p>Access the most prestigious vehicles in our exclusive black car fleet, including modified V&S cabbies and limousines, meticulously maintained and equipped with premium amenities for your utmost comfort and enjoyment.</p>
+            </li>
+            <li><h3>Priority & Scheduled Availability</h3>
+                <p>Your time is paramount. Enjoy guaranteed priority booking and vehicle availability for your scheduled events.</p>
+            </li>
+            <li><h3>Bespoke Itineraries & Flexibility</h3>
+                <p>We tailor every journey to your exact preferences for your scheduled events, offering complete flexibility and customization.</p>
+            </li>
+            <li><h3>Enhanced Privacy & Discretion</h3>
+                <p>We understand the importance of privacy. Expect the highest levels of discretion and confidentiality throughout your VIP experience.</p>
+            </li>
+            <li><h3>Luxury Amenities & In-Car Comfort</h3>
+                <p>Indulge in premium amenities within your vehicle, including command-activated in-car refreshments, entertainment systems, and premium sound.</p>
+            </li>
+            <li><h3>24/7 Dedicated VIP Support</h3>
+                <p>Our dedicated VIP support team is available around the clock to assist with any VIP service inquiries and scheduled bookings, ensuring a flawless experience from initial contact to arrival.</p>
+            </li>
+        </ul>
+         <p data-aos="fade-up" data-aos-duration="1200" style="font-size: 1.1rem; color: var(--gold); text-align: center;">
+            **VIP Package Price: $40,000 per week**
+        </p>
+    </section>
+
+
+    <section class="section" id="vip-booking">
+        <h2 data-aos="fade-right" data-aos-duration="800">Request Your VIP Service Booking</h2>
+        <p data-aos="fade-up" data-aos-duration="1000">
+            VIP Service bookings are exclusively for scheduled events. To arrange your bespoke VIP transportation, please contact us.
+        </p>
+        <p data-aos="fade-up" data-aos-duration="1200" style="margin-top: 2rem; font-size: 1.1rem; line-height: 1.6;">
+            <strong style="color: var(--gold-highlight); display: block; margin-bottom: 0.5rem;">Contact for VIP Booking:</strong>
+            Founder Number (Derek): 949<br>
+            Company Number: N/A (To be updated)<br>
+            For more contact options, please visit our <a href="/contact" style="color: var(--text-color-light); text-decoration: underline;">Contact Page</a>.
+        </p>
+    </section>
+
+
+    <footer>
+        <p>© 2025 LuxRide Inc - All rights reserved</p>
+        <p class="service-status">24/7 Premium Service Available</p>
+    </footer>
+
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <script>
+        AOS.init({
+            duration: 1200,
+            once: true,
+        });
+
+        // GSAP Hero Headline Animation - Improved fade-in and slide-up
+        gsap.fromTo('.vip-headline', {opacity: 0, y: 20}, {opacity: 1, y: 0, duration: 1.5, ease: "power2.out", delay: 0.5});
+
+        // GSAP for Section Animations on Scroll
+        const sections = gsap.utils.toArray('.section');
+        sections.forEach(section => {
+            gsap.fromTo(section, {opacity: 0, y: 30}, {
+                opacity: 1,
+                y: 0,
+                duration: 1,
+                ease: "power2.out",
+                scrollTrigger: {
+                    trigger: section,
+                    start: "top 80%",
+                    once: true,
+                }
+            });
+        });
+
+
+        function toggleMenu() {
+            const menu = document.querySelector('.nav-overlay');
+            gsap.to(menu, {right: menu.style.right === '0px'? (window.innerWidth < 768? '-70%': '-300px'): '0px', duration: 0.6, ease: "easeInOutCubic"});
+        }
+
+        document.addEventListener('click', function(e) {
+            const menu = document.querySelector('.nav-overlay');
+            if (!menu.contains(e.target) &&!e.target.closest('.menu-btn')) {
+                gsap.to(menu, {right: (window.innerWidth < 768? '-70%': '-300px'), duration: 0.5, ease: "easeInOutCubic"});
+            }
+        });
+    </script>
+</body>
+</html>

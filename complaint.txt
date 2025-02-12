@@ -1,0 +1,794 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>File Complaint - LuxRide Inc | Premium Transport</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Cormorant+Garamond:wght@400;700&family=Montserrat:wght@400;500;700&display=swap" rel="stylesheet">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <style>
+        /* ===  File Complaint Page CSS - VERSION 32 - Removed Email Field === */
+    :root {
+            --gold: #D4AF37; /* Original Gold */
+            --gold-highlight: #FFD700; /* Highlight Gold */
+            --gold-refined: #C0AA66; /* Refined, slightly muted gold */
+            --gold-refined-highlight: #E0C888; /* Highlight for refined gold */
+            --dark-primary: #111;
+            --dark-secondary: #000;
+            --dark-rgb-values: 17, 17, 17;
+            --gold-rgb-values: 192, 170, 102; /* RGB for refined gold */
+            --gold-refined-highlight-rgb-values: 224, 200, 136; /* RGB for refined highlight gold */
+            --text-color-light: #eee;
+            --text-color-gold: var(--gold); /* Default gold is still original gold */
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: var(--dark-secondary)!important;
+            color: var(--text-color-light)!important;
+            font-family: 'Montserrat', sans-serif!important;
+            font-weight: 400;
+            overflow-x: hidden;
+            scroll-behavior: smooth;
+        }
+
+        h1, h2,.motto,.menu-btn, .legacy-button, .logo-text {
+            font-family: 'Bebas Neue', sans-serif;
+            font-weight: normal;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        h2,.motto {
+            text-shadow: 0 0 5px var(--gold);
+        }
+
+    .motto {
+            font-weight: bold;
+            font-size: 3.5rem;
+            line-height: 1.2;
+            text-shadow: 0 0 8px var(--gold-highlight);
+            opacity: 0;
+            transform: translateY(20px);
+        }
+
+
+        header {
+            position: fixed;
+            width: 100%;
+            padding: 1rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: rgba(var(--dark-rgb-values), 0.85);
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.4);
+        }
+
+        /* --- VERSION 32 - Logo Text Style - Consistent with V26, Rate, Join --- */
+        header .logo-text {
+            font-family: 'Cormorant Garamond', serif; /* Elegant Serif Font - LOGO ONLY */
+            color: var(--gold-refined); /* Refined Gold Color - LOGO ONLY */
+            font-size: 2.3rem; /* Slightly larger size - LOGO ONLY */
+            margin-left: 1rem;
+            letter-spacing: 0.08em; /* Reduced letter spacing - LOGO ONLY */
+            text-shadow: 0 0 6px var(--gold-refined); /* Subtle Glow - LOGO ONLY */
+            animation: logo-fade-pulse 4s ease-in-out infinite alternate; /* Gentle Fade Pulse Animation - LOGO ONLY */
+            opacity: 1;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+
+        header .logo-text:hover {
+            opacity: 1;
+            color: var(--gold-refined-highlight); /* Highlight on hover - LOGO ONLY */
+            text-shadow: 0 0 8px var(--gold-refined-highlight); /* Slightly stronger glow on hover - LOGO ONLY */
+        }
+
+
+    .menu-btn {
+            font-size: 2.5rem;
+            color: var(--gold);
+            margin-right: 1.5rem;
+            cursor: pointer;
+            transition: color 0.3s ease, opacity 0.3s ease;
+        }
+
+    .menu-btn:hover {
+            opacity: 0.8;
+            color: var(--gold-highlight);
+        }
+
+
+    .complaint-hero {
+            height: 65vh; /* Hero height for Complaint page - VERSION 32 */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding-top: 80px;
+            background: linear-gradient(rgba(0,0,0,0.75), rgba(0,0,0,0.75)), /* Slightly lighter overlay */
+                url('https://luxride.neocities.org/Image%20/complaint-background-v2.webp'); /* New Complaint-Specific Background - VERSION 2 */
+            background-size: cover;
+            text-align: center;
+            background-attachment: fixed;
+            background-position: center;
+            position: relative;
+        }
+
+        .complaint-hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(var(--dark-rgb-values), 0.5); /* Lighter overlay */
+            z-index: 1;
+        }
+
+        .complaint-hero .motto {
+            color: var(--text-color-gold);
+            position: relative;
+            z-index: 2;
+            text-shadow: 0 0 12px var(--gold-highlight);
+            font-size: 3.2rem; /* Slightly larger motto on Complaint page - VERSION 32 */
+        }
+
+        .complaint-hero .motto span {
+            font-size: 1.2rem; /* Adjusted span size - VERSION 32 */
+            color: var(--text-color-light);
+        }
+
+
+    .section {
+            padding: 6rem 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+            background: linear-gradient(to bottom, var(--dark-primary), var(--dark-secondary));
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.3), 0 0 40px rgba(var(--gold-rgb-values), 0.3);
+            border-radius: 10px;
+            opacity: 0;
+            transform: translateY(30px);
+        }
+
+        .section.complaint-main-section { /* New Class for Complaint Main Section - VERSION 32 */
+            background: var(--dark-primary);
+            box-shadow: 0 0 30px rgba(0, 0, 0, 0.5), 0 0 60px rgba(var(--gold-rgb-values), 0.5);
+            padding-top: 5rem; /* Less top padding for main section - VERSION 32 */
+            padding-bottom: 5rem; /* Less bottom padding for main section - VERSION 32 */
+        }
+
+        .section.complaint-info-section { /* New Section for Complaint Info - VERSION 32 */
+            background: var(--dark-secondary); /* Slightly different background for contrast - VERSION 32 */
+            box-shadow: 0 0 25px rgba(0, 0, 0, 0.4), 0 0 50px rgba(var(--gold-rgb-values), 0.4); /* Slightly different shadow - VERSION 32 */
+            margin-top: 4rem; /* Add some space above this section - VERSION 32 */
+            padding-top: 6rem; /* Adjust padding for this section - VERSION 32 */
+            padding-bottom: 6rem; /* Adjust padding for this section - VERSION 32 */
+        }
+
+
+        h2 {
+            color: var(--gold);
+            margin-bottom: 2.5rem;
+            border-left: 2px solid var(--gold);
+            padding-left: 1.2rem;
+            font-size: 2.5rem;
+        }
+
+        .section h2 {
+            text-align: center;
+            border: none;
+            padding-left: 0;
+            margin-bottom: 2rem;
+            font-size: 2.8rem;
+            letter-spacing: 0.08em;
+            text-shadow: 0 0 8px var(--gold-highlight);
+        }
+
+        .complaint-info-section h2 { /* Style for Complaint Info Section Heading - VERSION 32 */
+            font-size: 2.6rem; /* Slightly smaller heading for this section - VERSION 32 */
+            margin-bottom: 2rem; /* Adjust margin - VERSION 32 */
+        }
+
+
+    .fleet-grid { /* Reusing Fleet Grid Style - May not be needed on Complaint page */
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            margin: 3rem 0;
+        }
+
+    .vehicle-card { /* Reusing Vehicle Card Style - May not be needed on Complaint page */
+            border: none;
+            border-radius: 12px;
+            overflow: hidden;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            background: var(--dark-primary);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+            opacity: 0;
+            transform: translateY(20px);
+        }
+
+    .vehicle-card:hover { /* Reusing Vehicle Card Hover Style - May not be needed on Complaint page */
+            transform: scale(1.05) translateY(-5px);
+            box-shadow: 0 12px 25px rgba(0, 0, 0, 0.5), 0 0 50px rgba(var(--gold-highlight-rgb-values), 0.4);
+        }
+
+    .vehicle-card img { /* Reusing Vehicle Card Image Style - May not be needed on Complaint page */
+            width: 100%;
+            height: 350px;
+            object-fit: cover;
+            position: relative;
+        }
+
+    .vehicle-card::after { /* Reusing Vehicle Card Overlay Style - May not be needed on Complaint page */
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            width: 100%;
+            height: 50%;
+            background: linear-gradient(to bottom, rgba(0,0,0,0), rgba(0,0,0,0.4));
+            opacity: 0.4;
+            pointer-events: none;
+        }
+
+
+    .vs-credit { /* Reusing VS Credit Style - May not be needed on Complaint page */
+            padding: 1.2rem;
+            text-align: center;
+            color: var(--text-color-gold);
+            font-weight: 500;
+        }
+
+    .nav-overlay { /* Reusing Nav Overlay Styles */
+            position: fixed;
+            top: 0;
+            right: -70%;
+            width: 70%;
+            height: 100%;
+            background-color: rgba(var(--dark-rgb-values), 0.85);
+            transition: right 0.6s easeInOutCubic;
+            z-index: 999;
+            padding-top: 5rem;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            box-shadow: -5px 0 15px rgba(0, 0, 0, 0.5);
+        }
+
+        @media (min-width: 768px) {
+        .nav-overlay {
+                width: 300px;
+                right: -300px;
+            }
+        }
+
+
+    .nav-item { /* Reusing Nav Item Styles */
+            padding: 1.5rem 2rem;
+            color: var(--text-color-light);
+            border-bottom: 1px solid var(--gold);
+            width: 100%;
+            text-align: center;
+            transition: opacity 0.3s ease, color 0.3s ease;
+        }
+
+    .nav-item:last-child { /* Reusing Nav Item Last Child Style */
+            border-bottom: none;
+        }
+
+    .nav-item:hover { /* Reusing Nav Item Hover Style */
+            opacity: 0.9;
+            color: var(--gold-highlight);
+        }
+
+        footer { /* Reusing Footer Styles */
+            text-align: center;
+            padding: 3rem 1rem;
+            border-top: 1px solid #333;
+            font-size: 0.9rem;
+            color: #777;
+            background: var(--dark-primary);
+        }
+
+        footer p:not(.service-status):hover { /* Reusing Footer Paragraph Hover Style */
+            color: var(--gold);
+        }
+
+
+        footer.service-status { /* Reusing Footer Service Status Style */
+            color: var(--gold);
+            font-size: 0.9rem;
+            margin-top: 0.5rem;
+            animation: fade-pulse 2s ease-in-out infinite alternate;
+        }
+
+        /* Button Styles - VERSION 32 - Reusing Button Style from Version 26 */
+    .legacy-button {
+            display: inline-block;
+            padding: 1rem 2rem;
+            background: none;
+            color: var(--gold);
+            text-decoration: none;
+            margin-top: 1rem;
+            border: 2px solid var(--gold);
+            border-radius: 8px;
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 1.2rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            cursor: pointer;
+            transition: background-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease, color 0.3s ease;
+            box-shadow: 0 0 10px rgba(var(--gold-rgb-values), 0.5);
+            position: relative;
+            overflow: hidden;
+        }
+
+    .legacy-button::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: var(--gold-highlight);
+            clip-path: polygon(0 0, 100% 0%, 100% 0%, 0 0%);
+            transition: clip-path 0.7s cubic-bezier(0.65, 0, 0.16, 1), background-color 0.3s ease;
+            z-index: -1;
+        }
+
+    .legacy-button:hover {
+            background-color: rgba(var(--gold-rgb-values), 0.1);
+            color: #000;
+            box-shadow: 0 0 20px rgba(var(--gold-highlight-rgb-values), 0.8);
+            border-color: var(--gold-highlight);
+        }
+
+        .legacy-button:hover::before {
+            clip-path: polygon(0 0, 100% 0%, 100% 100%, 0% 100%);
+        }
+
+        .legacy-button:active {
+            transform: scale(0.95);
+        }
+
+
+    .wave-effect:hover { /* Reusing Wave Effect Style */
+            animation: wave 1.5s ease-in-out infinite;
+        }
+
+
+        /* Keyframes for animations - VERSION 32 - Reusing Keyframes from Version 26 */
+        @keyframes logo-pulse { /* Reused from Version 22 */
+            0% { text-shadow: 0 0 8px var(--gold); color: var(--gold); }
+            50% { text-shadow: 0 0 15px var(--gold-highlight); color: var(--gold-highlight); }
+            100% { text-shadow: 0 0 8px var(--gold); color: var(--gold); }
+        }
+
+        @keyframes logo-fade-pulse { /* For Logo Text Only - Version 24 Style */
+            0% { text-shadow: 0 0 4px var(--gold-refined); color: var(--gold-refined); opacity: 0.95;}
+            100% { text-shadow: 0 0 6px var(--gold-refined-highlight); color: var(--gold-refined); opacity: 1;}
+        }
+
+
+        @keyframes fade-pulse { /* Reused from Version 22 */
+            0% { opacity: 0.6; }
+            50% { opacity: 1; }
+            100% { opacity: 0.6; }
+        }
+
+        @keyframes wave { /* Reused from Version 22 */
+            0% { transform: rotate(0deg); }
+            25% { transform: rotate(5deg); }
+            50% { transform: rotate(-5deg); }
+            75% { transform: rotate(5deg); }
+            100% { transform: rotate(0deg); }
+        }
+
+        @keyframes fadeInUp { /* Reused from Version 22 */
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+
+        @media (min-width: 768px) {
+        .nav-overlay { width: 350px; }
+        .menu-btn { margin-right: 2rem; }
+        .section { padding: 8rem 3rem; }
+            h2 { font-size: 2.8rem; }
+        .motto { font-size: 4rem; }
+            footer { padding: 4rem 2rem; }
+        .fleet-grid {
+                grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+                gap: 2.5rem;
+            }
+        .vehicle-card img { height: 350px; }
+        }
+
+        /* --- FILE COMPLAINT PAGE SPECIFIC STYLES - VERSION 32 - Removed Email Field --- */
+
+        .complaint-section-intro { /* VERSION 32 - Intro paragraph style */
+            color: var(--text-color-light);
+            font-size: 1.1rem;
+            line-height: 1.7;
+            margin-bottom: 2.5rem;
+            opacity: 0.9;
+            text-align: center;
+            max-width: 900px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+
+        .complaint-main-section h2 { /* VERSION 32 - Main section heading style */
+            margin-bottom: 2rem;
+            font-size: 3rem;
+        }
+
+
+        .form-group {
+            margin-bottom: 2rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.8rem;
+            font-weight: 500;
+            color: var(--text-color-light);
+            opacity: 0.95;
+        }
+
+        .form-group input[type="text"],
+        .form-group input[type="email"],
+        .form-group textarea,
+        .form-group select { /* Added select for dropdown */
+            width: 100%;
+            padding: 1.2rem 1.5rem;
+            border: 2px solid #444;
+            border-radius: 8px;
+            background-color: #222;
+            color: var(--text-color-light);
+            font-size: 1.05rem;
+            transition: border-color 0.3s ease, box-shadow 0.3s ease;
+            appearance: none; /* Reset default select appearance */
+            -webkit-appearance: none; /* For Safari */
+            -moz-appearance: none; /* For Firefox */
+            background-image: url('data:image/svg+xml;utf8,<svg fill="white" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"><path d="M7 10l5 5 5-5z"/><path d="M0 0h24v24H0z" fill="none"/></svg>');
+            background-repeat: no-repeat;
+            background-position-x: 100%;
+            background-position-y: 12px;
+            padding-right: 2.5rem; /* Make space for dropdown arrow */
+        }
+
+        .form-group input[type="text"]:focus,
+        .form-group input[type="email"]:focus,
+        .form-group textarea:focus,
+        .form-group select:focus { /* Added select for focus style */
+            border-color: var(--gold-highlight);
+            outline: none;
+            box-shadow: 0 0 12px rgba(var(--gold-highlight-rgb-values), 0.6);
+        }
+
+
+        .legacy-button.submit-button {
+            margin-top: 3rem; /* Even more top margin for submit button - VERSION 32 */
+            padding: 1.4rem 3rem; /* Slightly larger submit button - VERSION 32 */
+            font-size: 1.5rem;
+            box-shadow: 0 0 20px rgba(var(--gold-rgb-values), 0.8); /* Stronger shadow - VERSION 32 */
+        }
+
+        #complaintMessage {
+            margin-top: 3rem; /* More top margin for message - VERSION 32 */
+            padding: 2rem 2.2rem; /* Slightly larger message padding - VERSION 32 */
+            background-color: rgba(var(--gold-rgb-values), 0.1);
+            border: 2px solid var(--gold);
+            border-radius: 12px; /* More rounded message box - VERSION 32 */
+            text-align: center;
+            display: none;
+            animation: fadeInScale 0.5s ease-out forwards, pulseMessage 2s infinite alternate;
+            font-size: 1.2rem; /* Slightly larger message font - VERSION 32 */
+            letter-spacing: 0.06rem;
+            box-shadow: 0 0 15px rgba(var(--gold-rgb-values), 0.7); /* Stronger message shadow - VERSION 32 */
+        }
+
+
+        #complaintMessage.show {
+            display: block;
+        }
+
+        .error-message {
+            color: #ff8888;
+            font-size: 1rem;
+            margin-top: 0.6rem;
+            display: none;
+            animation: slideInLeft 0.3s ease-out forwards, slightBounce 0.4s ease-out;
+            transform: translateX(-10px);
+            opacity: 0;
+        }
+
+
+        .error-message.show {
+            display: block;
+        }
+
+        .complaint-info-section .section-paragraph { /* Style for paragraphs in complaint info section - VERSION 32 */
+            font-size: 1.05rem; /* Slightly larger font for info section paragraphs - VERSION 32 */
+            line-height: 1.8; /* Increased line height for readability - VERSION 32 */
+            color: #ddd; /* Slightly lighter text color - VERSION 32 */
+            opacity: 0.85; /* Slightly reduced opacity - VERSION 32 */
+            max-width: 850px; /* Restrict paragraph width for better reading - VERSION 32 */
+            margin-left: auto;
+            margin-right: auto;
+            margin-bottom: 1.8rem; /* Spacing between paragraphs - VERSION 32 */
+            text-align: center; /* Center align paragraphs - VERSION 32 */
+        }
+
+        .complaint-info-section .section-paragraph:last-child { /* Remove bottom margin from last paragraph - VERSION 32 */
+            margin-bottom: 0;
+        }
+
+
+        .word-count { /* Reusing Word Count Style - Might not be needed */
+            font-size: 0.9rem;
+            color: #aaa;
+            text-align: right;
+            margin-top: 0.3rem;
+            opacity: 0.7;
+        }
+
+
+        footer { /* Reusing Footer Styles */
+            text-align: center;
+            padding: 3rem 1rem;
+            border-top: 1px solid #333;
+            font-size: 0.9rem;
+            color: #777;
+            background: var(--dark-primary);
+        }
+
+        footer p:not(.service-status):hover { /* Reusing Footer Paragraph Hover Style */
+            color: var(--gold);
+        }
+
+
+        footer.service-status { /* Reusing Footer Service Status Style */
+            color: var(--gold);
+            font-size: 0.9rem;
+            margin-top: 0.5rem;
+            animation: fade-pulse 2s ease-in-out infinite alternate;
+        }
+
+
+    </style>
+</head>
+<body>
+    <header>
+        <a href="index.html" class="logo-text">LuxRide Inc</a>
+        <div class="menu-btn" onclick="toggleMenu()">☰</div>
+    </header>
+
+    <div class="nav-overlay">
+        <a href="index.html" class="nav-item">Home</a>
+        <a href="vip.html" class="nav-item">VIP Booking</a>
+        <a href="rate.html" class="nav-item">Rate Driver</a>
+        <a href="complaint.html" class="nav-item">File Complaint</a>
+        <a href="join.html" class="nav-item">Join Us</a>
+        <a href="contact.html" class="nav-item">Contact Us</a>
+    </div>
+
+    <section class="complaint-hero">
+        <h1 class="motto">
+            File a Complaint<br>
+            <span style="font-size: 1.1rem; color: var(--text-color-light);">Let us know how we can improve your experience.</span>
+        </h1>
+    </section>
+
+    <section class="section complaint-main-section" id="complaint-form-section">
+        <h2 data-aos="fade-right" data-aos-duration="800">Complaint Submission Form</h2>
+
+        <p data-aos="fade-up" data-aos-duration="1000" class="complaint-section-intro">
+            We regret to hear you had a less than satisfactory experience with LuxRide Inc. Please use the form below to file your complaint. Providing detailed information will assist our team in investigating and resolving your issue as quickly as possible.  We appreciate your time and feedback.
+        </p>
+
+        <form id="complaintForm">
+
+            <div class="form-group" data-aos="fade-up" data-aos-duration="700">
+                <label for="fullName">Full Name:</label>
+                <input type="text" id="fullName" name="fullName" placeholder="Your Full Name" required>
+                <div class="error-message" id="fullNameError">Please enter your full name.</div>
+            </div>
+
+            <div class="form-group" data-aos="fade-up" data-aos-duration="800" data-aos-delay="100">
+                <label for="discordId">Discord ID:</label>
+                <input type="text" id="discordId" name="discordId" placeholder="Your Discord ID (e.g., username#1234)" required>
+                <div class="error-message" id="discordIdError">Please enter your Discord ID.</div>
+            </div>
+
+
+            <div class="form-group" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="300">
+                <label for="incidentDate">Date of Incident:</label>
+                <input type="date" id="incidentDate" name="incidentDate" required>
+                <div class="error-message" id="incidentDateError">Please select the date of the incident.</div>
+            </div>
+
+            <div class="form-group" data-aos="fade-up" data-aos-duration="1100" data-aos-delay="400">
+                <label for="driverName">Driver Name (INGAME) (Optional):</label>
+                <input type="text" id="driverName" name="driverName" placeholder="Driver's In-Game Name (if known)">
+            </div>
+
+            <div class="form-group" data-aos="fade-up" data-aos-duration="1200" data-aos-delay="500">
+                <label for="complaintNature">Nature of Complaint:</label>
+                <select id="complaintNature" name="complaintNature" required>
+                    <option value="" disabled selected>Please Select</option>
+                    <option value="driverBehavior">Driver Behavior</option>
+                    <option value="vehicleCondition">Vehicle Condition</option>
+                    <option value="routeNavigation">Route/Navigation</option>
+                    <option value="billingIssue">Billing Issue</option>
+                    <option value="customerService">Customer Service</option>
+                    <option value="other">Other</option>
+                </select>
+                <div class="error-message" id="complaintNatureError">Please select the nature of your complaint.</div>
+            </div>
+
+            <div class="form-group" data-aos="fade-up" data-aos-duration="1300" data-aos-delay="600">
+                <label for="complaintDescription">Describe Your Complaint:</label>
+                <textarea id="complaintDescription" name="complaintDescription" rows="7" placeholder="Please provide a detailed description of your complaint. Include specific details, times, locations, and driver names if possible." required></textarea>
+                <div class="error-message" id="complaintDescriptionError">Please provide a detailed description of your complaint.</div>
+            </div>
+
+            <div class="form-group" data-aos="fade-up" data-aos-duration="1400" data-aos-delay="700">
+                <label for="evidenceLink">Link to Evidence (Optional):</label>
+                <input type="text" id="evidenceLink" name="evidenceLink" placeholder="Optional: Link to screenshots, videos, or other evidence">
+            </div>
+
+
+            <button type="submit" class="legacy-button submit-button wave-effect">Submit Complaint</button>
+            <div id="complaintMessage" class="hidden">Thank you for submitting your complaint. We will investigate and get back to you as soon as possible.</div>
+        </form>
+    </section>
+
+    <section class="section complaint-info-section" id="complaint-info">
+        <h2 data-aos="fade-right" data-aos-duration="800">Complaint Resolution Process</h2>
+        <p data-aos="fade-up" data-aos-duration="1000" class="section-paragraph">
+            Upon submitting your complaint, it will be carefully reviewed by our dedicated Customer Service Team.
+        </p>
+        <p data-aos="fade-up" data-aos-duration="1100" data-aos-delay="100" class="section-paragraph">
+            We will thoroughly investigate the issue based on the details provided in your complaint form and any evidence you have submitted.
+        </p>
+        <p data-aos="fade-up" data-aos-duration="1200" data-aos-delay="200" class="section-paragraph">
+            Our team will contact you via Discord within 24-48 hours to acknowledge receipt of your complaint and provide an update on the investigation.
+        </p>
+        <p data-aos="fade-up" data-aos-duration="1300" data-aos-delay="300" class="section-paragraph">
+            We are committed to resolving complaints fairly and efficiently. Please note that resolution times may vary depending on the complexity of the issue.
+        </p>
+         <p data-aos="fade-up" data-aos-duration="1400" data-aos-delay="400" class="section-paragraph">
+            At LuxRide Inc, we value your feedback and are dedicated to continuous improvement. Your complaint will help us enhance our services and prevent similar issues in the future.
+        </p>
+    </section>
+
+
+    <footer>
+        <p>© 2025 LuxRide Inc - All rights reserved</p>
+        <p class="service-status">24/7 Premium Service Available</p>
+    </footer>
+
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <script>
+        AOS.init({
+            duration: 1200,
+            once: true,
+        });
+
+        gsap.fromTo('.complaint-hero .motto', {opacity: 0, y: 20}, {opacity: 1, y: 0, duration: 1.5, ease: "power2.out", delay: 0.5});
+
+
+        const sections = gsap.utils.toArray('.section');
+        sections.forEach(section => {
+            gsap.fromTo(section, {opacity: 0, y: 30}, {
+                opacity: 1,
+                y: 0,
+                duration: 1,
+                ease: "power2.out",
+                scrollTrigger: {
+                    trigger: section,
+                    start: "top 80%",
+                    once: true,
+                }
+            });
+        });
+
+
+        function toggleMenu() {
+            const menu = document.querySelector('.nav-overlay');
+            gsap.to(menu, {right: menu.style.right === '0px'? (window.innerWidth < 768? '-70%': '-300px'): '0px', duration: 0.6, ease: "easeInOutCubic"});
+        }
+
+        document.addEventListener('click', function(e) {
+            const menu = document.querySelector('.nav-overlay');
+            if (!menu.contains(e.target) &&!e.target.closest('.menu-btn')) {
+                gsap.to(menu, {right: (window.innerWidth < 768? '-70%': '-300px'), duration: 0.5, ease: "easeInOutCubic"});
+            }
+        });
+
+
+        const complaintForm = document.getElementById('complaintForm');
+        const complaintMessage = document.getElementById('complaintMessage');
+        const fullNameInput = document.getElementById('fullName');
+        const discordIdInput = document.getElementById('discordId');
+        const incidentDateInput = document.getElementById('incidentDate');
+        const complaintNatureSelect = document.getElementById('complaintNature');
+        const complaintDescriptionTextarea = document.getElementById('complaintDescription');
+
+
+        const fullNameError = document.getElementById('fullNameError');
+        const discordIdError = document.getElementById('discordIdError');
+        const incidentDateError = document.getElementById('incidentDateError');
+        const complaintNatureError = document.getElementById('complaintNatureError');
+        const complaintDescriptionError = document.getElementById('complaintDescriptionError');
+
+
+        complaintForm.addEventListener('submit', function(event) {
+            event.preventDefault();
+
+            let isValid = true;
+
+
+            fullNameError.classList.remove('show');
+            discordIdError.classList.remove('show');
+            incidentDateError.classList.remove('show');
+            complaintNatureError.classList.remove('show');
+            complaintDescriptionError.classList.remove('show');
+
+
+            if (fullNameInput.value.trim() === '') {
+                fullNameError.classList.add('show');
+                isValid = false;
+            }
+
+            if (discordIdInput.value.trim() === '') {
+                discordIdError.classList.add('show');
+                isValid = false;
+            }
+
+
+            if (incidentDateInput.value.trim() === '') {
+                incidentDateError.classList.add('show');
+                isValid = false;
+            }
+
+            if (complaintNatureSelect.value === '') {
+                complaintNatureError.classList.add('show');
+                isValid = false;
+            }
+
+            if (complaintDescriptionTextarea.value.trim() === '') {
+                complaintDescriptionError.classList.add('show');
+                isValid = false;
+            }
+
+
+            if (isValid) {
+                complaintMessage.classList.add('show');
+                complaintForm.reset();
+
+
+                setTimeout(() => {
+                    complaintMessage.classList.remove('show');
+                }, 3000);
+            }
+        });
+    </script>
+</body>
+</html>

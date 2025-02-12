@@ -1,0 +1,813 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rate Driver - LuxRide Inc | Premium Transport</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Cormorant+Garamond:wght@400;700&family=Montserrat:wght@400;500;700&display=swap" rel="stylesheet">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <style>
+        /* ===  Rate Driver Page CSS - VERSION 30 - Added Content, V26 Logo Style === */
+    :root {
+            --gold: #D4AF37; /* Original Gold */
+            --gold-highlight: #FFD700; /* Highlight Gold */
+            --gold-refined: #C0AA66; /* Refined, slightly muted gold */
+            --gold-refined-highlight: #E0C888; /* Highlight for refined gold */
+            --dark-primary: #111;
+            --dark-secondary: #000;
+            --dark-rgb-values: 17, 17, 17;
+            --gold-rgb-values: 192, 170, 102; /* RGB for refined gold */
+            --gold-refined-highlight-rgb-values: 224, 200, 136; /* RGB for refined highlight gold */
+            --text-color-light: #eee;
+            --text-color-gold: var(--gold); /* Default gold is still original gold */
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: var(--dark-secondary)!important;
+            color: var(--text-color-light)!important;
+            font-family: 'Montserrat', sans-serif!important;
+            font-weight: 400;
+            overflow-x: hidden;
+            scroll-behavior: smooth;
+        }
+
+        h1, h2,.motto,.menu-btn, .legacy-button, .logo-text {
+            font-family: 'Bebas Neue', sans-serif;
+            font-weight: normal;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        h2,.motto {
+            text-shadow: 0 0 5px var(--gold);
+        }
+
+    .motto {
+            font-weight: bold;
+            font-size: 3.5rem;
+            line-height: 1.2;
+            text-shadow: 0 0 8px var(--gold-highlight);
+            opacity: 0;
+            transform: translateY(20px);
+        }
+
+
+        header {
+            position: fixed;
+            width: 100%;
+            padding: 1rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: rgba(var(--dark-rgb-values), 0.85);
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.4);
+        }
+
+        /* --- VERSION 30 -  Ensuring Logo Text Style Matches Version 26 --- */
+        header .logo-text {
+            font-family: 'Cormorant Garamond', serif; /* Elegant Serif Font - LOGO ONLY */
+            color: var(--gold-refined); /* Refined Gold Color - LOGO ONLY */
+            font-size: 2.3rem; /* Slightly larger size - LOGO ONLY */
+            margin-left: 1rem;
+            letter-spacing: 0.08em; /* Reduced letter spacing - LOGO ONLY */
+            text-shadow: 0 0 6px var(--gold-refined); /* Subtle Glow - LOGO ONLY */
+            animation: logo-fade-pulse 4s ease-in-out infinite alternate; /* Gentle Fade Pulse Animation - LOGO ONLY */
+            opacity: 1;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+
+        header .logo-text:hover {
+            opacity: 1;
+            color: var(--gold-refined-highlight); /* Highlight on hover - LOGO ONLY */
+            text-shadow: 0 0 8px var(--gold-refined-highlight); /* Slightly stronger glow on hover - LOGO ONLY */
+        }
+
+
+    .menu-btn {
+            font-size: 2.5rem;
+            color: var(--gold);
+            margin-right: 1.5rem;
+            cursor: pointer;
+            transition: color 0.3s ease, opacity 0.3s ease;
+        }
+
+    .menu-btn:hover {
+            opacity: 0.8;
+            color: var(--gold-highlight);
+        }
+
+
+    .rate-hero {
+            height: 65vh; /* Even shorter hero for Rate page - VERSION 30 */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding-top: 80px;
+            background: linear-gradient(rgba(0,0,0,0.75), rgba(0,0,0,0.75)), /* Slightly lighter overlay */
+                url('https://luxride.neocities.org/Image%20/rate-background-v4.webp'); /* New Rate-Specific Background - VERSION 4 */
+            background-size: cover;
+            text-align: center;
+            background-attachment: fixed;
+            background-position: center;
+            position: relative;
+        }
+
+        .rate-hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(var(--dark-rgb-values), 0.5); /* Lighter overlay */
+            z-index: 1;
+        }
+
+        .rate-hero .motto {
+            color: var(--text-color-gold);
+            position: relative;
+            z-index: 2;
+            text-shadow: 0 0 12px var(--gold-highlight);
+            font-size: 3.2rem; /* Slightly larger motto on Rate page - VERSION 30 */
+        }
+
+        .rate-hero .motto span {
+            font-size: 1.2rem; /* Adjusted span size - VERSION 30 */
+            color: var(--text-color-light);
+        }
+
+
+    .section {
+            padding: 6rem 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+            background: linear-gradient(to bottom, var(--dark-primary), var(--dark-secondary));
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.3), 0 0 40px rgba(var(--gold-rgb-values), 0.3);
+            border-radius: 10px;
+            opacity: 0;
+            transform: translateY(30px);
+        }
+
+        .section.rating-main-section { /* New Class for Rating Main Section - VERSION 30 */
+            background: var(--dark-primary);
+            box-shadow: 0 0 30px rgba(0, 0, 0, 0.5), 0 0 60px rgba(var(--gold-rgb-values), 0.5);
+            padding-top: 5rem; /* Less top padding for main section - VERSION 30 */
+            padding-bottom: 5rem; /* Less bottom padding for main section - VERSION 30 */
+        }
+
+        .section.feedback-info-section { /* New Section for Feedback Info - VERSION 30 */
+            background: var(--dark-secondary); /* Slightly different background for contrast - VERSION 30 */
+            box-shadow: 0 0 25px rgba(0, 0, 0, 0.4), 0 0 50px rgba(var(--gold-rgb-values), 0.4); /* Slightly different shadow - VERSION 30 */
+            margin-top: 4rem; /* Add some space above this section - VERSION 30 */
+            padding-top: 6rem; /* Adjust padding for this section - VERSION 30 */
+            padding-bottom: 6rem; /* Adjust padding for this section - VERSION 30 */
+        }
+
+
+        h2 {
+            color: var(--gold);
+            margin-bottom: 2.5rem;
+            border-left: 2px solid var(--gold);
+            padding-left: 1.2rem;
+            font-size: 2.5rem;
+        }
+
+        .section h2 {
+            text-align: center;
+            border: none;
+            padding-left: 0;
+            margin-bottom: 2rem;
+            font-size: 2.8rem;
+            letter-spacing: 0.08em;
+            text-shadow: 0 0 8px var(--gold-highlight);
+        }
+
+        .feedback-info-section h2 { /* Style for Feedback Info Section Heading - VERSION 30 */
+            font-size: 2.6rem; /* Slightly smaller heading for this section - VERSION 30 */
+            margin-bottom: 2rem; /* Adjust margin - VERSION 30 */
+        }
+
+
+    .fleet-grid { /* Reusing Fleet Grid Style - May not be needed on Rate page */
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            margin: 3rem 0;
+        }
+
+    .vehicle-card { /* Reusing Vehicle Card Style - May not be needed on Rate page */
+            border: none;
+            border-radius: 12px;
+            overflow: hidden;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            background: var(--dark-primary);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+            opacity: 0;
+            transform: translateY(20px);
+        }
+
+    .vehicle-card:hover { /* Reusing Vehicle Card Hover Style - May not be needed on Rate page */
+            transform: scale(1.05) translateY(-5px);
+            box-shadow: 0 12px 25px rgba(0, 0, 0, 0.5), 0 0 50px rgba(var(--gold-highlight-rgb-values), 0.4);
+        }
+
+    .vehicle-card img { /* Reusing Vehicle Card Image Style - May not be needed on Rate page */
+            width: 100%;
+            height: 350px;
+            object-fit: cover;
+            position: relative;
+        }
+
+    .vehicle-card::after { /* Reusing Vehicle Card Overlay Style - May not be needed on Rate page */
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            width: 100%;
+            height: 50%;
+            background: linear-gradient(to bottom, rgba(0,0,0,0), rgba(0,0,0,0.4));
+            opacity: 0.4;
+            pointer-events: none;
+        }
+
+
+    .vs-credit { /* Reusing VS Credit Style - May not be needed on Rate page */
+            padding: 1.2rem;
+            text-align: center;
+            color: var(--text-color-gold);
+            font-weight: 500;
+        }
+
+    .nav-overlay { /* Reusing Nav Overlay Styles */
+            position: fixed;
+            top: 0;
+            right: -70%;
+            width: 70%;
+            height: 100%;
+            background-color: rgba(var(--dark-rgb-values), 0.85);
+            transition: right 0.6s easeInOutCubic;
+            z-index: 999;
+            padding-top: 5rem;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            box-shadow: -5px 0 15px rgba(0, 0, 0, 0.5);
+        }
+
+        @media (min-width: 768px) {
+        .nav-overlay {
+                width: 300px;
+                right: -300px;
+            }
+        }
+
+
+    .nav-item { /* Reusing Nav Item Styles */
+            padding: 1.5rem 2rem;
+            color: var(--text-color-light);
+            border-bottom: 1px solid var(--gold);
+            width: 100%;
+            text-align: center;
+            transition: opacity 0.3s ease, color 0.3s ease;
+        }
+
+    .nav-item:last-child { /* Reusing Nav Item Last Child Style */
+            border-bottom: none;
+        }
+
+    .nav-item:hover { /* Reusing Nav Item Hover Style */
+            opacity: 0.9;
+            color: var(--gold-highlight);
+        }
+
+        footer { /* Reusing Footer Styles */
+            text-align: center;
+            padding: 3rem 1rem;
+            border-top: 1px solid #333;
+            font-size: 0.9rem;
+            color: #777;
+            background: var(--dark-primary);
+        }
+
+        footer p:not(.service-status):hover { /* Reusing Footer Paragraph Hover Style */
+            color: var(--gold);
+        }
+
+
+        footer.service-status { /* Reusing Footer Service Status Style */
+            color: var(--gold);
+            font-size: 0.9rem;
+            margin-top: 0.5rem;
+            animation: fade-pulse 2s ease-in-out infinite alternate;
+        }
+
+        /* Button Styles - VERSION 30 - Reusing Button Style from Version 26 */
+    .legacy-button {
+            display: inline-block;
+            padding: 1rem 2rem;
+            background: none;
+            color: var(--gold);
+            text-decoration: none;
+            margin-top: 1rem;
+            border: 2px solid var(--gold);
+            border-radius: 8px;
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 1.2rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            cursor: pointer;
+            transition: background-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease, color 0.3s ease;
+            box-shadow: 0 0 10px rgba(var(--gold-rgb-values), 0.5);
+            position: relative;
+            overflow: hidden;
+        }
+
+    .legacy-button::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: var(--gold-highlight);
+            clip-path: polygon(0 0, 100% 0%, 100% 0%, 0 0%);
+            transition: clip-path 0.7s cubic-bezier(0.65, 0, 0.16, 1), background-color 0.3s ease;
+            z-index: -1;
+        }
+
+    .legacy-button:hover {
+            background-color: rgba(var(--gold-rgb-values), 0.1);
+            color: #000;
+            box-shadow: 0 0 20px rgba(var(--gold-highlight-rgb-values), 0.8);
+            border-color: var(--gold-highlight);
+        }
+
+        .legacy-button:hover::before {
+            clip-path: polygon(0 0, 100% 0%, 100% 100%, 0% 100%);
+        }
+
+        .legacy-button:active {
+            transform: scale(0.95);
+        }
+
+
+    .wave-effect:hover { /* Reusing Wave Effect Style */
+            animation: wave 1.5s ease-in-out infinite;
+        }
+
+
+        /* Keyframes for animations - VERSION 30 - Reusing Keyframes from Version 26 */
+        @keyframes logo-pulse { /* Reused from Version 22 */
+            0% { text-shadow: 0 0 8px var(--gold); color: var(--gold); }
+            50% { text-shadow: 0 0 15px var(--gold-highlight); color: var(--gold-highlight); }
+            100% { text-shadow: 0 0 8px var(--gold); color: var(--gold); }
+        }
+
+        @keyframes logo-fade-pulse { /* For Logo Text Only - Version 24 Style */
+            0% { text-shadow: 0 0 4px var(--gold-refined); color: var(--gold-refined); opacity: 0.95;}
+            100% { text-shadow: 0 0 6px var(--gold-refined-highlight); color: var(--gold-refined); opacity: 1;}
+        }
+
+
+        @keyframes fade-pulse { /* Reused from Version 22 */
+            0% { opacity: 0.6; }
+            50% { opacity: 1; }
+            100% { opacity: 0.6; }
+        }
+
+        @keyframes wave { /* Reused from Version 22 */
+            0% { transform: rotate(0deg); }
+            25% { transform: rotate(5deg); }
+            50% { transform: rotate(-5deg); }
+            75% { transform: rotate(5deg); }
+            100% { transform: rotate(0deg); }
+        }
+
+        @keyframes fadeInUp { /* Reused from Version 22 */
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+
+        @media (min-width: 768px) {
+        .nav-overlay { width: 350px; }
+        .menu-btn { margin-right: 2rem; }
+        .section { padding: 8rem 3rem; }
+            h2 { font-size: 2.8rem; }
+        .motto { font-size: 4rem; }
+            footer { padding: 4rem 2rem; }
+        .fleet-grid {
+                grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+                gap: 2.5rem;
+            }
+        .vehicle-card img { height: 350px; }
+        }
+
+        /* --- RATE DRIVER PAGE SPECIFIC STYLES - VERSION 30 - Added Content & Logo Fix --- */
+
+        .rate-section-intro { /* VERSION 30 - Intro moved into main section, expanded content */
+            color: var(--text-color-light);
+            font-size: 1.1rem;
+            line-height: 1.7;
+            margin-bottom: 2.5rem; /* Increased margin - VERSION 30 */
+            opacity: 0.9;
+            text-align: center;
+            max-width: 900px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+
+        .rating-main-section h2 { /* VERSION 30 - Main section heading style */
+            margin-bottom: 2rem; /* Slightly reduced heading margin - VERSION 30 */
+            font-size: 3rem; /* Larger heading in main section - VERSION 30 */
+        }
+
+
+        .form-group {
+            margin-bottom: 2rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.8rem;
+            font-weight: 500;
+            color: var(--text-color-light);
+            opacity: 0.95;
+        }
+
+        .form-group input[type="text"],
+        .form-group input[type="email"],
+        .form-group textarea,
+        .form-group select { /* Added select for dropdown */
+            width: 100%;
+            padding: 1.2rem 1.5rem;
+            border: 2px solid #444;
+            border-radius: 8px;
+            background-color: #222;
+            color: var(--text-color-light);
+            font-size: 1.05rem;
+            transition: border-color 0.3s ease, box-shadow 0.3s ease;
+            appearance: none; /* Reset default select appearance */
+            -webkit-appearance: none; /* For Safari */
+            -moz-appearance: none; /* For Firefox */
+            background-image: url('data:image/svg+xml;utf8,<svg fill="white" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"><path d="M7 10l5 5 5-5z"/><path d="M0 0h24v24H0z" fill="none"/></svg>');
+            background-repeat: no-repeat;
+            background-position-x: 100%;
+            background-position-y: 12px;
+            padding-right: 2.5rem; /* Make space for dropdown arrow */
+        }
+
+        .form-group input[type="text"]:focus,
+        .form-group input[type="email"]:focus,
+        .form-group textarea:focus,
+        .form-group select:focus { /* Added select for focus style */
+            border-color: var(--gold-highlight);
+            outline: none;
+            box-shadow: 0 0 12px rgba(var(--gold-highlight-rgb-values), 0.6);
+        }
+
+
+        /* --- VERSION 30 - Star Rating Styling (No Changes) --- */
+        .form-group.star-rating-group label {
+            display: block; /* Labels on their own line */
+            margin-bottom: 0.8rem;
+        }
+
+        .star-rating {
+            display: flex;
+            flex-direction: row-reverse; /* To make 5 stars be on the right */
+            justify-content: center; /* Center the stars */
+            margin-top: 0.5rem;
+            margin-bottom: 1.5rem; /* Space below star rating */
+        }
+
+        .star-rating input[type="radio"] {
+            display: none; /* Hide radio buttons */
+        }
+
+        .star-rating label {
+            font-size: 2.5rem; /* Size of stars */
+            color: #777; /* Default star color */
+            padding: 0 0.2rem; /* Spacing between stars */
+            cursor: pointer;
+            transition: color 0.3s ease;
+        }
+
+        .star-rating label:hover,
+        .star-rating label:hover ~ label,
+        .star-rating input[type="radio"]:checked ~ label {
+            color: var(--gold-highlight); /* Gold color on hover and when checked */
+        }
+
+
+        .legacy-button.submit-button {
+            margin-top: 3rem; /* Even more top margin for submit button - VERSION 30 */
+            padding: 1.4rem 3rem; /* Slightly larger submit button - VERSION 30 */
+            font-size: 1.5rem;
+            box-shadow: 0 0 20px rgba(var(--gold-rgb-values), 0.8); /* Stronger shadow - VERSION 30 */
+        }
+
+        #ratingMessage {
+            margin-top: 3rem; /* More top margin for message - VERSION 30 */
+            padding: 2rem 2.2rem; /* Slightly larger message padding - VERSION 30 */
+            background-color: rgba(var(--gold-rgb-values), 0.1);
+            border: 2px solid var(--gold);
+            border-radius: 12px; /* More rounded message box - VERSION 30 */
+            text-align: center;
+            display: none;
+            animation: fadeInScale 0.5s ease-out forwards, pulseMessage 2s infinite alternate;
+            font-size: 1.2rem; /* Slightly larger message font - VERSION 30 */
+            letter-spacing: 0.06rem;
+            box-shadow: 0 0 15px rgba(var(--gold-rgb-values), 0.7); /* Stronger message shadow - VERSION 30 */
+        }
+
+
+        #ratingMessage.show {
+            display: block;
+        }
+
+        .error-message {
+            color: #ff8888;
+            font-size: 1rem;
+            margin-top: 0.6rem;
+            display: none;
+            animation: slideInLeft 0.3s ease-out forwards, slightBounce 0.4s ease-out;
+            transform: translateX(-10px);
+            opacity: 0;
+        }
+
+
+        .error-message.show {
+            display: block;
+        }
+
+        .feedback-info-section .section-paragraph { /* Style for paragraphs in feedback info section - VERSION 30 */
+            font-size: 1.05rem; /* Slightly larger font for info section paragraphs - VERSION 30 */
+            line-height: 1.8; /* Increased line height for readability - VERSION 30 */
+            color: #ddd; /* Slightly lighter text color - VERSION 30 */
+            opacity: 0.85; /* Slightly reduced opacity - VERSION 30 */
+            max-width: 850px; /* Restrict paragraph width for better reading - VERSION 30 */
+            margin-left: auto;
+            margin-right: auto;
+            margin-bottom: 1.8rem; /* Spacing between paragraphs - VERSION 30 */
+            text-align: center; /* Center align paragraphs - VERSION 30 */
+        }
+
+        .feedback-info-section .section-paragraph:last-child { /* Remove bottom margin from last paragraph - VERSION 30 */
+            margin-bottom: 0;
+        }
+
+
+        .word-count { /* Reusing Word Count Style - Might not be needed */
+            font-size: 0.9rem;
+            color: #aaa;
+            text-align: right;
+            margin-top: 0.3rem;
+            opacity: 0.7;
+        }
+
+
+        footer { /* Reusing Footer Styles */
+            text-align: center;
+            padding: 3rem 1rem;
+            border-top: 1px solid #333;
+            font-size: 0.9rem;
+            color: #777;
+            background: var(--dark-primary);
+        }
+
+        footer p:not(.service-status):hover { /* Reusing Footer Paragraph Hover Style */
+            color: var(--gold);
+        }
+
+
+        footer.service-status { /* Reusing Footer Service Status Style */
+            color: var(--gold);
+            font-size: 0.9rem;
+            margin-top: 0.5rem;
+            animation: fade-pulse 2s ease-in-out infinite alternate;
+        }
+
+
+    </style>
+</head>
+<body>
+    <header>
+        <a href="index.html" class="logo-text">LuxRide Inc</a>
+        <div class="menu-btn" onclick="toggleMenu()">☰</div>
+    </header>
+
+    <div class="nav-overlay">
+        <a href="index.html" class="nav-item">Home</a>
+        <a href="vip.html" class="nav-item">VIP Booking</a>
+        <a href="rate.html" class="nav-item">Rate Driver</a>
+        <a href="complaint.html" class="nav-item">File Complaint</a>
+        <a href="join.html" class="nav-item">Join Us</a>
+        <a href="contact.html" class="nav-item">Contact Us</a>
+    </div>
+
+    <section class="rate-hero">
+        <h1 class="motto">
+            Rate LuxRide Drivers<br>
+            <span style="font-size: 1.1rem; color: var(--text-color-light);">Help us recognize excellence & improve.</span>
+        </h1>
+    </section>
+
+    <section class="section rating-main-section" id="rating-form-section">
+        <h2 data-aos="fade-right" data-aos-duration="800">Driver Rating Form</h2>
+
+        <p data-aos="fade-up" data-aos-duration="1000" class="rate-section-intro">
+            Thank you for choosing LuxRide Inc. Your feedback is extremely valuable in helping us maintain the highest standards of premium transport and recognize our exceptional drivers. Please take a few moments to complete this rating form. Your honest opinions will directly contribute to improving our service for you and all our valued customers.
+        </p>
+
+        <form id="ratingForm">
+
+            <div class="form-group" data-aos="fade-up" data-aos-duration="700">
+                <label for="fullName">Full Name:</label>
+                <input type="text" id="fullName" name="fullName" placeholder="Your Full Name" required>
+                <div class="error-message" id="fullNameError">Please enter your full name.</div>
+            </div>
+
+            <div class="form-group" data-aos="fade-up" data-aos-duration="800" data-aos-delay="100">
+                <label for="discordId">Discord ID:</label>
+                <input type="text" id="discordId" name="discordId" placeholder="Your Discord ID (e.g., username#1234)" required>
+                <div class="error-message" id="discordIdError">Please enter your Discord ID.</div>
+            </div>
+
+            <div class="form-group" data-aos="fade-up" data-aos-duration="900" data-aos-delay="200">
+                <label for="driverName">Driver Name (INGAME):</label>
+                <input type="text" id="driverName" name="driverName" placeholder="Enter Driver's In-Game Name" required>
+                <div class="error-message" id="driverNameError">Please enter the driver's in-game name.</div>
+            </div>
+
+
+            <div class="form-group star-rating-group" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="300">
+                <label>Overall Rating:</label>
+                <div class="star-rating">
+                    <input type="radio" id="star5" name="driverRating" value="5" required /><label for="star5">★</label>
+                    <input type="radio" id="star4" name="driverRating" value="4" required /><label for="star4">★</label>
+                    <input type="radio" id="star3" name="driverRating" value="3" required /><label for="star3">★</label>
+                    <input type="radio" id="star2" name="driverRating" value="2" required /><label for="star2">★</label>
+                    <input type="radio" id="star1" name="driverRating" value="1" required /><label for="star1">★</label>
+                </div>
+                <div class="error-message" id="driverRatingError">Please select a star rating.</div>
+            </div>
+
+
+            <div class="form-group" data-aos="fade-up" data-aos-duration="1100" data-aos-delay="400">
+                <label for="comments">Additional Feedback (Optional):</label>
+                <textarea id="comments" name="comments" rows="5" placeholder="Optional: Share any additional feedback about your experience"></textarea>
+            </div>
+
+            <button type="submit" class="legacy-button submit-button wave-effect">Submit Rating</button>
+            <div id="ratingMessage" class="hidden">Thank you for your rating! Your feedback is valuable to us.</div>
+        </form>
+    </section>
+
+    <section class="section feedback-info-section" id="feedback-info">
+        <h2 data-aos="fade-right" data-aos-duration="800">What Happens to Your Feedback?</h2>
+        <p data-aos="fade-up" data-aos-duration="1000" class="section-paragraph">
+            At LuxRide Inc, we take your feedback seriously.  Ratings and comments submitted through this page are carefully reviewed by our service management team.
+        </p>
+        <p data-aos="fade-up" data-aos-duration="1100" data-aos-delay="100" class="section-paragraph">
+            **Positive Feedback:**  Excellent ratings and positive comments are used to recognize and reward our top-performing drivers. This helps us acknowledge their dedication to providing exceptional service and encourages them to continue exceeding customer expectations.
+        </p>
+        <p data-aos="fade-up" data-aos-duration="1200" data-aos-delay="200" class="section-paragraph">
+            **Constructive Criticism:**  Lower ratings and constructive comments are analyzed to identify areas for service improvement. This feedback is used in driver training and service adjustments to ensure we are constantly enhancing the LuxRide experience.
+        </p>
+        <p data-aos="fade-up" data-aos-duration="1300" data-aos-delay="300" class="section-paragraph">
+            Please be assured that all feedback is confidential and used solely for the purpose of service enhancement and driver recognition within LuxRide Inc.  If you require immediate assistance or wish to discuss a specific issue, please do not hesitate to contact our customer support team directly through the "Contact Us" page.
+        </p>
+    </section>
+
+
+    <footer>
+        <p>© 2025 LuxRide Inc - All rights reserved</p>
+        <p class="service-status">24/7 Premium Service Available</p>
+    </footer>
+
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <script>
+        AOS.init({
+            duration: 1200,
+            once: true,
+        });
+
+        gsap.fromTo('.rate-hero .motto', {opacity: 0, y: 20}, {opacity: 1, y: 0, duration: 1.5, ease: "power2.out", delay: 0.5});
+
+
+        const sections = gsap.utils.toArray('.section');
+        sections.forEach(section => {
+            gsap.fromTo(section, {opacity: 0, y: 30}, {
+                opacity: 1,
+                y: 0,
+                duration: 1,
+                ease: "power2.out",
+                scrollTrigger: {
+                    trigger: section,
+                    start: "top 80%",
+                    once: true,
+                }
+            });
+        });
+
+
+        function toggleMenu() {
+            const menu = document.querySelector('.nav-overlay');
+            gsap.to(menu, {right: menu.style.right === '0px'? (window.innerWidth < 768? '-70%': '-300px'): '0px', duration: 0.6, ease: "easeInOutCubic"});
+        }
+
+        document.addEventListener('click', function(e) {
+            const menu = document.querySelector('.nav-overlay');
+            if (!menu.contains(e.target) &&!e.target.closest('.menu-btn')) {
+                gsap.to(menu, {right: (window.innerWidth < 768? '-70%': '-300px'), duration: 0.5, ease: "easeInOutCubic"});
+            }
+        });
+
+
+        const ratingForm = document.getElementById('ratingForm');
+        const ratingMessage = document.getElementById('ratingMessage');
+        const fullNameInput = document.getElementById('fullName');
+        const discordIdInput = document.getElementById('discordId');
+        const driverNameInput = document.getElementById('driverName');
+        const starRatingInputs = document.querySelectorAll('input[name="driverRating"]'); // Select all star radio buttons
+        const commentsInput = document.getElementById('comments');
+
+
+        const fullNameError = document.getElementById('fullNameError');
+        const discordIdError = document.getElementById('discordIdError');
+        const driverNameError = document.getElementById('driverNameError');
+        const driverRatingError = document.getElementById('driverRatingError');
+
+
+        ratingForm.addEventListener('submit', function(event) {
+            event.preventDefault();
+
+            let isValid = true;
+            let starRatingSelected = false;
+
+
+            fullNameError.classList.remove('show');
+            discordIdError.classList.remove('show');
+            driverNameError.classList.remove('show');
+            driverRatingError.classList.remove('show');
+
+
+            if (fullNameInput.value.trim() === '') {
+                fullNameError.classList.add('show');
+                isValid = false;
+            }
+
+            if (discordIdInput.value.trim() === '') {
+                discordIdError.classList.add('show');
+                isValid = false;
+            }
+
+            if (driverNameInput.value.trim() === '') {
+                driverNameError.classList.add('show');
+                isValid = false;
+            }
+
+
+            for (const starInput of starRatingInputs) {
+                if (starInput.checked) {
+                    starRatingSelected = true;
+                    break;
+                }
+            }
+            if (!starRatingSelected) {
+                driverRatingError.classList.add('show');
+                isValid = false;
+            }
+
+
+            if (isValid) {
+                ratingMessage.classList.add('show');
+
+                ratingForm.reset();
+                starRatingInputs.forEach(input => input.checked = false); // Uncheck all star radio buttons
+
+
+                setTimeout(() => {
+                    ratingMessage.classList.remove('show');
+                }, 3000);
+            }
+        });
+    </script>
+</body>
+</html>
