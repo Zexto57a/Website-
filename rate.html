@@ -9,19 +9,21 @@
     <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Cormorant+Garamond:wght@400;700&family=Montserrat:wght@400;500;700&display=swap" rel="stylesheet">
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     <style>
-        /* ===  Rate Driver Page CSS - VERSION 30 - Added Content, V26 Logo Style === */
+        /* ===  Rate Driver Page CSS - VERSION 32 - ENHANCED DRIVER SELECTION + DATA MANAGEMENT SYSTEM + STAR RATING  === */
     :root {
-            --gold: #D4AF37; /* Original Gold */
-            --gold-highlight: #FFD700; /* Highlight Gold */
+            --gold: #D4AF37; /* A more vibrant, classic gold */
+            --gold-highlight: #FFD700; /* A brighter gold for highlights */
             --gold-refined: #C0AA66; /* Refined, slightly muted gold */
             --gold-refined-highlight: #E0C888; /* Highlight for refined gold */
-            --dark-primary: #111;
-            --dark-secondary: #000;
-            --dark-rgb-values: 17, 17, 17;
-            --gold-rgb-values: 192, 170, 102; /* RGB for refined gold */
-            --gold-refined-highlight-rgb-values: 224, 200, 136; /* RGB for refined highlight gold */
-            --text-color-light: #eee;
-            --text-color-gold: var(--gold); /* Default gold is still original gold */
+            --dark-primary: #111; /* Primary dark tone */
+            --dark-secondary: #000; /* Deeper secondary dark tone */
+            --dark-rgb-values: 17, 17, 17; /* RGB values for --dark-primary */
+            --gold-rgb-values: 212, 175, 55; /* RGB for --gold */
+            --gold-highlight-rgb-values: 255, 215, 0; /* RGB for --gold-highlight */
+            --gold-refined-rgb-values: 192, 170, 102; /* RGB for refined gold - TEXT LOGO */
+            --gold-refined-highlight-rgb-values: 224, 200, 136; /* RGB for refined highlight gold - TEXT LOGO */
+            --text-color-light: #eee; /* Light text color */
+            --text-color-gold: var(--gold); /* Gold text color */
         }
 
         * {
@@ -72,11 +74,11 @@
             box-shadow: 0 2px 10px rgba(0, 0, 0, 0.4);
         }
 
-        /* --- VERSION 30 -  Ensuring Logo Text Style Matches Version 26 --- */
-        header .logo-text {
+        /* --- VERSION 42 - Logo Text Style - Consistent Across Pages - TEXT ONLY LOGO - REVISED CSS SELECTORS & ANIMATION - FOR ALL PAGES --- */
+        .logo-text { /*  <--- CORRECTED SELECTOR:  .logo-text  - FOR ALL PAGES */
             font-family: 'Cormorant Garamond', serif; /* Elegant Serif Font - LOGO ONLY */
             color: var(--gold-refined); /* Refined Gold Color - LOGO ONLY */
-            font-size: 2.3rem; /* Slightly larger size - LOGO ONLY */
+            font-size: 1.7rem; /* Slightly larger size - LOGO ONLY */
             margin-left: 1rem;
             letter-spacing: 0.08em; /* Reduced letter spacing - LOGO ONLY */
             text-shadow: 0 0 6px var(--gold-refined); /* Subtle Glow - LOGO ONLY */
@@ -87,7 +89,7 @@
         }
 
 
-        header .logo-text:hover {
+        .logo-text:hover { /*  <--- CORRECTED SELECTOR:  .logo-text:hover  - FOR ALL PAGES */
             opacity: 1;
             color: var(--gold-refined-highlight); /* Highlight on hover - LOGO ONLY */
             text-shadow: 0 0 8px var(--gold-refined-highlight); /* Slightly stronger glow on hover - LOGO ONLY */
@@ -109,13 +111,13 @@
 
 
     .rate-hero {
-            height: 65vh; /* Even shorter hero for Rate page - VERSION 30 */
+            height: 65vh; /* Even shorter hero for Rate page - VERSION 31 - ENHANCED VISUALS & PERFORMANCE + DATA MANAGEMENT SYSTEM + STAR RATING */
             display: flex;
             align-items: center;
             justify-content: center;
             padding-top: 80px;
             background: linear-gradient(rgba(0,0,0,0.75), rgba(0,0,0,0.75)), /* Slightly lighter overlay */
-                url('https://luxride.neocities.org/Image%20/rate-background-v4.webp'); /* New Rate-Specific Background - VERSION 4 */
+                url('https://luxride.neocities.org/Image%20/rate-background-v5.webp'); /* New Rate-Specific Background - VERSION 5 */
             background-size: cover;
             text-align: center;
             background-attachment: fixed;
@@ -139,11 +141,11 @@
             position: relative;
             z-index: 2;
             text-shadow: 0 0 12px var(--gold-highlight);
-            font-size: 3.2rem; /* Slightly larger motto on Rate page - VERSION 30 */
+            font-size: 3.2rem; /* Slightly larger motto on Rate page - VERSION 31 - ENHANCED VISUALS & PERFORMANCE + DATA MANAGEMENT SYSTEM + STAR RATING */
         }
 
         .rate-hero .motto span {
-            font-size: 1.2rem; /* Adjusted span size - VERSION 30 */
+            font-size: 1.2rem; /* Adjusted span size - VERSION 31 - ENHANCED VISUALS & PERFORMANCE + DATA MANAGEMENT SYSTEM + STAR RATING */
             color: var(--text-color-light);
         }
 
@@ -157,21 +159,22 @@
             border-radius: 10px;
             opacity: 0;
             transform: translateY(30px);
+            transition: opacity 0.5s ease, transform 0.5s ease; /* Performance: Added transition for smoother reveal */
         }
 
-        .section.rating-main-section { /* New Class for Rating Main Section - VERSION 30 */
+        .section.rating-main-section { /* New Class for Rating Main Section - VERSION 31 - ENHANCED VISUALS & PERFORMANCE + DATA MANAGEMENT SYSTEM + STAR RATING */
             background: var(--dark-primary);
             box-shadow: 0 0 30px rgba(0, 0, 0, 0.5), 0 0 60px rgba(var(--gold-rgb-values), 0.5);
-            padding-top: 5rem; /* Less top padding for main section - VERSION 30 */
-            padding-bottom: 5rem; /* Less bottom padding for main section - VERSION 30 */
+            padding-top: 5rem; /* Less top padding for main section - VERSION 31 - ENHANCED VISUALS & PERFORMANCE + DATA MANAGEMENT SYSTEM + STAR RATING */
+            padding-bottom: 5rem; /* Less bottom padding for main section - VERSION 31 - ENHANCED VISUALS & PERFORMANCE + DATA MANAGEMENT SYSTEM + STAR RATING */
         }
 
-        .section.feedback-info-section { /* New Section for Feedback Info - VERSION 30 */
-            background: var(--dark-secondary); /* Slightly different background for contrast - VERSION 30 */
-            box-shadow: 0 0 25px rgba(0, 0, 0, 0.4), 0 0 50px rgba(var(--gold-rgb-values), 0.4); /* Slightly different shadow - VERSION 30 */
-            margin-top: 4rem; /* Add some space above this section - VERSION 30 */
-            padding-top: 6rem; /* Adjust padding for this section - VERSION 30 */
-            padding-bottom: 6rem; /* Adjust padding for this section - VERSION 30 */
+        .section.feedback-info-section { /* New Section for Feedback Info - VERSION 31 - ENHANCED VISUALS & PERFORMANCE + DATA MANAGEMENT SYSTEM + STAR RATING */
+            background: var(--dark-secondary); /* Slightly different background for contrast - VERSION 31 - ENHANCED VISUALS & PERFORMANCE + DATA MANAGEMENT SYSTEM + STAR RATING */
+            box-shadow: 0 0 25px rgba(0, 0, 0, 0.4), 0 0 50px rgba(var(--gold-rgb-values), 0.4); /* Slightly different shadow - VERSION 31 - ENHANCED VISUALS & PERFORMANCE + DATA MANAGEMENT SYSTEM + STAR RATING */
+            margin-top: 4rem; /* Add some space above this section - VERSION 31 - ENHANCED VISUALS & PERFORMANCE + DATA MANAGEMENT SYSTEM + STAR RATING */
+            padding-top: 6rem; /* Adjust padding for this section - VERSION 31 - ENHANCED VISUALS & PERFORMANCE + DATA MANAGEMENT SYSTEM + STAR RATING */
+            padding-bottom: 6rem; /* Adjust padding for this section - VERSION 31 - ENHANCED VISUALS & PERFORMANCE + DATA MANAGEMENT SYSTEM + STAR RATING */
         }
 
 
@@ -193,43 +196,49 @@
             text-shadow: 0 0 8px var(--gold-highlight);
         }
 
-        .feedback-info-section h2 { /* Style for Feedback Info Section Heading - VERSION 30 */
-            font-size: 2.6rem; /* Slightly smaller heading for this section - VERSION 30 */
-            margin-bottom: 2rem; /* Adjust margin - VERSION 30 */
+        .feedback-info-section h2 { /* Style for Feedback Info Section Heading - VERSION 31 - ENHANCED VISUALS & PERFORMANCE + DATA MANAGEMENT SYSTEM + STAR RATING */
+            font-size: 2.6rem; /* Slightly smaller heading for this section - VERSION 31 - ENHANCED VISUALS & PERFORMANCE + DATA MANAGEMENT SYSTEM + STAR RATING */
+            margin-bottom: 2rem; /* Adjust margin - VERSION 31 - ENHANCED VISUALS & PERFORMANCE + DATA MANAGEMENT SYSTEM + STAR RATING */
         }
 
 
-    .fleet-grid { /* Reusing Fleet Grid Style - May not be needed on Rate page */
+    .fleet-grid { /* Reusing Fleet Grid Style - May not be needed on Rate page - VERSION 31 - ENHANCED VISUALS & PERFORMANCE + DATA MANAGEMENT SYSTEM + STAR RATING */
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
             gap: 2rem;
             margin: 3rem 0;
         }
 
-    .vehicle-card { /* Reusing Vehicle Card Style - May not be needed on Rate page */
+    .vehicle-card { /* Reusing Vehicle Card Style - May not be needed on Rate page - VERSION 31 - ENHANCED VISUALS & PERFORMANCE + DATA MANAGEMENT SYSTEM + STAR RATING */
             border: none;
             border-radius: 12px;
             overflow: hidden;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            transition: transform 0.3s ease, box-shadow 0.3s ease, opacity 0.3s ease; /* Performance: Added opacity transition */
             background: var(--dark-primary);
             box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
             opacity: 0;
             transform: translateY(20px);
         }
 
-    .vehicle-card:hover { /* Reusing Vehicle Card Hover Style - May not be needed on Rate page */
+    .vehicle-card:hover { /* Reusing Vehicle Card Hover Style - May not be needed on Rate page - VERSION 31 - ENHANCED VISUALS & PERFORMANCE + DATA MANAGEMENT SYSTEM + STAR RATING */
             transform: scale(1.05) translateY(-5px);
             box-shadow: 0 12px 25px rgba(0, 0, 0, 0.5), 0 0 50px rgba(var(--gold-highlight-rgb-values), 0.4);
         }
 
-    .vehicle-card img { /* Reusing Vehicle Card Image Style - May not be needed on Rate page */
+    .vehicle-card img { /* Reusing Vehicle Card Image Style - May not be needed on Rate page - VERSION 31 - ENHANCED VISUALS & PERFORMANCE + DATA MANAGEMENT SYSTEM + STAR RATING */
             width: 100%;
             height: 350px;
             object-fit: cover;
             position: relative;
+            transition: opacity 0.3s ease; /* Performance: Image opacity transition */
         }
 
-    .vehicle-card::after { /* Reusing Vehicle Card Overlay Style - May not be needed on Rate page */
+        .vehicle-card img:hover {
+            opacity: 0.95; /* Visual: Subtle image darkening on hover */
+        }
+
+
+    .vehicle-card::after { /* Reusing Vehicle Card Overlay Style - May not be needed on Rate page - VERSION 31 - ENHANCED VISUALS & PERFORMANCE + DATA MANAGEMENT SYSTEM + STAR RATING */
             content: '';
             position: absolute;
             left: 0;
@@ -242,21 +251,21 @@
         }
 
 
-    .vs-credit { /* Reusing VS Credit Style - May not be needed on Rate page */
+    .vs-credit { /* Reusing VS Credit Style - May not be needed on Rate page - VERSION 31 - ENHANCED VISUALS & PERFORMANCE + DATA MANAGEMENT SYSTEM + STAR RATING */
             padding: 1.2rem;
             text-align: center;
             color: var(--text-color-gold);
             font-weight: 500;
         }
 
-    .nav-overlay { /* Reusing Nav Overlay Styles */
+    .nav-overlay { /* Reusing Nav Overlay Styles - VERSION 31 - ENHANCED VISUALS & PERFORMANCE + DATA MANAGEMENT SYSTEM + STAR RATING */
             position: fixed;
             top: 0;
             right: -70%;
             width: 70%;
             height: 100%;
             background-color: rgba(var(--dark-rgb-values), 0.85);
-            transition: right 0.6s easeInOutCubic;
+            transition: right 0.5s easeInOutCubic; /* Performance: Slightly faster nav transition */
             z-index: 999;
             padding-top: 5rem;
             display: flex;
@@ -273,128 +282,112 @@
         }
 
 
-    .nav-item { /* Reusing Nav Item Styles */
+    .nav-item { /* Reusing Nav Item Styles - VERSION 31 - ENHANCED VISUALS & PERFORMANCE + DATA MANAGEMENT SYSTEM + STAR RATING */
             padding: 1.5rem 2rem;
             color: var(--text-color-light);
             border-bottom: 1px solid var(--gold);
             width: 100%;
             text-align: center;
-            transition: opacity 0.3s ease, color 0.3s ease;
+            transition: opacity 0.2s ease, color 0.2s ease, background-color 0.2s ease; /* Performance: Faster nav item transitions + background-color */
         }
 
-    .nav-item:last-child { /* Reusing Nav Item Last Child Style */
+    .nav-item:last-child { /* Reusing Nav Item Last Child Style - VERSION 31 - ENHANCED VISUALS & PERFORMANCE + DATA MANAGEMENT SYSTEM + STAR RATING */
             border-bottom: none;
         }
 
-    .nav-item:hover { /* Reusing Nav Item Hover Style */
-            opacity: 0.9;
+    .nav-item:hover { /* Reusing Nav Item Hover Style - VERSION 31 - ENHANCED VISUALS & PERFORMANCE + DATA MANAGEMENT SYSTEM + STAR RATING */
+            opacity: 1; /* Visual: Slightly less transparent on hover */
             color: var(--gold-highlight);
+            background-color: rgba(var(--gold-rgb-values), 0.1); /* Visual: Subtle background highlight on hover */
         }
 
-        footer { /* Reusing Footer Styles */
+        footer { /* Reusing Footer Styles - VERSION 31 - ENHANCED VISUALS & PERFORMANCE + DATA MANAGEMENT SYSTEM + STAR RATING */
             text-align: center;
             padding: 3rem 1rem;
             border-top: 1px solid #333;
             font-size: 0.9rem;
             color: #777;
             background: var(--dark-primary);
+            transition: color 0.3s ease; /* Performance: Footer text color transition */
         }
 
-        footer p:not(.service-status):hover { /* Reusing Footer Paragraph Hover Style */
+        footer p:not(.service-status):hover { /* Reusing Footer Paragraph Hover Style - VERSION 31 - ENHANCED VISUALS & PERFORMANCE + DATA MANAGEMENT SYSTEM + STAR RATING */
             color: var(--gold);
         }
 
 
-        footer.service-status { /* Reusing Footer Service Status Style */
+        footer.service-status { /* Reusing Footer Service Status Style - VERSION 31 - ENHANCED VISUALS & PERFORMANCE + DATA MANAGEMENT SYSTEM + STAR RATING */
             color: var(--gold);
             font-size: 0.9rem;
             margin-top: 0.5rem;
-            animation: fade-pulse 2s ease-in-out infinite alternate;
+            animation: fade-pulse 1.8s ease-in-out infinite alternate; /* Performance: Slightly faster pulse animation */
         }
 
-        /* Button Styles - VERSION 30 - Reusing Button Style from Version 26 */
+        /* Button Styles - VERSION 31 - Reusing Button Style from Version 42 (Join Page) + Data Management System + Star Rating */
     .legacy-button {
             display: inline-block;
             padding: 1rem 2rem;
-            background: none;
-            color: var(--gold);
+            background: var(--gold);
+            color: #000;
             text-decoration: none;
             margin-top: 1rem;
-            border: 2px solid var(--gold);
-            border-radius: 8px;
-            font-family: 'Bebas Neue', sans-serif;
+            border: none; /* Remove default button border */
+            border-radius: 8px; /* Button border-radius */
+            font-family: 'Bebas Neue', sans-serif; /* Use Bebas Neue for button text */
             font-size: 1.2rem;
             text-transform: uppercase;
             letter-spacing: 0.05em;
             cursor: pointer;
-            transition: background-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease, color 0.3s ease;
-            box-shadow: 0 0 10px rgba(var(--gold-rgb-values), 0.5);
-            position: relative;
-            overflow: hidden;
-        }
-
-    .legacy-button::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: var(--gold-highlight);
-            clip-path: polygon(0 0, 100% 0%, 100% 0%, 0 0%);
-            transition: clip-path 0.7s cubic-bezier(0.65, 0, 0.16, 1), background-color 0.3s ease;
-            z-index: -1;
+            transition: background-color 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease, color 0.2s ease; /* Performance: Faster button transitions + color */
+            box-shadow: 0 2px 10px rgba(var(--gold-rgb-values), 0.4); /* Visual: Button default subtle shadow */
         }
 
     .legacy-button:hover {
-            background-color: rgba(var(--gold-rgb-values), 0.1);
-            color: #000;
-            box-shadow: 0 0 20px rgba(var(--gold-highlight-rgb-values), 0.8);
-            border-color: var(--gold-highlight);
-        }
-
-        .legacy-button:hover::before {
-            clip-path: polygon(0 0, 100% 0%, 100% 100%, 0% 100%);
+            background-color: var(--gold-highlight); /* Brighter gold on hover */
+            transform: scale(1.03); /* Visual: Subtler scale up on hover */
+            box-shadow: 0 0 12px rgba(var(--gold-highlight-rgb-values), 0.7); /* Visual: Refined hover glow shadow */
+            color: #111; /* Visual: Darker text on button hover for contrast */
         }
 
         .legacy-button:active {
-            transform: scale(0.95);
+            transform: scale(0.99); /* Visual: Even subtler scale down on click */
+            box-shadow: 0 0 8px rgba(var(--gold-highlight-rgb-values), 0.7); /* Visual: Subtler active glow */
         }
 
 
-    .wave-effect:hover { /* Reusing Wave Effect Style */
-            animation: wave 1.5s ease-in-out infinite;
+    .wave-effect:hover { /* Reusing Wave Effect Style - VERSION 31 - ENHANCED VISUALS & PERFORMANCE + DATA MANAGEMENT SYSTEM + STAR RATING */
+            animation: wave 1.2s ease-in-out infinite; /* Performance: Slightly faster wave animation */
         }
 
 
-        /* Keyframes for animations - VERSION 30 - Reusing Keyframes from Version 26 */
-        @keyframes logo-pulse { /* Reused from Version 22 */
+        /* Keyframes for animations - VERSION 31 - Reusing Keyframes from Version 42 (Join Page) + Data Management System + Star Rating */
+        @keyframes logo-pulse { /* Reused from Version 22 - VERSION 31 - ENHANCED VISUALS & PERFORMANCE + DATA MANAGEMENT SYSTEM + STAR RATING */
             0% { text-shadow: 0 0 8px var(--gold); color: var(--gold); }
             50% { text-shadow: 0 0 15px var(--gold-highlight); color: var(--gold-highlight); }
             100% { text-shadow: 0 0 8px var(--gold); color: var(--gold); }
         }
 
-        @keyframes logo-fade-pulse { /* For Logo Text Only - Version 24 Style */
+        @keyframes logo-fade-pulse { /* For Logo Text Only - Version 24 Style - VERSION 31 - ENHANCED VISUALS & PERFORMANCE + DATA MANAGEMENT SYSTEM + STAR RATING */
             0% { text-shadow: 0 0 4px var(--gold-refined); color: var(--gold-refined); opacity: 0.95;}
             100% { text-shadow: 0 0 6px var(--gold-refined-highlight); color: var(--gold-refined); opacity: 1;}
         }
 
 
-        @keyframes fade-pulse { /* Reused from Version 22 */
+        @keyframes fade-pulse { /* Reused from Version 22 - VERSION 31 - ENHANCED VISUALS & PERFORMANCE + DATA MANAGEMENT SYSTEM + STAR RATING */
             0% { opacity: 0.6; }
             50% { opacity: 1; }
             100% { opacity: 0.6; }
         }
 
-        @keyframes wave { /* Reused from Version 22 */
+        @keyframes wave { /* Reused from Version 22 - VERSION 31 - ENHANCED VISUALS & PERFORMANCE + DATA MANAGEMENT SYSTEM + STAR RATING - Performance: Slightly faster wave animation */
             0% { transform: rotate(0deg); }
-            25% { transform: rotate(5deg); }
-            50% { transform: rotate(-5deg); }
-            75% { transform: rotate(5deg); }
+            25% { transform: rotate(4deg); } /* Visual: Reduced wave rotation slightly */
+            50% { transform: rotate(-4deg); } /* Visual: Reduced wave rotation slightly */
+            75% { transform: rotate(4deg); } /* Visual: Reduced wave rotation slightly */
             100% { transform: rotate(0deg); }
         }
 
-        @keyframes fadeInUp { /* Reused from Version 22 */
+        @keyframes fadeInUp { /* Reused from Version 22 - VERSION 31 - ENHANCED VISUALS & PERFORMANCE + DATA MANAGEMENT SYSTEM + STAR RATING - Performance: Slightly faster fadeInUp animation */
             to {
                 opacity: 1;
                 transform: translateY(0);
@@ -416,30 +409,106 @@
         .vehicle-card img { height: 350px; }
         }
 
-        /* --- RATE DRIVER PAGE SPECIFIC STYLES - VERSION 30 - Added Content & Logo Fix --- */
+        /* --- RATE DRIVER PAGE SPECIFIC STYLES - VERSION 32 - ENHANCED DRIVER SELECTION + DATA MANAGEMENT SYSTEM + STAR RATING --- */
 
-        .rate-section-intro { /* VERSION 30 - Intro moved into main section, expanded content */
+        .rate-section-intro { /* VERSION 31 - Intro paragraph style - ENHANCED VISUALS & PERFORMANCE + DATA MANAGEMENT SYSTEM + STAR RATING */
             color: var(--text-color-light);
             font-size: 1.1rem;
             line-height: 1.7;
-            margin-bottom: 2.5rem; /* Increased margin - VERSION 30 */
+            margin-bottom: 2.5rem;
             opacity: 0.9;
             text-align: center;
             max-width: 900px;
             margin-left: auto;
             margin-right: auto;
+            transition: opacity 0.3s ease; /* Performance: Intro text opacity transition */
+        }
+
+        .rate-section-intro:hover {
+            opacity: 1; /* Visual: Slightly less transparent on hover */
         }
 
 
-        .rating-main-section h2 { /* VERSION 30 - Main section heading style */
-            margin-bottom: 2rem; /* Slightly reduced heading margin - VERSION 30 */
-            font-size: 3rem; /* Larger heading in main section - VERSION 30 */
+        .rating-main-section h2 { /* VERSION 31 - Main section heading style - ENHANCED VISUALS & PERFORMANCE + DATA MANAGEMENT SYSTEM + STAR RATING */
+            margin-bottom: 2rem;
+            font-size: 3rem;
+        }
+
+        .driver-selection-type { /* VERSION 32 - Style for radio button container */
+            display: flex;
+            gap: 1.5rem;
+            margin-bottom: 1rem;
+            justify-content: center; /* Center the radio buttons */
+        }
+
+        .driver-selection-type label { /* VERSION 32 - Style for radio button labels */
+            color: var(--text-color-light);
+            font-weight: 500;
+            opacity: 0.95;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            cursor: pointer;
+            transition: opacity 0.3s ease, color 0.3s ease;
+        }
+
+        .driver-selection-type label:hover {
+            opacity: 1;
+            color: var(--gold-highlight);
+        }
+
+        .driver-selection-type input[type="radio"] { /* VERSION 32 - Style for radio buttons */
+            appearance: none;
+            -webkit-appearance: none;
+            -moz-appearance: none;
+            width: 16px;
+            height: 16px;
+            border: 2px solid var(--gold);
+            border-radius: 50%;
+            background-color: #222;
+            cursor: pointer;
+            position: relative;
+            transition: background-color 0.2s ease, border-color 0.2s ease;
+        }
+
+        .driver-selection-type input[type="radio"]:checked {
+            background-color: var(--gold-highlight);
+            border-color: var(--gold-highlight);
+        }
+
+        .driver-selection-type input[type="radio"]:focus {
+            outline: none;
+            box-shadow: 0 0 8px rgba(var(--gold-highlight-rgb-values), 0.7);
+        }
+
+        .driver-selection-type input[type="radio"]:checked::after { /* The inner dot when checked */
+            content: '';
+            display: block;
+            position: absolute;
+            top: 3px;
+            left: 3px;
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: var(--dark-primary);
+        }
+
+
+        #driverDropdownContainer,
+        #driverManualInputContainer {
+            margin-top: 1rem; /* Spacing for dropdown and manual input */
         }
 
 
         .form-group {
             margin-bottom: 2rem;
+            transition: margin-bottom 0.3s ease; /* Performance: Form group margin transition */
         }
+
+        .form-group:hover {
+            margin-bottom: 2.2rem; /* Visual: Slight margin increase on hover */
+        }
+
 
         .form-group label {
             display: block;
@@ -447,12 +516,18 @@
             font-weight: 500;
             color: var(--text-color-light);
             opacity: 0.95;
+            transition: opacity 0.3s ease, color 0.3s ease; /* Performance: Label transitions */
+        }
+
+        .form-group label:hover {
+            opacity: 1; /* Visual: Slightly less transparent on hover */
+            color: var(--gold-highlight); /* Visual: Gold highlight on label hover */
         }
 
         .form-group input[type="text"],
         .form-group input[type="email"],
         .form-group textarea,
-        .form-group select { /* Added select for dropdown */
+        .form-group select { /* Added select for dropdown - VERSION 31 - ENHANCED VISUALS & PERFORMANCE + DATA MANAGEMENT SYSTEM + STAR RATING */
             width: 100%;
             padding: 1.2rem 1.5rem;
             border: 2px solid #444;
@@ -460,28 +535,37 @@
             background-color: #222;
             color: var(--text-color-light);
             font-size: 1.05rem;
-            transition: border-color 0.3s ease, box-shadow 0.3s ease;
-            appearance: none; /* Reset default select appearance */
-            -webkit-appearance: none; /* For Safari */
-            -moz-appearance: none; /* For Firefox */
+            transition: border-color 0.2s ease, box-shadow 0.2s ease, background-color 0.2s ease; /* Performance: Faster input transitions + background-color */
+            appearance: none; /* Reset default select appearance - VERSION 31 - ENHANCED VISUALS & PERFORMANCE + DATA MANAGEMENT SYSTEM + STAR RATING */
+            -webkit-appearance: none; /* For Safari - VERSION 31 - ENHANCED VISUALS & PERFORMANCE + DATA MANAGEMENT SYSTEM + STAR RATING */
+            -moz-appearance: none; /* For Firefox - VERSION 31 - ENHANCED VISUALS & PERFORMANCE + DATA MANAGEMENT SYSTEM + STAR RATING */
             background-image: url('data:image/svg+xml;utf8,<svg fill="white" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"><path d="M7 10l5 5 5-5z"/><path d="M0 0h24v24H0z" fill="none"/></svg>');
             background-repeat: no-repeat;
             background-position-x: 100%;
             background-position-y: 12px;
-            padding-right: 2.5rem; /* Make space for dropdown arrow */
+            padding-right: 2.5rem; /* Make space for dropdown arrow - VERSION 31 - ENHANCED VISUALS & PERFORMANCE + DATA MANAGEMENT SYSTEM + STAR RATING */
         }
+
+        .form-group input[type="text"]:hover,
+        .form-group input[type="email"]:hover,
+        .form-group textarea:hover,
+        .form-group select:hover { /* Added select input hover style - VERSION 31 - ENHANCED VISUALS & PERFORMANCE + DATA MANAGEMENT SYSTEM + STAR RATING */
+            background-color: #333; /* Visual: Slightly lighter background on input hover */
+        }
+
 
         .form-group input[type="text"]:focus,
         .form-group input[type="email"]:focus,
         .form-group textarea:focus,
-        .form-group select:focus { /* Added select for focus style */
+        .form-group select:focus { /* Added select input focus style - VERSION 31 - ENHANCED VISUALS & PERFORMANCE + DATA MANAGEMENT SYSTEM + STAR RATING */
             border-color: var(--gold-highlight);
             outline: none;
-            box-shadow: 0 0 12px rgba(var(--gold-highlight-rgb-values), 0.6);
+            box-shadow: 0 0 10px rgba(var(--gold-highlight-rgb-values), 0.7); /* Visual: Refined focus glow */
+            background-color: #282828; /* Visual: Slightly lighter background on input focus */
         }
 
 
-        /* --- VERSION 30 - Star Rating Styling (No Changes) --- */
+        /* --- VERSION 31 - Star Rating Styling (No Changes from Version 30) --- */
         .form-group.star-rating-group label {
             display: block; /* Labels on their own line */
             margin-bottom: 0.8rem;
@@ -515,24 +599,36 @@
 
 
         .legacy-button.submit-button {
-            margin-top: 3rem; /* Even more top margin for submit button - VERSION 30 */
-            padding: 1.4rem 3rem; /* Slightly larger submit button - VERSION 30 */
+            margin-top: 3rem; /* Even more top margin for submit button - VERSION 31 - ENHANCED VISUALS & PERFORMANCE + DATA MANAGEMENT SYSTEM + STAR RATING */
+            padding: 1.4rem 3rem; /* Slightly larger submit button - VERSION 31 - ENHANCED VISUALS & PERFORMANCE + DATA MANAGEMENT SYSTEM + STAR RATING */
             font-size: 1.5rem;
-            box-shadow: 0 0 20px rgba(var(--gold-rgb-values), 0.8); /* Stronger shadow - VERSION 30 */
+            box-shadow: 0 0 20px rgba(var(--gold-rgb-values), 0.8); /* Stronger shadow - VERSION 31 - ENHANCED VISUALS & PERFORMANCE + DATA MANAGEMENT SYSTEM + STAR RATING */
+            transition: box-shadow 0.2s ease; /* Performance: Submit button box-shadow transition */
         }
 
+        .legacy-button.submit-button:hover {
+             box-shadow: 0 0 25px rgba(var(--gold-highlight-rgb-values), 0.8); /* Visual: Enhanced hover glow */
+        }
+
+
         #ratingMessage {
-            margin-top: 3rem; /* More top margin for message - VERSION 30 */
-            padding: 2rem 2.2rem; /* Slightly larger message padding - VERSION 30 */
+            margin-top: 3rem; /* More top margin for message - VERSION 31 - ENHANCED VISUALS & PERFORMANCE + DATA MANAGEMENT SYSTEM + STAR RATING */
+            padding: 2rem 2.2rem; /* Slightly larger message padding - VERSION 31 - ENHANCED VISUALS & PERFORMANCE + DATA MANAGEMENT SYSTEM + STAR RATING */
             background-color: rgba(var(--gold-rgb-values), 0.1);
             border: 2px solid var(--gold);
-            border-radius: 12px; /* More rounded message box - VERSION 30 */
+            border-radius: 12px; /* More rounded message box - VERSION 31 - ENHANCED VISUALS & PERFORMANCE + DATA MANAGEMENT SYSTEM + STAR RATING */
             text-align: center;
             display: none;
-            animation: fadeInScale 0.5s ease-out forwards, pulseMessage 2s infinite alternate;
-            font-size: 1.2rem; /* Slightly larger message font - VERSION 30 */
+            animation: fadeInScale 0.4s ease-out forwards, pulseMessage 1.6s infinite alternate; /* Performance: Slightly faster message animations */
+            font-size: 1.2rem; /* Slightly larger message font - VERSION 31 - ENHANCED VISUALS & PERFORMANCE + DATA MANAGEMENT SYSTEM + STAR RATING */
             letter-spacing: 0.06rem;
-            box-shadow: 0 0 15px rgba(var(--gold-rgb-values), 0.7); /* Stronger message shadow - VERSION 30 */
+            box-shadow: 0 0 15px rgba(var(--gold-rgb-values), 0.7); /* Stronger message shadow - VERSION 31 - ENHANCED VISUALS & PERFORMANCE + DATA MANAGEMENT SYSTEM + STAR RATING */
+            transition: box-shadow 0.3s ease, background-color 0.3s ease; /* Performance: Message box-shadow and background-color transitions */
+        }
+
+        #ratingMessage:hover {
+            background-color: rgba(var(--gold-rgb-values), 0.15); /* Visual: Slightly darker background on message hover */
+            box-shadow: 0 0 18px rgba(var(--gold-highlight-rgb-values), 0.8); /* Visual: Enhanced message hover glow */
         }
 
 
@@ -545,9 +641,28 @@
             font-size: 1rem;
             margin-top: 0.6rem;
             display: none;
-            animation: slideInLeft 0.3s ease-out forwards, slightBounce 0.4s ease-out;
+            animation: slideInLeft 0.25s ease-out forwards, slightBounce 0.35s ease-out; /* Performance: Slightly faster error animations */
             transform: translateX(-10px);
             opacity: 0;
+            transition: color 0.2s ease, opacity 0.2s ease; /* Performance: Error message transitions */
+        }
+
+        .error-message:hover {
+            color: #ffaaaa; /* Visual: Slightly lighter red on error hover */
+            opacity: 0.9; /* Visual: Slightly less transparent on error hover */
+        }
+
+
+        @keyframes slideInLeft {
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        @keyframes slightBounce {
+            0%, 100% { transform: translateX(0); }
+            50% { transform: translateX(3px); } /* Visual: Reduced bounce distance slightly */
         }
 
 
@@ -555,51 +670,64 @@
             display: block;
         }
 
-        .feedback-info-section .section-paragraph { /* Style for paragraphs in feedback info section - VERSION 30 */
-            font-size: 1.05rem; /* Slightly larger font for info section paragraphs - VERSION 30 */
-            line-height: 1.8; /* Increased line height for readability - VERSION 30 */
-            color: #ddd; /* Slightly lighter text color - VERSION 30 */
-            opacity: 0.85; /* Slightly reduced opacity - VERSION 30 */
-            max-width: 850px; /* Restrict paragraph width for better reading - VERSION 30 */
+        .feedback-info-section .section-paragraph { /* Style for paragraphs in feedback info section - VERSION 31 - ENHANCED VISUALS & PERFORMANCE + DATA MANAGEMENT SYSTEM + STAR RATING */
+            font-size: 1.05rem; /* Slightly larger font for info section paragraphs - VERSION 31 - ENHANCED VISUALS & PERFORMANCE + DATA MANAGEMENT SYSTEM + STAR RATING */
+            line-height: 1.8; /* Increased line height for readability - VERSION 31 - ENHANCED VISUALS & PERFORMANCE + DATA MANAGEMENT SYSTEM + STAR RATING */
+            color: #ddd; /* Slightly lighter text color - VERSION 31 - ENHANCED VISUALS & PERFORMANCE + DATA MANAGEMENT SYSTEM + STAR RATING */
+            opacity: 0.85; /* Slightly reduced opacity - VERSION 31 - ENHANCED VISUALS & PERFORMANCE + DATA MANAGEMENT SYSTEM + STAR RATING */
+            max-width: 850px; /* Restrict paragraph width for better reading - VERSION 31 - ENHANCED VISUALS & PERFORMANCE + DATA MANAGEMENT SYSTEM + STAR RATING */
             margin-left: auto;
             margin-right: auto;
-            margin-bottom: 1.8rem; /* Spacing between paragraphs - VERSION 30 */
-            text-align: center; /* Center align paragraphs - VERSION 30 */
+            margin-bottom: 1.8rem; /* Spacing between paragraphs - VERSION 31 - ENHANCED VISUALS & PERFORMANCE + DATA MANAGEMENT SYSTEM + STAR RATING */
+            text-align: center; /* Center align paragraphs - VERSION 31 - ENHANCED VISUALS & PERFORMANCE + DATA MANAGEMENT SYSTEM + STAR RATING */
+            transition: opacity 0.3s ease; /* Performance: Info section paragraph opacity transition */
         }
 
-        .feedback-info-section .section-paragraph:last-child { /* Remove bottom margin from last paragraph - VERSION 30 */
+        .feedback-info-section .section-paragraph:hover {
+            opacity: 0.95; /* Visual: Slightly less transparent on hover */
+        }
+
+
+        .feedback-info-section .section-paragraph:last-child { /* Remove bottom margin from last paragraph - VERSION 31 - ENHANCED VISUALS & PERFORMANCE + DATA MANAGEMENT SYSTEM + STAR RATING */
             margin-bottom: 0;
         }
 
 
-        .word-count { /* Reusing Word Count Style - Might not be needed */
+        .word-count { /* Reusing Word Count Style - Might not be needed - VERSION 31 - ENHANCED VISUALS & PERFORMANCE + DATA MANAGEMENT SYSTEM + STAR RATING */
             font-size: 0.9rem;
             color: #aaa;
             text-align: right;
             margin-top: 0.3rem;
             opacity: 0.7;
+            transition: color 0.3s ease, opacity 0.3s ease; /* Performance: Word count transitions */
+        }
+
+        .word-count:hover {
+            color: #ccc; /* Visual: Lighter color on word count hover */
+            opacity: 0.9; /* Visual: Slightly less transparent on hover */
         }
 
 
-        footer { /* Reusing Footer Styles */
+        footer { /* Reusing Footer Styles - VERSION 31 - ENHANCED VISUALS & PERFORMANCE + DATA MANAGEMENT SYSTEM + STAR RATING */
             text-align: center;
             padding: 3rem 1rem;
             border-top: 1px solid #333;
             font-size: 0.9rem;
             color: #777;
             background: var(--dark-primary);
+            transition: color 0.3s ease; /* Performance: Footer text color transition */
         }
 
-        footer p:not(.service-status):hover { /* Reusing Footer Paragraph Hover Style */
+        footer p:not(.service-status):hover { /* Reusing Footer Paragraph Hover Style - VERSION 31 - ENHANCED VISUALS & PERFORMANCE + DATA MANAGEMENT SYSTEM + STAR RATING */
             color: var(--gold);
         }
 
 
-        footer.service-status { /* Reusing Footer Service Status Style */
+        footer.service-status { /* Reusing Footer Service Status Style - VERSION 31 - ENHANCED VISUALS & PERFORMANCE + DATA MANAGEMENT SYSTEM + STAR RATING */
             color: var(--gold);
             font-size: 0.9rem;
             margin-top: 0.5rem;
-            animation: fade-pulse 2s ease-in-out infinite alternate;
+            animation: fade-pulse 1.8s ease-in-out infinite alternate; /* Performance: Slightly faster pulse animation */
         }
 
 
@@ -621,9 +749,9 @@
     </div>
 
     <section class="rate-hero">
-        <h1 class="motto">
-            Rate LuxRide Drivers<br>
-            <span style="font-size: 1.1rem; color: var(--text-color-light);">Help us recognize excellence & improve.</span>
+        <h1 class="motto" data-aos="fade-up" data-aos-duration="1000">
+            Rate Our Drivers<br>
+            <span style="font-size: 1.1rem; color: var(--text-color-light);">Your feedback drives our excellence.</span>
         </h1>
     </section>
 
@@ -649,9 +777,27 @@
             </div>
 
             <div class="form-group" data-aos="fade-up" data-aos-duration="900" data-aos-delay="200">
-                <label for="driverName">Driver Name (INGAME):</label>
-                <input type="text" id="driverName" name="driverName" placeholder="Enter Driver's In-Game Name" required>
-                <div class="error-message" id="driverNameError">Please enter the driver's in-game name.</div>
+                <label>Driver Name (INGAME):</label>
+
+                <div class="driver-selection-type">
+                    <label><input type="radio" name="driverSelectionType" value="list" id="driverSelectList" checked> Select from List</label>
+                    <label><input type="radio" name="driverSelectionType" value="manual" id="driverManualEntry"> Enter Manually</label>
+                </div>
+
+                <div id="driverDropdownContainer">
+                    <select id="driverDropdown" name="driverDropdown">
+                        <option value="">Select Driver</option>
+                        <option value="driver1">Driver Profile 1</option>
+                        <option value="driver2">Driver Profile 2</option>
+                        <option value="driver3">Driver Profile 3</option>
+                    </select>
+                    <div class="error-message" id="driverDropdownError">Please select a driver from the list.</div>
+                </div>
+
+                <div id="driverManualInputContainer" style="display:none;">
+                    <input type="text" id="driverNameManual" name="driverNameManual" placeholder="Enter Driver's In-Game Name">
+                    <div class="error-message" id="driverNameManualError">Please enter the driver's in-game name.</div>
+                </div>
             </div>
 
 
@@ -729,7 +875,7 @@
 
         function toggleMenu() {
             const menu = document.querySelector('.nav-overlay');
-            gsap.to(menu, {right: menu.style.right === '0px'? (window.innerWidth < 768? '-70%': '-300px'): '0px', duration: 0.6, ease: "easeInOutCubic"});
+            gsap.to(menu, {right: menu.style.right === '0px'? (window.innerWidth < 768? '-70%': '-300px'): '0px', duration: 0.5, ease: "easeInOutCubic"});
         }
 
         document.addEventListener('click', function(e) {
@@ -742,72 +888,202 @@
 
         const ratingForm = document.getElementById('ratingForm');
         const ratingMessage = document.getElementById('ratingMessage');
-        const fullNameInput = document.getElementById('fullName');
-        const discordIdInput = document.getElementById('discordId');
-        const driverNameInput = document.getElementById('driverName');
-        const starRatingInputs = document.querySelectorAll('input[name="driverRating"]'); // Select all star radio buttons
-        const commentsInput = document.getElementById('comments');
+
+        // --- VERSION 32 - DOM Elements for Driver Selection ---
+        const driverSelectListRadio = document.getElementById('driverSelectList');
+        const driverManualEntryRadio = document.getElementById('driverManualEntry');
+        const driverDropdownContainer = document.getElementById('driverDropdownContainer');
+        const driverManualInputContainer = document.getElementById('driverManualInputContainer');
+        const driverDropdown = document.getElementById('driverDropdown');
+        const driverNameManualInput = document.getElementById('driverNameManual');
 
 
-        const fullNameError = document.getElementById('fullNameError');
-        const discordIdError = document.getElementById('discordIdError');
-        const driverNameError = document.getElementById('driverNameError');
-        const driverRatingError = document.getElementById('driverRatingError');
+        // ========================= VERSION 32 - DATA MANAGEMENT SYSTEM START =========================
+
+        // --- 1. Data Definition (Configuration) - VERSION 32 - UPDATED for Driver Selection ---
+        const ratingFormConfig = {
+            formId: 'ratingForm',
+            dataFields: [
+                {
+                    name: 'fullName',
+                    fieldType: 'text',
+                    label: 'Full Name:',
+                    required: true,
+                    errorElementId: 'fullNameError'
+                },
+                {
+                    name: 'discordId',
+                    fieldType: 'text',
+                    label: 'Discord ID:',
+                    required: true,
+                    errorElementId: 'discordIdError'
+                },
+                {
+                    name: 'driverName', // Generic name, will hold driver name from either dropdown or manual input
+                    fieldType: 'driverSelection', // New field type to handle driver selection logic
+                    label: 'Driver Name (INGAME):',
+                    required: true,
+                    errorElementId: 'driverNameError' // Using the same error element for simplicity, adjust if needed
+                },
+                {
+                    name: 'driverRating',
+                    fieldType: 'rating', // Custom type for star rating
+                    label: 'Overall Rating:',
+                    required: true,
+                    errorElementId: 'driverRatingError'
+                },
+                {
+                    name: 'comments',
+                    fieldType: 'textarea',
+                    label: 'Additional Feedback (Optional):',
+                    required: false // Optional field
+                }
+            ],
+            submitButtonId: 'submitButton',
+            successMessageElementId: 'ratingMessage'
+        };
 
 
-        ratingForm.addEventListener('submit', function(event) {
-            event.preventDefault();
+        // --- 2. Data Handling Module (dataManager) - VERSION 32 - UPDATED for Driver Selection ---
+        const dataManager = {
+            validateForm: function(formConfig, formData) {
+                let errors = {};
+                formConfig.dataFields.forEach(field => {
+                    const fieldValue = formData[field.name];
+                    if (field.required && !fieldValue) {
+                        errors[field.name] = `${field.label} is required.`;
+                    }
+                    if (field.name === 'driverName' && field.required) { // VERSION 32 - Driver Name Validation Logic
+                        const selectionType = document.querySelector('input[name="driverSelectionType"]:checked').value;
+                        if (selectionType === 'list' && !formData.driverDropdown) {
+                            errors[field.name] = 'Please select a driver from the list.';
+                        } else if (selectionType === 'manual' && !formData.driverNameManual) {
+                            errors[field.name] = 'Please enter the driver\'s in-game name.';
+                        }
+                    }
+                });
+                return errors;
+            },
 
-            let isValid = true;
-            let starRatingSelected = false;
+            submitForm: function(formConfig, formData) {
+                // --- VERSION 32 - Simulate Submission (for now, just log to console) - UPDATED for Driver Selection ---
+                console.log('--- Driver Rating Form Data Submitted (Simulated) ---');
+                formConfig.dataFields.forEach(field => {
+                    let displayValue = formData[field.name];
+                    if (field.name === 'driverName') { // VERSION 32 - Display correct driver name based on selection
+                        const selectionType = document.querySelector('input[name="driverSelectionType"]:checked').value;
+                        displayValue = selectionType === 'list' ? formData.driverDropdown : formData.driverNameManual;
+                    }
+                    console.log(`${field.label}:`, displayValue);
+                });
+                console.log('---------------------------------------');
+                // --- In the future, this is where we would send rating data to LuxRide Operations Suite/Firebase ---
+            },
 
+            resetFormUI: function(formConfig) {
+                const form = document.getElementById(formConfig.formId);
+                form.reset(); // Reset form fields
+                 // Clear error messages
+                formConfig.dataFields.forEach(field => {
+                    const errorElement = document.getElementById(field.errorElementId);
+                    if (errorElement) {
+                        errorElement.classList.remove('show');
+                    }
+                });
+                // VERSION 31 - Uncheck star rating buttons on reset
+                const starRatingInputs = document.querySelectorAll('input[name="driverRating"]');
+                starRatingInputs.forEach(input => input.checked = false);
+                // VERSION 32 - Reset Driver Selection UI
+                driverSelectListRadio.checked = true; // Default to "Select from List"
+                driverDropdownContainer.style.display = 'block';
+                driverManualInputContainer.style.display = 'none';
+            },
 
-            fullNameError.classList.remove('show');
-            discordIdError.classList.remove('show');
-            driverNameError.classList.remove('show');
-            driverRatingError.classList.remove('show');
-
-
-            if (fullNameInput.value.trim() === '') {
-                fullNameError.classList.add('show');
-                isValid = false;
-            }
-
-            if (discordIdInput.value.trim() === '') {
-                discordIdError.classList.add('show');
-                isValid = false;
-            }
-
-            if (driverNameInput.value.trim() === '') {
-                driverNameError.classList.add('show');
-                isValid = false;
-            }
-
-
-            for (const starInput of starRatingInputs) {
-                if (starInput.checked) {
-                    starRatingSelected = true;
-                    break;
+            displaySuccessMessage: function(formConfig) {
+                const successMessageElement = document.getElementById(formConfig.successMessageElementId);
+                if (successMessageElement) {
+                    successMessageElement.classList.add('show');
+                    setTimeout(() => {
+                        successMessageElement.classList.remove('show');
+                    }, 4000); // VERSION 31 - Adjusted timeout to 4 seconds
                 }
             }
-            if (!starRatingSelected) {
-                driverRatingError.classList.add('show');
-                isValid = false;
-            }
+        };
 
 
-            if (isValid) {
-                ratingMessage.classList.add('show');
+        // --- 3. Updated Form Submission Logic - VERSION 32 - UPDATED for Driver Selection ---
+        ratingForm.addEventListener('submit', function(event) {
+            event.preventDefault(); // Prevent default form submission
 
-                ratingForm.reset();
-                starRatingInputs.forEach(input => input.checked = false); // Uncheck all star radio buttons
+            // Collect form data
+            const formData = {};
+            ratingFormConfig.dataFields.forEach(field => {
+                if (field.fieldType === 'rating') { // Handle star rating specifically
+                    const starRatingInputs = document.querySelectorAll('input[name="driverRating"]');
+                    let ratingValue = '';
+                    for (const starInput of starRatingInputs) {
+                        if (starInput.checked) {
+                            ratingValue = starInput.value;
+                            break;
+                        }
+                    }
+                    formData[field.name] = ratingValue;
+                } else if (field.name === 'driverName') { // VERSION 32 - Collect Driver Name based on selection
+                    const selectionType = document.querySelector('input[name="driverSelectionType"]:checked').value;
+                    formData[field.name] = selectionType === 'list' ? document.getElementById('driverDropdown').value : document.getElementById('driverNameManual').value;
+                    formData['driverDropdown'] = document.getElementById('driverDropdown').value; // Store dropdown value for validation
+                    formData['driverNameManual'] = document.getElementById('driverNameManual').value; // Store manual input value for validation
+                }
+
+                 else {
+                    formData[field.name] = document.getElementById(field.name).value;
+                }
+            });
 
 
-                setTimeout(() => {
-                    ratingMessage.classList.remove('show');
-                }, 3000);
+            // Validate form data
+            const errors = dataManager.validateForm(ratingFormConfig, formData);
+
+            // Handle validation results
+            let isValid = Object.keys(errors).length === 0;
+            if (!isValid) {
+                // Display errors
+                ratingFormConfig.dataFields.forEach(field => {
+                    const errorElement = document.getElementById(field.errorElementId);
+                    if (errorElement && errors[field.name]) {
+                        errorElement.textContent = errors[field.name];
+                        errorElement.classList.add('show');
+                    } else if (errorElement) {
+                        errorElement.classList.remove('show'); // Hide error if no error for this field
+                    }
+                });
+            } else {
+                // --- VERSION 32 - Form is valid, simulate submission and display success ---
+                dataManager.submitForm(ratingFormConfig, formData); // Simulate submission
+                dataManager.displaySuccessMessage(ratingFormConfig); // Display success message
+                dataManager.resetFormUI(ratingFormConfig); // Reset the form UI
             }
         });
+
+
+        // ========================= VERSION 32 - DATA MANAGEMENT SYSTEM END =========================
+
+        // --- VERSION 32 - Driver Selection Type Toggle Logic ---
+        driverSelectListRadio.addEventListener('change', function() {
+            if (this.checked) {
+                driverDropdownContainer.style.display = 'block';
+                driverManualInputContainer.style.display = 'none';
+            }
+        });
+
+        driverManualEntryRadio.addEventListener('change', function() {
+            if (this.checked) {
+                driverDropdownContainer.style.display = 'none';
+                driverManualInputContainer.style.display = 'block';
+            }
+        });
+
+
     </script>
 </body>
 </html>
