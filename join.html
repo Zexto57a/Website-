@@ -3,13 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Join Us - LuxRide Inc | Premium Transport</title>
+    <title>The Road to Excellence Starts Here - Join LuxRide Inc</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Cormorant+Garamond:wght@400;700&family=Montserrat:wght@400;500;700&display=swap" rel="stylesheet">
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     <style>
-        /* ===  Join Page CSS - VERSION 38 - TEXT LOGO CONSISTENCY ACROSS PAGES === */
+        /* ===  Join Page CSS - VERSION 42 - ENHANCED VISUALS & PERFORMANCE + DATA MANAGEMENT SYSTEM + ROAD TO TITLE, GOOD LUCK MSG, RED NOTE === */
     :root {
             --gold: #D4AF37; /* A more vibrant, classic gold */
             --gold-highlight: #FFD700; /* A brighter gold for highlights */
@@ -74,7 +74,7 @@
             box-shadow: 0 2px 10px rgba(0, 0, 0, 0.4);
         }
 
-        /* --- VERSION 38 - Logo Text Style - Consistent Across Pages - TEXT ONLY LOGO - REVISED CSS SELECTORS & ANIMATION - FOR ALL PAGES --- */
+        /* --- VERSION 40 - Logo Text Style - Consistent Across Pages - TEXT ONLY LOGO - REVISED CSS SELECTORS & ANIMATION - FOR ALL PAGES --- */
         .logo-text { /*  <--- CORRECTED SELECTOR:  .logo-text  - FOR ALL PAGES */
             font-family: 'Cormorant Garamond', serif; /* Elegant Serif Font - LOGO ONLY */
             color: var(--gold-refined); /* Refined Gold Color - LOGO ONLY */
@@ -158,6 +158,7 @@
             border-radius: 10px;
             opacity: 0;
             transform: translateY(30px);
+            transition: opacity 0.5s ease, transform 0.5s ease; /* Performance: Added transition for smoother reveal */
         }
 
         .section.application-form-section {
@@ -196,7 +197,7 @@
             border: none;
             border-radius: 12px;
             overflow: hidden;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            transition: transform 0.3s ease, box-shadow 0.3s ease, opacity 0.3s ease; /* Performance: Added opacity transition */
             background: var(--dark-primary);
             box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
             opacity: 0;
@@ -213,7 +214,13 @@
             height: 300px;
             object-fit: cover;
             position: relative;
+            transition: opacity 0.3s ease; /* Performance: Image opacity transition */
         }
+
+        .vehicle-card img:hover {
+            opacity: 0.95; /* Visual: Subtle image darkening on hover */
+        }
+
 
     .vehicle-card::after {
             content: '';
@@ -242,7 +249,7 @@
             width: 70%;
             height: 100%;
             background-color: rgba(var(--dark-rgb-values), 0.85);
-            transition: right 0.6s easeInOutCubic;
+            transition: right 0.5s easeInOutCubic; /* Performance: Slightly faster nav transition */
             z-index: 999;
             padding-top: 5rem;
             display: flex;
@@ -265,7 +272,7 @@
             border-bottom: 1px solid var(--gold);
             width: 100%;
             text-align: center;
-            transition: opacity 0.3s ease, color 0.3s ease;
+            transition: opacity 0.2s ease, color 0.2s ease, background-color 0.2s ease; /* Performance: Faster nav item transitions + background-color */
         }
 
     .nav-item:last-child {
@@ -273,8 +280,9 @@
         }
 
     .nav-item:hover {
-            opacity: 0.9;
+            opacity: 1; /* Visual: Slightly less transparent on hover */
             color: var(--gold-highlight);
+            background-color: rgba(var(--gold-rgb-values), 0.1); /* Visual: Subtle background highlight on hover */
         }
 
         footer {
@@ -284,6 +292,7 @@
             font-size: 0.9rem;
             color: #777;
             background: var(--dark-primary);
+            transition: color 0.3s ease; /* Performance: Footer text color transition */
         }
 
         footer p:not(.service-status):hover {
@@ -295,10 +304,10 @@
             color: var(--gold);
             font-size: 0.9rem;
             margin-top: 0.5rem;
-            animation: fade-pulse 2s ease-in-out infinite alternate;
+            animation: fade-pulse 1.8s ease-in-out infinite alternate; /* Performance: Slightly faster pulse animation */
         }
 
-        /* Button Styles - VERSION 38 - TEXT LOGO CONSISTENCY ACROSS PAGES */
+        /* Button Styles - VERSION 42 - ENHANCED VISUALS & PERFORMANCE + DATA MANAGEMENT SYSTEM + ROAD TO TITLE, GOOD LUCK MSG, RED NOTE */
     .legacy-button {
             display: inline-block;
             padding: 1rem 2rem;
@@ -313,33 +322,36 @@
             text-transform: uppercase;
             letter-spacing: 0.05em;
             cursor: pointer;
-            transition: background-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+            transition: background-color 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease, color 0.2s ease; /* Performance: Faster button transitions + color */
+            box-shadow: 0 2px 10px rgba(var(--gold-rgb-values), 0.4); /* Visual: Button default subtle shadow */
         }
 
     .legacy-button:hover {
             background-color: var(--gold-highlight); /* Brighter gold on hover */
-            transform: scale(1.05); /* Slight scale up on hover */
-            box-shadow: 0 0 15px rgba(var(--gold-highlight-rgb-values), 0.6); /* Hover glow shadow */
+            transform: scale(1.03); /* Visual: Subtler scale up on hover */
+            box-shadow: 0 0 12px rgba(var(--gold-highlight-rgb-values), 0.7); /* Visual: Refined hover glow shadow */
+            color: #111; /* Visual: Darker text on button hover for contrast */
         }
 
         .legacy-button:active {
-            transform: scale(0.98); /* Slight scale down on click */
+            transform: scale(0.99); /* Visual: Even subtler scale down on click */
+            box-shadow: 0 0 8px rgba(var(--gold-highlight-rgb-values), 0.7); /* Visual: Subtler active glow */
         }
 
 
     .wave-effect:hover {
-            animation: wave 1.5s ease-in-out infinite;
+            animation: wave 1.2s ease-in-out infinite; /* Performance: Slightly faster wave animation */
         }
 
 
-        /* Keyframes for animations - VERSION 38 - TEXT LOGO CONSISTENCY ACROSS PAGES  */
-        @keyframes logo-pulse { /* Reverted to logo-pulse for text logo - VERSION 38 */
+        /* Keyframes for animations - VERSION 42 - ENHANCED VISUALS & PERFORMANCE + DATA MANAGEMENT SYSTEM + ROAD TO TITLE, GOOD LUCK MSG, RED NOTE */
+        @keyframes logo-pulse { /* Reverted to logo-pulse for text logo - VERSION 40 */
             0% { text-shadow: 0 0 8px var(--gold-refined); color: var(--gold-refined); }
             50% { text-shadow: 0 0 15px var(--gold-refined-highlight); color: var(--gold-refined-highlight); }
             100% { text-shadow: 0 0 8px var(--gold-refined); color: var(--gold-refined); }
         }
 
-        @keyframes logo-fade-pulse { /* For Logo Text Only - Version 24 Style - REVISED for VERSION 38 - slightly faster pulse */
+        @keyframes logo-fade-pulse { /* For Logo Text Only - Version 24 Style - REVISED for VERSION 40 - slightly faster pulse */
             0% { text-shadow: 0 0 4px var(--gold-refined); color: var(--gold-refined); opacity: 0.95;}
             100% { text-shadow: 0 0 6px var(--gold-refined-highlight); color: var(--gold-refined); opacity: 1;}
         }
@@ -351,15 +363,15 @@
             100% { opacity: 0.6; }
         }
 
-        @keyframes wave { /* Reused from Version 22 */
+        @keyframes wave { /* Reused from Version 22 - Performance: Slightly faster wave animation */
             0% { transform: rotate(0deg); }
-            25% { transform: rotate(5deg); }
-            50% { transform: rotate(-5deg); }
-            75% { transform: rotate(5deg); }
+            25% { transform: rotate(4deg); } /* Visual: Reduced wave rotation slightly */
+            50% { transform: rotate(-4deg); } /* Visual: Reduced wave rotation slightly */
+            75% { transform: rotate(4deg); } /* Visual: Reduced wave rotation slightly */
             100% { transform: rotate(0deg); }
         }
 
-        @keyframes fadeInUp { /* Reused from Version 22 */
+        @keyframes fadeInUp { /* Reused from Version 22 - Performance: Slightly faster fadeInUp animation */
             to {
                 opacity: 1;
                 transform: translateY(0);
@@ -375,13 +387,13 @@
         .motto { font-size: 4rem; }
             footer { padding: 4rem 2rem; }
         .fleet-grid {
-                grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+                grid-template_columns: repeat(auto-fit, minmax(350px, 1fr));
                 gap: 2.5rem;
             }
         .vehicle-card img { height: 350px; }
         }
 
-        /* --- JOIN US PAGE SPECIFIC STYLES - VERSION 38 - TEXT LOGO CONSISTENCY ACROSS PAGES --- */
+        /* --- JOIN US PAGE SPECIFIC STYLES - VERSION 42 - ENHANCED VISUALS & PERFORMANCE + DATA MANAGEMENT SYSTEM + ROAD TO TITLE, GOOD LUCK MSG, RED NOTE --- */
 
         .join-section-intro {
             color: var(--text-color-light);
@@ -393,7 +405,13 @@
             max-width: 900px;
             margin-left: auto;
             margin-right: auto;
+            transition: opacity 0.3s ease; /* Performance: Intro text opacity transition */
         }
+
+        .join-section-intro:hover {
+            opacity: 1; /* Visual: Slightly less transparent on hover */
+        }
+
 
         .join-section-list {
             list-style-type: disc;
@@ -415,7 +433,13 @@
 
         .form-group {
             margin-bottom: 2rem;
+            transition: margin-bottom 0.3s ease; /* Performance: Form group margin transition */
         }
+
+        .form-group:hover {
+            margin-bottom: 2.2rem; /* Visual: Slight margin increase on hover */
+        }
+
 
         .form-group label {
             display: block;
@@ -423,11 +447,19 @@
             font-weight: 500;
             color: var(--text-color-light);
             opacity: 0.95;
+            transition: opacity 0.3s ease, color 0.3s ease; /* Performance: Label transitions */
         }
+
+        .form-group label:hover {
+            opacity: 1; /* Visual: Slightly less transparent on hover */
+            color: var(--gold-highlight); /* Visual: Gold highlight on label hover */
+        }
+
 
         .form-group input[type="text"],
         .form-group input[type="email"],
-        .form-group textarea {
+        .form-group textarea,
+        .form-group select { /* Added select input type - VERSION 42 - ENHANCED VISUALS & PERFORMANCE + DATA MANAGEMENT SYSTEM + ROAD TO TITLE, GOOD LUCK MSG, RED NOTE */
             width: 100%;
             padding: 1.2rem 1.5rem;
             border: 2px solid #444;
@@ -435,15 +467,33 @@
             background-color: #222;
             color: var(--text-color-light);
             font-size: 1.05rem;
-            transition: border-color 0.3s ease, box-shadow 0.3s ease;
+            transition: border-color 0.2s ease, box-shadow 0.2s ease, background-color 0.2s ease; /* Performance: Faster input transitions + background-color */
+            appearance: none; /* Reset default select appearance - VERSION 42 - ENHANCED VISUALS & PERFORMANCE + DATA MANAGEMENT SYSTEM + ROAD TO TITLE, GOOD LUCK MSG, RED NOTE */
+            -webkit-appearance: none; /* For Safari - VERSION 42 - ENHANCED VISUALS & PERFORMANCE + DATA MANAGEMENT SYSTEM + ROAD TO TITLE, GOOD LUCK MSG, RED NOTE */
+            -moz-appearance: none; /* For Firefox - VERSION 42 - ENHANCED VISUALS & PERFORMANCE + DATA MANAGEMENT SYSTEM + ROAD TO TITLE, GOOD LUCK MSG, RED NOTE */
+            background-image: url('data:image/svg+xml;utf8,<svg fill="white" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"><path d="M7 10l5 5 5-5z"/><path d="M0 0h24v24H0z" fill="none"/></svg>');
+            background-repeat: no-repeat;
+            background-position-x: 100%;
+            background-position-y: 12px;
+            padding-right: 2.5rem; /* Make space for dropdown arrow - VERSION 42 - ENHANCED VISUALS & PERFORMANCE + DATA MANAGEMENT SYSTEM + ROAD TO TITLE, GOOD LUCK MSG, RED NOTE */
         }
+
+        .form-group input[type="text"]:hover,
+        .form-group input[type="email"]:hover,
+        .form-group textarea:hover,
+        .form-group select:hover { /* Added select hover style - VERSION 42 - ENHANCED VISUALS & PERFORMANCE + DATA MANAGEMENT SYSTEM + ROAD TO TITLE, GOOD LUCK MSG, RED NOTE */
+            background-color: #333; /* Visual: Slightly lighter background on input hover */
+        }
+
 
         .form-group input[type="text"]:focus,
         .form-group input[type="email"]:focus,
-        .form-group textarea:focus {
+        .form-group textarea:focus,
+        .form-group select:focus { /* Added select focus style - VERSION 42 - ENHANCED VISUALS & PERFORMANCE + DATA MANAGEMENT SYSTEM + ROAD TO TITLE, GOOD LUCK MSG, RED NOTE */
             border-color: var(--gold-highlight);
             outline: none;
-            box-shadow: 0 0 12px rgba(var(--gold-highlight-rgb-values), 0.6);
+            box-shadow: 0 0 10px rgba(var(--gold-highlight-rgb-values), 0.7); /* Visual: Refined focus glow */
+            background-color: #282828; /* Visual: Slightly lighter background on input focus */
         }
 
 
@@ -452,7 +502,13 @@
             margin-right: 0.5rem;
             transform: scale(1.1);
             accent-color: var(--gold); /*  Radio button original gold color */
+            transition: transform 0.2s ease; /* Performance: Radio button transform transition */
         }
+
+        .form-group input[type="radio"]:hover {
+            transform: scale(1.2); /* Visual: Subtly larger on hover */
+        }
+
 
         .form-group label[for="experienceYes"],
         .form-group label[for="experienceNo"] {
@@ -461,7 +517,14 @@
             opacity: 0.85;
             position: relative;
             top: -2px; /* Minor adjustment for vertical alignment */
+            transition: opacity 0.3s ease; /* Performance: Radio label opacity transition */
         }
+
+        .form-group label[for="experienceYes"]:hover,
+        .form-group label[for="experienceNo"]:hover {
+            opacity: 1; /* Visual: Slightly less transparent on hover */
+        }
+
 
         /* --- VERSION 38 - Radio Button Container (No Change - Version 22 Style) --- */
         .radio-button-container {
@@ -475,7 +538,13 @@
             padding: 1.2rem 2.5rem;
             font-size: 1.3rem;
             box-shadow: 0 0 15px rgba(var(--gold-rgb-values), 0.7);
+            transition: box-shadow 0.2s ease; /* Performance: Submit button box-shadow transition */
         }
+
+        .legacy-button.submit-button:hover {
+             box-shadow: 0 0 20px rgba(var(--gold-highlight-rgb-values), 0.8); /* Visual: Enhanced hover glow */
+        }
+
 
         #applicationMessage {
             margin-top: 2.5rem;
@@ -485,11 +554,19 @@
             border-radius: 10px;
             text-align: center;
             display: none;
-            animation: fadeInScale 0.5s ease-out forwards, pulseMessage 2s infinite alternate;
+            animation: fadeInScale 0.4s ease-out forwards, pulseMessage 1.6s infinite alternate; /* Performance: Slightly faster message animations */
             font-size: 1.1rem;
             letter-spacing: 0.05rem;
             box-shadow: 0 0 12px rgba(var(--gold-rgb-values), 0.6);
+            margin-bottom: 1.5rem; /* Added margin below application message - VERSION 40 - RED NOTE */
+            transition: box-shadow 0.3s ease, background-color 0.3s ease; /* Performance: Message box-shadow and background-color transitions */
         }
+
+        #applicationMessage:hover {
+            background-color: rgba(var(--gold-rgb-values), 0.15); /* Visual: Slightly darker background on message hover */
+            box-shadow: 0 0 16px rgba(var(--gold-highlight-rgb-values), 0.7); /* Visual: Enhanced message hover glow */
+        }
+
 
         @keyframes fadeInScale {
             0% {
@@ -504,7 +581,7 @@
 
         @keyframes pulseMessage {
             to {
-                box-shadow: 0 0 20px rgba(var(--gold-highlight-rgb-values), 0.8);
+                box-shadow: 0 0 18px rgba(var(--gold-highlight-rgb-values), 0.8); /* Visual: Slightly less intense pulse glow */
             }
         }
 
@@ -518,9 +595,15 @@
             font-size: 1rem;
             margin-top: 0.6rem;
             display: none;
-            animation: slideInLeft 0.3s ease-out forwards, slightBounce 0.4s ease-out;
+            animation: slideInLeft 0.25s ease-out forwards, slightBounce 0.35s ease-out; /* Performance: Slightly faster error animations */
             transform: translateX(-10px);
             opacity: 0;
+            transition: color 0.2s ease, opacity 0.2s ease; /* Performance: Error message transitions */
+        }
+
+        .error-message:hover {
+            color: #ffaaaa; /* Visual: Slightly lighter red on error hover */
+            opacity: 0.9; /* Visual: Slightly less transparent on error hover */
         }
 
 
@@ -533,7 +616,7 @@
 
         @keyframes slightBounce {
             0%, 100% { transform: translateX(0); }
-            50% { transform: translateX(4px); }
+            50% { transform: translateX(3px); } /* Visual: Reduced bounce distance slightly */
         }
 
 
@@ -547,6 +630,12 @@
             text-align: right;
             margin-top: 0.3rem;
             opacity: 0.7;
+            transition: color 0.3s ease, opacity 0.3s ease; /* Performance: Word count transitions */
+        }
+
+        .word-count:hover {
+            color: #ccc; /* Visual: Lighter color on word count hover */
+            opacity: 0.9; /* Visual: Slightly less transparent on hover */
         }
 
 
@@ -568,7 +657,46 @@
             color: var(--gold);
             font-size: 0.9rem;
             margin-top: 0.5rem;
-            animation: fade-pulse 2s ease-in-out infinite alternate;
+            animation: fade-pulse 1.8s ease-in-out infinite alternate; /* Performance: Slightly faster pulse animation */
+        }
+
+        /* --- VERSION 40 - Red Note Styling --- */
+        #applicationNote {
+            margin-top: 1rem;
+            padding: 1.5rem 2rem;
+            background-color: rgba(255, 0, 0, 0.05); /* Very subtle red background */
+            border: 1px solid #ff6666; /* Light red border */
+            border-radius: 8px;
+            text-align: center;
+            display: none;
+            color: #ff9999; /* Light red text */
+            font-size: 1rem;
+            line-height: 1.6;
+            animation: fadeInScaleRedNote 0.4s ease-out forwards; /* Performance: Slightly faster red note animation */
+            box-shadow: 0 0 10px rgba(255, 0, 0, 0.3);
+            transition: background-color 0.3s ease, box-shadow 0.3s ease, color 0.3s ease; /* Performance: Red note transitions */
+        }
+
+        #applicationNote:hover {
+            background-color: rgba(255, 0, 0, 0.08); /* Visual: Slightly darker red background on hover */
+            box-shadow: 0 0 12px rgba(255, 0, 0, 0.4); /* Visual: Enhanced red note hover glow */
+            color: #ffbbbb; /* Visual: Slightly lighter red text on hover */
+        }
+
+
+        #applicationNote.show {
+            display: block;
+        }
+
+        @keyframes fadeInScaleRedNote { /* Keyframe for red note fade in - Performance: Slightly faster red note animation */
+            0% {
+                opacity: 0;
+                transform: scale(0.95);
+            }
+            100% {
+                opacity: 1;
+                transform: scale(1);
+            }
         }
 
 
@@ -591,60 +719,82 @@
 
     <section class="join-hero">
         <h1 class="motto">
-            Drive with LuxRide Inc<br>
-            <span style="font-size: 1.2rem; color: var(--text-color-light);">Join Our Premium Team</span>
+            The Road to Excellence Starts Here<br> <span style="font-size: 1.2rem; color: var(--text-color-light);">Join LuxRide Inc and Drive Your Future</span>
         </h1>
     </section>
 
     <section class="section application-process-section" id="application-process">
         <h2 data-aos="fade-right" data-aos-duration="800">Application Process</h2>
         <p data-aos="fade-up" data-aos-duration="1000" class="join-section-intro">
-            Joining LuxRide Inc as a driver is a straightforward process. We value professionalism and commitment to excellence. Please review the following steps to become a part of our team:
+            Joining LuxRide Inc as a valued team member is a straightforward process. We value professionalism and commitment to excellence across all roles. Please review the following steps to become a part of our team:
         </p>
         <ul class="join-section-list" data-aos="fade-up" data-aos-duration="1200" data-aos-delay="200">
-            <li><strong>Step 1: Application Submission</strong> - Fill out the driver application form below with accurate details.</li>
-            <li><strong>Step 2: Stats and Background Check</strong> - Provide a screenshot of your in-game stats and consent to a background check.</li>
+            <li><strong>Step 1: Application Submission</strong> - Fill out the application form below with accurate details.</li>
+            <li><strong>Step 2: Stats and Background Check</strong> - Provide a screenshot of your in-game stats and consent to a background check if applying for a driver role.</li>
             <li><strong>Step 3: Interview</strong> - Successful applicants will be invited for a short Discord interview to discuss your application and suitability.</li>
-            <li><strong>Step 4: Onboarding</strong> - Upon passing all checks, you'll be onboarded and ready to start driving with LuxRide Inc.</li>
+            <li><strong>Step 4: Onboarding</strong> - Upon passing all checks, you'll be onboarded and ready to start your journey with LuxRide Inc.</li>
         </ul>
     </section>
 
 
     <section class="section driver-requirements-section" id="driver-requirements">
-        <h2 data-aos="fade-right" data-aos-duration="800">Driver Requirements</h2>
+        <h2 data-aos="fade-right" data-aos-duration="800">Team Member Requirements <span style="font-size: 1.4rem; color: var(--gold-highlight);"> (General) </span></h2>
         <p data-aos="fade-up" data-aos-duration="1000" class="join-section-intro">
-            To maintain our standard of excellence, all LuxRide drivers must meet certain requirements. Please ensure you meet the following criteria before applying:
+            To maintain our standard of excellence, all LuxRide team members must meet certain requirements. Please ensure you meet the following criteria before applying:
         </p>
         <ul class="join-section-list" data-aos="fade-up" data-aos-duration="1200" data-aos-delay="200">
-            <li>Valid driver's license and clean driving record in the game.</li>
-            <li>Minimum age of 25 years old in-game.</li>
-            <li>Professional in-game appearance and excellent customer service skills.</li>
+            <li>Professional in-game appearance and excellent customer service skills are expected for all roles.</li>
+            <li>Minimum age of 25 years old in-game for driver roles. <span style="font-size: 0.9rem; color: #ccc;"> (Other roles may have different age requirements)</span></li>
             <li>Willingness to adhere to LuxRide Inc's operational guidelines and service standards.</li>
+            <li>Valid driver's license and clean driving record in the game <span style="font-size: 0.9rem; color: #ccc;"> (For driver roles)</span>.</li>
         </ul>
     </section>
 
     <section class="section application-form-section" id="application-form">
-        <h2 data-aos="fade-right" data-aos-duration="800">Driver Application Form</h2>
+        <h2 data-aos="fade-right" data-aos-duration="800">Team Application Form</h2>
         <form id="applicationForm">
-            <div class="form-group" data-aos="fade-up" data-aos-duration="800">
+            <div class="form-group" data-aos="fade-up" data-aos-duration="700">
                 <label for="fullName">Full Name (INGAME):</label>
                 <input type="text" id="fullName" name="fullName" required>
                 <div class="error-message" id="fullNameError">Please enter your full in-game name.</div>
             </div>
 
-            <div class="form-group" data-aos="fade-up" data-aos-duration="900" data-aos-delay="100">
+            <div class="form-group" data-aos="fade-up" data-aos-duration="800" data-aos-delay="100">
                 <label for="discordId">Discord ID:</label>
                 <input type="text" id="discordId" name="discordId" placeholder="Your Discord ID" required>
                 <div class="error-message" id="discordIdError">Please enter your Discord ID.</div>
             </div>
 
-            <div class="form-group" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="200">
-                <label for="statsUrl">URL to your in-game stats screenshot:</label>
-                <input type="text" id="statsUrl" name="statsUrl" placeholder="Paste URL of your screenshot here" required>
+            <div class="form-group" data-aos="fade-up" data-aos-duration="900" data-aos-delay="200">
+                <label for="age">Age:</label>
+                <select id="age" name="age" required>
+                    <option value="" disabled selected>Please Select</option>
+                    <option value="18">18</option>
+                    <option value="19">19</option>
+                    <option value="20">20</option>
+                    <option value="21">21</option>
+                    <option value="22">22</option>
+                    <option value="23">23</option>
+                    <option value="24">24</option>
+                    <option value="25">25</option>
+                    <option value="26">26</option>
+                    <option value="27">27</option>
+                    <option value="28">28</option>
+                    <option value="29">29</option>
+                    <option value="30">30</option>
+                    <option value="30+">30+</option>
+                </select>
+                <div class="error-message" id="ageError">Please select your age.</div>
+            </div>
+
+
+            <div class="form-group" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="300">
+                <label for="statsUrl">URL to your in-game stats screenshot <span style="font-size: 0.9rem; color: #ccc;"> (For Driver Roles)</span>:</label>
+                <input type="text" id="statsUrl" name="statsUrl" placeholder="Paste URL of your screenshot here (if applicable)">
                 <div class="error-message" id="statsUrlError">Please enter a valid URL to your in-game stats screenshot.</div>
             </div>
 
-            <div class="form-group" data-aos="fade-up" data-aos-duration="1100" data-aos-delay="300">
+            <div class="form-group" data-aos="fade-up" data-aos-duration="1100" data-aos-delay="400">
                 <label>Past experience in a taxi group?</label>
                 <div class="radio-button-container">
                     <input type="radio" id="experienceYes" name="taxiExperience" value="yes" required>
@@ -656,15 +806,15 @@
             </div>
 
 
-            <div class="form-group" data-aos="fade-up" data-aos-duration="1200" data-aos-delay="400">
-                <label for="joinReason">Why do you want to join us? (Min 150 words):</label>
+            <div class="form-group" data-aos="fade-up" data-aos-duration="1200" data-aos-delay="500">
+                <label for="joinReason">Why do you want to join LuxRide Inc? (Min 150 words):</label>
                 <textarea id="joinReason" name="joinReason" rows="6" placeholder="Minimum 150 words explaining why you want to join LuxRide" required></textarea>
                 <div class="error-message" id="joinReasonError">Please explain why you want to join us (minimum 150 words).</div>
                 <div class="word-count" id="wordCount">0 words</div>
             </div>
 
             <button type="submit" class="legacy-button submit-button wave-effect">Submit Application</button>
-            <div id="applicationMessage" class="hidden">Thank you for your application! We will be in touch soon.</div>
+            <div id="applicationMessage" class="hidden">Thank you for your application! Good luck!</div> <div id="applicationNote" class="hidden">Thank you for applying to LuxRide Inc.! Our team will carefully review your application. If your profile is selected for the next step, we will contact you via Discord within 3-4 business days to schedule an interview. Please keep an eye on your Discord messages.</div>
         </form>
     </section>
 
@@ -703,7 +853,7 @@
 
         function toggleMenu() {
             const menu = document.querySelector('.nav-overlay');
-            gsap.to(menu, {right: menu.style.right === '0px'? (window.innerWidth < 768? '-70%': '-300px'): '0px', duration: 0.6, ease: "easeInOutCubic"});
+            gsap.to(menu, {right: menu.style.right === '0px'? (window.innerWidth < 768? '-70%': '-300px'): '0px', duration: 0.5, ease: "easeInOutCubic"});
         }
 
         document.addEventListener('click', function(e) {
@@ -715,21 +865,198 @@
 
 
         const applicationForm = document.getElementById('applicationForm');
-        const applicationMessage = document.getElementById('applicationMessage');
-        const fullNameInput = document.getElementById('fullName');
-        const discordIdInput = document.getElementById('discordId');
-        const statsUrlInput = document.getElementById('statsUrl');
-        const experienceYesInput = document.getElementById('experienceYes');
-        const experienceNoInput = document.getElementById('experienceNo');
+
+
+        // ========================= VERSION 42 - DATA MANAGEMENT SYSTEM START =========================
+
+        // --- 1. Data Definition (Configuration) ---
+        const applicationFormConfig = {
+            formId: 'applicationForm',
+            dataFields: [
+                {
+                    name: 'fullName',
+                    fieldType: 'text',
+                    label: 'Full Name (INGAME):',
+                    required: true,
+                    errorElementId: 'fullNameError'
+                },
+                {
+                    name: 'discordId',
+                    fieldType: 'text',
+                    label: 'Discord ID:',
+                    required: true,
+                    errorElementId: 'discordIdError'
+                },
+                {
+                    name: 'age',
+                    fieldType: 'select',
+                    label: 'Age:',
+                    required: true,
+                    errorElementId: 'ageError',
+                    options: ['18', '19', '20', '21', '22', '23', '24', '25', '26', '27', '28', '29', '30', '30+'] // Example options
+                },
+                {
+                    name: 'statsUrl',
+                    fieldType: 'text',
+                    label: 'URL to your in-game stats screenshot (For Driver Roles):',
+                    required: false, // Example: not always required
+                    validationRules: ['url'],
+                    errorElementId: 'statsUrlError'
+                },
+                {
+                    name: 'taxiExperience',
+                    fieldType: 'radio',
+                    label: 'Past experience in a taxi group?',
+                    required: true,
+                    options: ['yes', 'no'],
+                    errorElementId: 'taxiExperienceError'
+                },
+                {
+                    name: 'joinReason',
+                    fieldType: 'textarea',
+                    label: 'Why do you want to join LuxRide Inc? (Min 150 words):',
+                    required: true,
+                    validationRules: ['minLength:150'],
+                    errorElementId: 'joinReasonError',
+                    wordCountElementId: 'wordCount' // Element to display word count
+                }
+            ],
+            submitButtonId: 'submitButton',
+            successMessageElementId: 'applicationMessage',
+            successNoteElementId: 'applicationNote' // VERSION 40 - Red Note Element
+        };
+
+
+        // --- 2. Data Handling Module (dataManager) ---
+        const dataManager = {
+            validateForm: function(formConfig, formData) {
+                let errors = {};
+                formConfig.dataFields.forEach(field => {
+                    const fieldValue = formData[field.name];
+                    if (field.required && !fieldValue) {
+                        errors[field.name] = `${field.label} is required.`;
+                    } else if (field.validationRules) {
+                        field.validationRules.forEach(rule => {
+                            if (rule === 'url' && fieldValue && !/^(ftp|http|https):\/\/[^ "]+$/.test(fieldValue)) {
+                                errors[field.name] = `Please enter a valid URL for ${field.label}.`;
+                            } else if (rule.startsWith('minLength:') && fieldValue) {
+                                const minLength = parseInt(rule.split(':')[1], 10);
+                                if (field.fieldType === 'textarea' && fieldValue.trim().split(/\s+/).filter(word => word !== '').length < minLength) {
+                                    errors[field.name] = `${field.label} must be at least ${minLength} words.`;
+                                }
+                            }
+                        });
+                    }
+                });
+                return errors;
+            },
+
+            submitForm: function(formConfig, formData) {
+                // --- VERSION 42 - Simulate Submission (for now, just log to console) ---
+                console.log('--- Form Data Submitted (Simulated) ---');
+                formConfig.dataFields.forEach(field => {
+                    console.log(`${field.label}:`, formData[field.name]);
+                });
+                console.log('---------------------------------------');
+                // --- In the future, this is where we would send data to LuxRide Operations Suite/Firebase ---
+            },
+
+            resetFormUI: function(formConfig) {
+                const form = document.getElementById(formConfig.formId);
+                form.reset(); // Reset form fields
+                // Reset word count if applicable
+                const joinReasonWordCount = document.getElementById('wordCount');
+                if (joinReasonWordCount) {
+                    joinReasonWordCount.textContent = '0 words';
+                }
+                // Clear error messages
+                formConfig.dataFields.forEach(field => {
+                    const errorElement = document.getElementById(field.errorElementId);
+                    if (errorElement) {
+                        errorElement.classList.remove('show');
+                    }
+                });
+                 // VERSION 42 - Reset Age Select Dropdown (if 'age' field exists) - ENSURE CORRECT ID
+                const ageSelectElement = document.getElementById('age');
+                if (ageSelectElement) {
+                    ageSelectElement.value = '';
+                }
+                 // VERSION 42 - Reset Radio Buttons (if 'taxiExperience' field exists) - ENSURE CORRECT IDs
+                const experienceYesRadio = document.getElementById('experienceYes');
+                const experienceNoRadio = document.getElementById('experienceNo');
+                if (experienceYesRadio && experienceNoRadio) {
+                    experienceYesRadio.checked = false;
+                    experienceNoRadio.checked = false;
+                }
+            },
+
+            displaySuccessMessage: function(formConfig) {
+                const successMessageElement = document.getElementById(formConfig.successMessageElementId);
+                const successNoteElement = document.getElementById(formConfig.successNoteElementId); // VERSION 40 - Red Note Element
+                if (successMessageElement) {
+                    successMessageElement.classList.add('show');
+                     if (successNoteElement) { // VERSION 40 - Conditionally show note
+                        successNoteElement.classList.add('show');
+                    }
+                    setTimeout(() => {
+                        successMessageElement.classList.remove('show');
+                        if (successNoteElement) { // VERSION 40 - Conditionally hide note
+                            successNoteElement.classList.remove('show');
+                        }
+                    }, 5000); // VERSION 40 - Increased timeout to 5 seconds
+                }
+            }
+        };
+
+
+        // --- 3. Updated Form Submission Logic ---
+        applicationForm.addEventListener('submit', function(event) {
+            event.preventDefault(); // Prevent default form submission
+
+            // Collect form data
+            const formData = {};
+            applicationFormConfig.dataFields.forEach(field => {
+                formData[field.name] = document.getElementById(field.name).value;
+                 if (field.fieldType === 'radio') { // Handle radio buttons specifically
+                    formData[field.name] = document.querySelector(`input[name="${field.name}"]:checked`) ? document.querySelector(`input[name="${field.name}"]:checked`).value : '';
+                } else if (field.fieldType === 'select') { // Handle select dropdowns specifically
+                    formData[field.name] = document.getElementById(field.name).value;
+                } else {
+                    formData[field.name] = document.getElementById(field.name).value;
+                }
+            });
+
+
+            // Validate form data
+            const errors = dataManager.validateForm(applicationFormConfig, formData);
+
+            // Handle validation results
+            let isValid = Object.keys(errors).length === 0;
+            if (!isValid) {
+                // Display errors
+                applicationFormConfig.dataFields.forEach(field => {
+                    const errorElement = document.getElementById(field.errorElementId);
+                    if (errorElement && errors[field.name]) {
+                        errorElement.textContent = errors[field.name];
+                        errorElement.classList.add('show');
+                    } else if (errorElement) {
+                        errorElement.classList.remove('show'); // Hide error if no error for this field
+                    }
+                });
+            } else {
+                // --- VERSION 42 - Form is valid, simulate submission and display success ---
+                dataManager.submitForm(applicationFormConfig, formData); // Simulate submission
+                dataManager.displaySuccessMessage(applicationFormConfig); // Display success message
+                dataManager.resetFormUI(applicationFormConfig); // Reset the form UI
+            }
+        });
+
+
+        // ========================= VERSION 42 - DATA MANAGEMENT SYSTEM END =========================
+
+
         const joinReasonInput = document.getElementById('joinReason');
         const wordCountDisplay = document.getElementById('wordCount');
-
-
-        const fullNameError = document.getElementById('fullNameError');
-        const discordIdError = document.getElementById('discordIdError');
-        const statsUrlError = document.getElementById('statsUrlError');
-        const taxiExperienceError = document.getElementById('taxiExperienceError');
-        const joinReasonError = document.getElementById('joinReasonError');
 
 
         joinReasonInput.addEventListener('input', function() {
@@ -738,65 +1065,6 @@
         });
 
 
-        applicationForm.addEventListener('submit', function(event) {
-            event.preventDefault();
-
-            let isValid = true;
-            let taxiExperienceSelected = false;
-
-
-            fullNameError.classList.remove('show');
-            discordIdError.classList.remove('show');
-            statsUrlError.classList.remove('show');
-            taxiExperienceError.classList.remove('show');
-            joinReasonError.classList.remove('show');
-
-
-            if (fullNameInput.value.trim() === '') {
-                fullNameError.classList.add('show');
-                isValid = false;
-            }
-
-            if (discordIdInput.value.trim() === '') {
-                discordIdError.classList.add('show');
-                isValid = false;
-            }
-
-            if (statsUrlInput.value.trim() === '' || !/^(ftp|http|https):\/\/[^ "]+$/.test(statsUrlInput.value)) {
-                statsUrlError.classList.add('show');
-                isValid = false;
-            }
-
-
-            if (!experienceYesInput.checked && !experienceNoInput.checked) {
-                taxiExperienceError.classList.add('show');
-                isValid = false;
-            } else {
-                taxiExperienceSelected = true;
-            }
-
-
-            const words = joinReasonInput.value.trim().split(/\s+/).filter(word => word !== '').length;
-            if (words < 150) {
-                joinReasonError.classList.add('show');
-                isValid = false;
-            }
-
-
-            if (isValid) {
-                applicationMessage.classList.add('show');
-
-                applicationForm.reset();
-                wordCountDisplay.textContent = '0 words';
-                experienceYesInput.checked = false;
-                experienceNoInput.checked = false;
-
-
-                setTimeout(() => {
-                    applicationMessage.classList.remove('show');
-                }, 3000);
-            }
-        });
     </script>
 </body>
 </html>
