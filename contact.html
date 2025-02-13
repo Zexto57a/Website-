@@ -9,19 +9,19 @@
     <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Cormorant+Garamond:wght@400;700&family=Montserrat:wght@400;500;700&display=swap" rel="stylesheet">
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     <style>
-        /* === CONTACT CSS - VERSION 35 - TEXT LOGO & REFINED GOLD - CONSISTENT STYLING === */
-      :root {
-            --gold: #D4AF37; /* Original Gold */
-            --gold-highlight: #FFD700; /* Highlight Gold */
-            --gold-refined: #C0AA66; /* Refined, slightly muted gold */
-            --gold-refined-highlight: #E0C888; /* Highlight for refined gold */
+        /* === CONTACT CSS - VERSION 50 - CONTACT PAGE - VISUAL ENHANCEMENTS & ANIMATIONS - CONTENT UNCHANGED - DISCORD LINK UPDATED === */
+    :root {
+            --gold: #D4AF37;
+            --gold-highlight: #FFD700;
+            --gold-refined: #C0AA66;
+            --gold-refined-highlight: #E0C888;
             --dark-primary: #111;
             --dark-secondary: #000;
             --dark-rgb-values: 17, 17, 17;
-            --gold-rgb-values: 192, 170, 102; /* RGB for refined gold */
-            --gold-refined-highlight-rgb-values: 224, 200, 136; /* RGB for refined highlight gold */
+            --gold-rgb-values: 192, 170, 102;
+            --gold-refined-highlight-rgb-values: 224, 200, 136;
             --text-color-light: #eee;
-            --text-color-gold: var(--gold); /* Default gold is still original gold */
+            --text-color-gold: var(--gold);
         }
 
         * {
@@ -39,22 +39,25 @@
             scroll-behavior: smooth;
         }
 
-        h1, h2, h3,.contact-headline, .menu-btn, .legacy-button, .logo-text { /* Added .contact-headline */
+        h1, h2, h3,.contact-headline,.menu-btn,.legacy-button,.logo-text {
             font-family: 'Bebas Neue', sans-serif;
             font-weight: normal;
             text-transform: uppercase;
             letter-spacing: 0.05em;
         }
 
-        h2, h3,.contact-headline { /* Added .contact-headline */
+        h2, h3,.contact-headline {
             text-shadow: 0 0 5px var(--gold);
         }
 
-      .contact-headline { /* Style for Contact Us headline */
-            font-size: 4rem; /* Adjust as needed */
+    .contact-headline {
+            font-size: 4rem;
             line-height: 1.1;
             text-shadow: 0 0 10px var(--gold-highlight);
-            margin-bottom: 2rem; /* Increased margin */
+            margin-bottom: 2rem;
+            opacity: 0; /* Initial state for fade-in - VERSION 50 */
+            transform: translateY(20px); /* Initial state for slide-up - VERSION 50 */
+            transition: opacity 1.5s ease-out, transform 1.5s ease-out; /* Headline fade-in and slide-up - VERSION 50 */
         }
 
 
@@ -65,55 +68,66 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            background-color: rgba(var(--dark-rgb-values), 0.85); /* Transparent header */
+            background-color: rgba(var(--dark-rgb-values), 0.85);
             z-index: 1000;
             box-shadow: 0 2px 10px rgba(0, 0, 0, 0.4);
+            transition: background-color 0.4s ease-out; /* Header background transition - VERSION 50 */
         }
 
-        /* --- VERSION 34 - Logo Text Style - Consistent Across Pages - TEXT ONLY LOGO - CORRECTED CSS SELECTORS --- */
-        .logo-text { /*  <--- CORRECTED SELECTOR:  .logo-text  */
-            font-family: 'Cormorant Garamond', serif; /* Elegant Serif Font - LOGO ONLY */
-            color: var(--gold-refined); /* Refined Gold Color - LOGO ONLY */
-            font-size: 2.3rem; /* Slightly larger size - LOGO ONLY */
+        header.header-active { /* Header active state - VERSION 50 */
+            background-color: var(--dark-primary);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+        }
+
+
+        /* --- VERSION 40 - Logo Text Style - Consistent Across Pages - TEXT ONLY LOGO - REFINED ANIMATION & TRANSITION - FOR ALL PAGES --- */
+      .logo-text {
+            font-family: 'Cormorant Garamond', serif;
+            color: var(--gold-refined);
+            font-size: 1.7rem;
             margin-left: 1rem;
-            letter-spacing: 0.08em; /* Reduced letter spacing - LOGO ONLY */
-            text-shadow: 0 0 6px var(--gold-refined); /* Subtle Glow - LOGO ONLY */
-            animation: logo-fade-pulse 4s ease-in-out infinite alternate; /* Gentle Fade Pulse Animation - LOGO ONLY */
+            letter-spacing: 0.08em;
+            text-shadow: 0 0 6px var(--gold-refined);
+            animation: logo-fade-pulse 4s ease-in-out infinite alternate;
             opacity: 1;
             text-decoration: none;
             display: inline-block;
+            transition: color 0.3s ease, text-shadow 0.3s ease; /* Logo hover transition - VERSION 50 */
         }
 
 
-        .logo-text:hover { /*  <--- CORRECTED SELECTOR:  .logo-text:hover  */
+      .logo-text:hover {
             opacity: 1;
-            color: var(--gold-refined-highlight); /* Highlight on hover - LOGO ONLY */
-            text-shadow: 0 0 8px var(--gold-refined-highlight); /* Slightly stronger glow on hover - LOGO ONLY */
+            color: var(--gold-refined-highlight);
+            text-shadow: 0 0 8px var(--gold-refined-highlight);
         }
 
 
-      .menu-btn {
+    .menu-btn {
             font-size: 2.5rem;
             color: var(--gold);
             margin-right: 1.5rem;
             cursor: pointer;
-            transition: color 0.3s ease, opacity 0.3s ease;
+            transition: color 0.3s ease, opacity 0.3s ease, transform 0.3s ease; /* Menu button transition - VERSION 50 */
         }
 
-      .menu-btn:hover {
+    .menu-btn:hover {
             opacity: 0.8;
             color: var(--gold-highlight);
+            transform: scale(1.1);
+        }
+      .menu-btn:active {
+            transform: scale(0.95);
         }
 
 
-      .contact-hero { /* Hero section for Contact Us */
+    .contact-hero {
             height: 100vh;
             display: flex;
             flex-direction: column;
             align-items: center;
             justify-content: center;
             padding-top: 80px;
-            /* Hero Background - same blurred background for consistency */
             background: linear-gradient(rgba(0,0,0,0.75), rgba(0,0,0,0.75)),
                 url('https://luxride.neocities.org/Image%20/background-blurred.jpg');
             background-size: cover;
@@ -123,15 +137,16 @@
         }
 
 
-      .section {
+    .section {
             padding: 6rem 2rem;
             max-width: 1200px;
             margin: 0 auto;
             background: linear-gradient(to bottom, var(--dark-primary), var(--dark-secondary));
-            box-shadow: 0 0 20px rgba(0, 0, 0, 0.3), 0 0 40px rgba(var(--gold-rgb-values), 0.3); /* Section glow shadow */
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.3), 0 0 40px rgba(var(--gold-rgb-values), 0.3);
             border-radius: 10px;
             opacity: 0;
             transform: translateY(30px);
+            transition: opacity 1s ease-out, transform 1s ease-out; /* Section transition - VERSION 50 */
             color: var(--text-color-light);
         }
 
@@ -141,47 +156,55 @@
             border-left: 2px solid var(--gold);
             padding-left: 1.2rem;
             font-size: 2.5rem;
+            transition: color 0.3s ease, text-shadow 0.3s ease; /* Section heading transition - VERSION 50 */
+        }
+
+        h2:hover {
+            color: var(--gold-highlight);
+            text-shadow: 0 0 8px var(--gold-highlight);
         }
 
 
-      .contact-icons-container { /* Container for contact icons */
+    .contact-icons-container {
             display: flex;
-            justify-content: center; /* Center icons horizontally */
-            gap: 3rem; /* Space between icons */
+            justify-content: center;
+            gap: 3rem;
             margin-top: 2rem;
-            margin-bottom: 3rem; /* Add margin below icons */
+            margin-bottom: 3rem;
         }
 
-      .contact-icon-link { /* Style for the icon links */
+    .contact-icon-link {
             display: block;
-            width: 80px; /* Icon size */
-            height: 80px; /* Icon size */
-            border-radius: 50%; /* Make them circular */
-            overflow: hidden; /* Clip image to circle */
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            overflow: hidden;
+            transition: transform 0.3s ease, box-shadow 0.3s ease; /* Icon link transition - VERSION 50 */
+            opacity: 0; /* Initial state for fade-in - VERSION 50 */
+            transform: scale(0.8); /* Initial state for scale-up - VERSION 50 */
         }
 
-      .contact-icon-link:hover { /* Hover effect for icons */
+    .contact-icon-link:hover {
             transform: scale(1.1);
-            box-shadow: 0 0 20px rgba(var(--gold-highlight-rgb-values), 0.7); /* Hover glow */
+            box-shadow: 0 0 20px rgba(var(--gold-highlight-rgb-values), 0.7);
         }
 
-      .contact-icon-link img { /* Style for images inside icon links */
+    .contact-icon-link img {
             width: 100%;
             height: 100%;
-            object-fit: cover; /* Ensure image covers circle */
+            object-fit: cover;
             display: block;
         }
 
 
-      .nav-overlay {
+    .nav-overlay {
             position: fixed;
             top: 0;
-            right: -70%; /* Reduced menu width for mobile */
-            width: 70%; /* Reduced menu width for mobile */
+            right: -70%;
+            width: 70%;
             height: 100%;
-            background-color: rgba(var(--dark-rgb-values), 0.85); /* Transparent menu */
-            transition: right 0.6s easeInOutCubic;
+            background-color: rgba(var(--dark-rgb-values), 0.85);
+            transition: right 0.6s power3.out; /* Smoother menu transition - VERSION 50 */
             z-index: 999;
             padding-top: 5rem;
             display: flex;
@@ -191,40 +214,46 @@
         }
 
         @media (min-width: 768px) {
-          .nav-overlay {
-                width: 300px; /* Desktop menu width */
-                right: -300px; /* Adjust right position for desktop width */
+        .nav-overlay {
+                width: 300px;
+                right: -300px;
             }
-          .contact-headline {
-                font-size: 5rem; /* Larger headline on desktop */
+        .contact-headline {
+                font-size: 5rem;
             }
-          .contact-icons-container {
-                gap: 5rem; /* Wider gap on desktop */
+        .contact-icons-container {
+                gap: 5rem;
             }
-          .contact-icon-link { /* Larger icons on desktop */
+        .contact-icon-link {
                 width: 100px;
                 height: 100px;
             }
         }
 
 
-      .nav-item {
+    .nav-item {
             padding: 1.5rem 2rem;
             color: var(--text-color-light);
-            border-bottom: 1px solid var(--gold); /* Gold border for menu items */
+            border-bottom: 1px solid var(--gold);
             width: 100%;
             text-align: center;
-            transition: opacity 0.3s ease, color 0.3s ease;
+            transition: opacity 0.3s ease, color 0.3s ease, border-color 0.3s ease, background-color 0.3s ease; /* Nav item transition - VERSION 50 */
         }
 
-      .nav-item:last-child { /* Remove border from last nav item */
+    .nav-item:last-child {
             border-bottom: none;
         }
 
-      .nav-item:hover {
-            opacity: 0.9;
+    .nav-item:hover {
+            opacity: 1;
             color: var(--gold-highlight);
+            border-color: var(--gold-highlight);
+            background-color: rgba(var(--dark-rgb-values), 0.7);
         }
+      .nav-item:active { /* Nav item active - VERSION 50 */
+            background-color: rgba(var(--dark-rgb-values), 0.2);
+        }
+
 
         footer {
             text-align: center;
@@ -233,18 +262,19 @@
             font-size: 0.9rem;
             color: #777;
             background: var(--dark-primary);
+            transition: color 0.3s ease; /* Footer transition - VERSION 50 */
         }
 
-        footer p:not(.service-status):hover { /* Subtle hover for footer text except status */
+        footer p:not(.service-status):hover {
             color: var(--gold);
         }
 
 
-        footer .service-status {
+        footer.service-status {
             color: var(--gold);
             font-size: 0.9rem;
             margin-top: 0.5rem;
-            animation: fade-pulse 2s ease-in-out infinite alternate; /* 24/7 text pulse */
+            animation: fade-pulse 2s ease-in-out infinite alternate;
         }
 
 
@@ -255,7 +285,7 @@
             100% { box-shadow: 0 0 10px rgba(var(--gold-rgb-values), 0.6); }
         }
 
-        @keyframes logo-fade-pulse { /* For Logo Text Only - Version 24 Style */
+        @keyframes logo-fade-pulse {
             0% { text-shadow: 0 0 4px var(--gold-refined); color: var(--gold-refined); opacity: 0.95;}
             100% { text-shadow: 0 0 6px var(--gold-refined-highlight); color: var(--gold-refined); opacity: 1;}
         }
@@ -292,19 +322,19 @@
     </div>
 
     <section class="contact-hero">
-        <h1 class="contact-headline" data-aos="fade-down" data-aos-duration="1000">Contact LuxRide Inc.</h1>
+        <h1 class="contact-headline" data-aos="fade-down" data-aos-duration="1500">Contact LuxRide Inc.</h1>
         <p style="color: var(--text-color-light); opacity: 0.9; font-size: 1.2rem; max-width: 800px; margin: 2rem auto;" data-aos="fade-up" data-aos-duration="1200">
             For any inquiries, support, or VIP booking requests, please reach out to us through the channels below. We are available 24/7 to assist you.
         </p>
-        <div class="contact-icons-container" data-aos="zoom-in" data-aos-duration="1400">
-            <a href="https://discord.gg/jqEU9Jcv" class="contact-icon-link" target="_blank">
+        <div class="contact-icons-container">
+            <a href="https://discord.gg/36FC4BXBfG" class="contact-icon-link" target="_blank" data-aos="zoom-in" data-aos-duration="1400">
                 <img src="https://luxride.neocities.org/Image%20/discord.jpg" alt="Discord">
             </a>
-            <a href="https://forum.valrisegaming.com/index.php?/topic/40144-lri-luxride-inc/" class="contact-icon-link" target="_blank">
+            <a href="https://forum.valrisegaming.com/index.php?/topic/40144-lri-luxride-inc/" class="contact-icon-link" target="_blank" data-aos="zoom-in" data-aos-duration="1400" data-aos-delay="200">
                 <img src="https://luxride.neocities.org/Image%20/V.png" alt="Valrise Forums">
             </a>
         </div>
-         <p style="color: var(--gold); font-size: 1.1rem; margin-top: 0;" data-aos="fade-up" data-aos-duration="1400"  data-aos-delay="200">
+         <p style="color: var(--gold); font-size: 1.1rem; margin-top: 0;" data-aos="fade-up" data-aos-duration="1400"  data-aos-delay="400">
             Click icons to get in touch!
         </p>
     </section>
@@ -323,21 +353,40 @@
             once: true,
         });
 
-        // GSAP Hero Headline Animation
-        gsap.fromTo('.contact-headline', {opacity: 0, y: 20}, {opacity: 1, y: 0, duration: 1.5, ease: "power2.out", delay: 0.5});
+        // GSAP Hero Headline Animation - VERSION 50 - Contact Page - Enhanced Headline Animation
+        gsap.fromTo('.contact-headline', {opacity: 0, y: 30}, {opacity: 1, y: 0, duration: 1.5, ease: "power3.out", delay: 0.5});
 
-        // GSAP for Section Animations on Scroll
+        // GSAP Section Animations on Scroll - VERSION 50 - Contact Page - Enhanced Section Animations
         const sections = gsap.utils.toArray('.section');
         sections.forEach(section => {
             gsap.fromTo(section, {opacity: 0, y: 30}, {
                 opacity: 1,
                 y: 0,
-                duration: 1,
-                ease: "power2.out",
+                duration: 1.2,
+                ease: "power3.out",
                 scrollTrigger: {
                     trigger: section,
-                    start: "top 80%",
+                    start: "top 75%",
                     once: true,
+                    markers: false
+                }
+            });
+        });
+
+        // GSAP Contact Icon Animations - VERSION 50 - Contact Page - Animated Contact Icons
+        const contactIcons = gsap.utils.toArray('.contact-icon-link');
+        contactIcons.forEach((icon, index) => {
+            gsap.fromTo(icon, {opacity: 0, scale: 0.8}, {
+                opacity: 1,
+                scale: 1,
+                duration: 1,
+                ease: "power2.out",
+                delay: 0.8 + index * 0.2, // Staggered animation for icons
+                scrollTrigger: {
+                    trigger: icon,
+                    start: "top 90%",
+                    once: true,
+                    markers: false
                 }
             });
         });
@@ -345,14 +394,20 @@
 
         function toggleMenu() {
             const menu = document.querySelector('.nav-overlay');
-            gsap.to(menu, {right: menu.style.right === '0px'? (window.innerWidth < 768? '-70%': '-300px'): '0px', duration: 0.6, ease: "easeInOutCubic"});
+            gsap.to(menu, {right: menu.style.right === '0px'? (window.innerWidth < 768? '-70%': '-300px'): '0px', duration: 0.6, ease: "power3.out"}); /* VERSION 50 - Smoother menu easing */
         }
 
         document.addEventListener('click', function(e) {
             const menu = document.querySelector('.nav-overlay');
             if (!menu.contains(e.target) &&!e.target.closest('.menu-btn')) {
-                gsap.to(menu, {right: (window.innerWidth < 768? '-70%': '-300px'), duration: 0.5, ease: "easeInOutCubic"});
+                gsap.to(menu, {right: (window.innerWidth < 768? '-70%': '-300px'), duration: 0.5, ease: "cubic-bezier(0.68, -0.55, 0.27, 1.55)"});
             }
+        });
+
+        // Header active state on scroll - VERSION 50 - Contact Page - Consistent header active state
+        window.addEventListener('scroll', function() {
+            const header = document.querySelector('header');
+            header.classList.toggle('header-active', window.scrollY > 50);
         });
     </script>
 </body>
