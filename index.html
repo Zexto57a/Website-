@@ -3,27 +3,25 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>LuxRide Inc | Premium Transport</title>
+    <title>LuxRide - Premium Car Service</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Cormorant+Garamond:wght@400;700&family=Montserrat:wght@400;500;700&display=swap" rel="stylesheet">
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     <style>
-        /* === GUARANTEED WORKING CSS - VERSION 38 - TEXT LOGO CONSISTENCY ACROSS PAGES === */
+        /* === GUARANTEED WORKING CSS - VERSION 48 - HOMEPAGE - RE-ENHANCEMENT - VISUALS & ANIMATIONS ONLY - NO CONTENT/STRUCTURE CHANGES === */
       :root {
-            --gold: #D4AF37; /* A more vibrant, classic gold */
-            --gold-highlight: #FFD700; /* A brighter gold for highlights */
-            --gold-refined: #C0AA66; /* Refined, slightly muted gold */
-            --gold-refined-highlight: #E0C888; /* Highlight for refined gold */
-            --dark-primary: #111; /* Primary dark tone */
-            --dark-secondary: #000; /* Deeper secondary dark tone */
-            --dark-rgb-values: 17, 17, 17; /* RGB values for --dark-primary */
-            --gold-rgb-values: 212, 175, 55; /* RGB for --gold */
-            --gold-highlight-rgb-values: 255, 215, 0; /* RGB for --gold-highlight */
-            --gold-refined-rgb-values: 192, 170, 102; /* RGB for refined gold - TEXT LOGO */
-            --gold-refined-highlight-rgb-values: 224, 200, 136; /* RGB for refined highlight gold - TEXT LOGO */
-            --text-color-light: #eee; /* Light text color */
-            --text-color-gold: var(--gold); /* Gold text color */
+            --gold: #D4AF37;
+            --gold-highlight: #FFD700;
+            --gold-refined: #C0AA66;
+            --gold-refined-highlight: #E0C888;
+            --dark-primary: #111;
+            --dark-secondary: #000;
+            --dark-rgb-values: 17, 17, 17;
+            --gold-rgb-values: 192, 170, 102;
+            --gold-refined-highlight-rgb-values: 224, 200, 136;
+            --text-color-light: #eee;
+            --text-color-gold: var(--gold);
         }
 
         * {
@@ -41,7 +39,7 @@
             scroll-behavior: smooth;
         }
 
-        h1, h2,.motto,.menu-btn, .logo-text { /* Added .logo-text to font family */
+        h1, h2,.motto,.menu-btn, .logo-text {
             font-family: 'Bebas Neue', sans-serif;
             font-weight: normal;
             text-transform: uppercase;
@@ -69,30 +67,38 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            background-color: rgba(var(--dark-rgb-values), 0.85); /* Transparent header */
+            background-color: rgba(var(--dark-rgb-values), 0.85);
             z-index: 1000;
             box-shadow: 0 2px 10px rgba(0, 0, 0, 0.4);
+            transition: background-color 0.4s ease-out; /* Header background transition - VERSION 48 */
         }
 
-        /* --- VERSION 38 - Logo Text Style - Consistent Across Pages - TEXT ONLY LOGO - REVISED CSS SELECTORS & ANIMATION - FOR ALL PAGES --- */
-        .logo-text { /*  <--- CORRECTED SELECTOR:  .logo-text  - FOR ALL PAGES */
-            font-family: 'Cormorant Garamond', serif; /* Elegant Serif Font - LOGO ONLY */
-            color: var(--gold-refined); /* Refined Gold Color - LOGO ONLY */
-            font-size: 1.7rem; /* Slightly larger size - LOGO ONLY */
+        header.header-active { /* Header active state - VERSION 48 */
+            background-color: var(--dark-primary);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+        }
+
+
+        /* --- VERSION 40 - Logo Text Style - Consistent Across Pages - TEXT ONLY LOGO - REFINED ANIMATION & TRANSITION - FOR ALL PAGES --- */
+        .logo-text {
+            font-family: 'Cormorant Garamond', serif;
+            color: var(--gold-refined);
+            font-size: 1.7rem;
             margin-left: 1rem;
-            letter-spacing: 0.08em; /* Reduced letter spacing - LOGO ONLY */
-            text-shadow: 0 0 6px var(--gold-refined); /* Subtle Glow - LOGO ONLY */
-            animation: logo-fade-pulse 4s ease-in-out infinite alternate; /* Gentle Fade Pulse Animation - LOGO ONLY */
+            letter-spacing: 0.08em;
+            text-shadow: 0 0 6px var(--gold-refined);
+            animation: logo-fade-pulse 4s ease-in-out infinite alternate;
             opacity: 1;
             text-decoration: none;
             display: inline-block;
+            transition: color 0.3s ease, text-shadow 0.3s ease; /* Logo hover transition - VERSION 48 */
         }
 
 
-        .logo-text:hover { /*  <--- CORRECTED SELECTOR:  .logo-text:hover  - FOR ALL PAGES */
+        .logo-text:hover {
             opacity: 1;
-            color: var(--gold-refined-highlight); /* Highlight on hover - LOGO ONLY */
-            text-shadow: 0 0 8px var(--gold-refined-highlight); /* Slightly stronger glow on hover - LOGO ONLY */
+            color: var(--gold-refined-highlight);
+            text-shadow: 0 0 8px var(--gold-refined-highlight);
         }
 
 
@@ -101,12 +107,16 @@
             color: var(--gold);
             margin-right: 1.5rem;
             cursor: pointer;
-            transition: color 0.3s ease, opacity 0.3s ease;
+            transition: color 0.3s ease, opacity 0.3s ease, transform 0.3s ease; /* Menu button transition - VERSION 48 */
         }
 
       .menu-btn:hover {
             opacity: 0.8;
             color: var(--gold-highlight);
+            transform: scale(1.1);
+        }
+        .menu-btn:active {
+            transform: scale(0.95);
         }
 
 
@@ -116,13 +126,13 @@
             align-items: center;
             justify-content: center;
             padding-top: 80px;
-            /* Updated Hero Background */
-            background: linear-gradient(rgba(0,0,0,0.85), rgba(0,0,0,0.85)),
-                url('https://luxride.neocities.org/Image%20/background-blurred.jpg'); /* New blurred background */
+            background: linear-gradient(rgba(0,0,0,0.75), rgba(0,0,0,0.75)),
+                url('https://luxride.neocities.org/Image%20/background-blurred.jpg');
             background-size: cover;
             text-align: center;
             background-attachment: fixed;
             background-position: center;
+            color: var(--text-color-light);
         }
 
 
@@ -131,10 +141,11 @@
             max-width: 1200px;
             margin: 0 auto;
             background: linear-gradient(to bottom, var(--dark-primary), var(--dark-secondary));
-            box-shadow: 0 0 20px rgba(0, 0, 0, 0.3), 0 0 40px rgba(var(--gold-rgb-values), 0.3); /* Section glow shadow */
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.3), 0 0 40px rgba(var(--gold-rgb-values), 0.3);
             border-radius: 10px;
             opacity: 0;
             transform: translateY(30px);
+            transition: opacity 1s ease-out, transform 1s ease-out; /* Section transition - VERSION 48 */
         }
 
         h2 {
@@ -143,7 +154,14 @@
             border-left: 2px solid var(--gold);
             padding-left: 1.2rem;
             font-size: 2.5rem;
+            transition: color 0.3s ease, text-shadow 0.3s ease; /* Section heading transition - VERSION 48 */
         }
+
+        h2:hover { /* Section heading hover - VERSION 48 */
+            color: var(--gold-highlight);
+            text-shadow: 0 0 8px var(--gold-highlight);
+        }
+
 
       .fleet-grid {
             display: grid;
@@ -161,11 +179,12 @@
             box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
             opacity: 0;
             transform: translateY(20px);
+            transition: opacity 1s ease-out, transform 1s ease-out; /* Vehicle card transition - VERSION 48 */
         }
 
       .vehicle-card:hover {
             transform: scale(1.05) translateY(-5px);
-            box-shadow: 0 12px 25px rgba(0, 0, 0, 0.5), 0 0 50px rgba(var(--gold-highlight-rgb-values), 0.4); /* Vehicle card hover glow */
+            box-shadow: 0 12px 25px rgba(0, 0, 0, 0.5), 0 0 50px rgba(var(--gold-highlight-rgb-values), 0.4);
         }
 
       .vehicle-card img {
@@ -182,8 +201,8 @@
             bottom: 0;
             width: 100%;
             height: 50%;
-            background: linear-gradient(to bottom, rgba(0,0,0,0), rgba(0,0,0,0.4)); /* Darker reflection */
-            opacity: 0.4; /* Increased reflection opacity */
+            background: linear-gradient(to bottom, rgba(0,0,0,0), rgba(0,0,0,0.4));
+            opacity: 0.4;
             pointer-events: none;
         }
 
@@ -193,16 +212,22 @@
             text-align: center;
             color: var(--text-color-gold);
             font-weight: 500;
+            transition: color 0.3s ease; /* Vehicle credit transition - VERSION 48 */
         }
+
+      .vs-credit:hover { /* Vehicle credit hover - VERSION 48 */
+            color: var(--gold-highlight);
+        }
+
 
       .nav-overlay {
             position: fixed;
             top: 0;
-            right: -70%; /* Reduced menu width for mobile */
-            width: 70%; /* Reduced menu width for mobile */
+            right: -70%;
+            width: 70%;
             height: 100%;
-            background-color: rgba(var(--dark-rgb-values), 0.85); /* Transparent menu */
-            transition: right 0.6s easeInOutCubic; /* EASING CHANGE - easeInOutCubic */
+            background-color: rgba(var(--dark-rgb-values), 0.85);
+            transition: right 0.6s power3.out; /* Smoother menu transition - VERSION 48 */
             z-index: 999;
             padding-top: 5rem;
             display: flex;
@@ -213,8 +238,8 @@
 
         @media (min-width: 768px) {
           .nav-overlay {
-                width: 300px; /* Reduced menu width for desktop */
-                right: -300px; /* Adjust right position for desktop width */
+                width: 300px;
+                right: -300px;
             }
         }
 
@@ -222,19 +247,24 @@
       .nav-item {
             padding: 1.5rem 2rem;
             color: var(--text-color-light);
-            border-bottom: 1px solid var(--gold); /* Gold border for menu items */
+            border-bottom: 1px solid var(--gold);
             width: 100%;
             text-align: center;
-            transition: opacity 0.3s ease, color 0.3s ease;
+            transition: opacity 0.3s ease, color 0.3s ease, border-color 0.3s ease, background-color 0.3s ease; /* Nav item transition - VERSION 48 */
         }
 
-      .nav-item:last-child { /* Remove border from last nav item */
+      .nav-item:last-child {
             border-bottom: none;
         }
 
       .nav-item:hover {
-            opacity: 0.9;
+            opacity: 1;
             color: var(--gold-highlight);
+            border-color: var(--gold-highlight);
+            background-color: rgba(var(--dark-rgb-values), 0.7);
+        }
+        .nav-item:active { /* Nav item active - VERSION 48 */
+            background-color: rgba(var(--dark-rgb-values), 0.2);
         }
 
         footer {
@@ -244,9 +274,10 @@
             font-size: 0.9rem;
             color: #777;
             background: var(--dark-primary);
+            transition: color 0.3s ease; /* Footer transition - VERSION 48 */
         }
 
-        footer p:not(.service-status):hover { /* Subtle hover for footer text except status */
+        footer p:not(.service-status):hover {
             color: var(--gold);
         }
 
@@ -255,7 +286,7 @@
             color: var(--gold);
             font-size: 0.9rem;
             margin-top: 0.5rem;
-            animation: fade-pulse 2s ease-in-out infinite alternate; /* 24/7 text pulse */
+            animation: fade-pulse 2s ease-in-out infinite alternate;
         }
 
         /* Button Styles */
@@ -266,39 +297,39 @@
             color: #000;
             text-decoration: none;
             margin-top: 1rem;
-            border: none; /* Remove default button border */
-            border-radius: 8px; /* Button border-radius */
-            font-family: 'Bebas Neue', sans-serif; /* Use Bebas Neue for button text */
+            border: none;
+            border-radius: 8px;
+            font-family: 'Bebas Neue', sans-serif;
             font-size: 1.2rem;
             text-transform: uppercase;
             letter-spacing: 0.05em;
             cursor: pointer;
-            transition: background-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+            transition: background-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease; /* Button transition - VERSION 48 */
         }
 
       .legacy-button:hover {
-            background-color: var(--gold-highlight); /* Brighter gold on hover */
-            transform: scale(1.05); /* Slight scale up on hover */
-            box-shadow: 0 0 15px rgba(var(--gold-highlight-rgb-values), 0.6); /* Hover glow shadow */
+            background-color: var(--gold-highlight);
+            transform: scale(1.05);
+            box-shadow: 0 0 15px rgba(var(--gold-highlight-rgb-values), 0.6);
         }
 
       .legacy-button:active {
-            transform: scale(0.98); /* Slight scale down on click */
+            transform: scale(0.98);
         }
 
-      .wave-effect:hover { /* Apply wave animation on hover if class is added */
+      .wave-effect:hover {
             animation: wave 1.5s ease-in-out infinite;
         }
 
 
         /* Keyframes for animations */
-        @keyframes logo-pulse { /* Reverted to logo-pulse for text logo - VERSION 38 */
+        @keyframes logo-pulse {
             0% { text-shadow: 0 0 8px var(--gold-refined); color: var(--gold-refined); }
             50% { text-shadow: 0 0 15px var(--gold-refined-highlight); color: var(--gold-refined-highlight); }
             100% { text-shadow: 0 0 8px var(--gold-refined); color: var(--gold-refined); }
         }
 
-        @keyframes logo-fade-pulse { /* For Logo Text Only - Version 24 Style - REVISED for VERSION 38 - slightly faster pulse */
+        @keyframes logo-fade-pulse {
             0% { text-shadow: 0 0 4px var(--gold-refined); color: var(--gold-refined); opacity: 0.95;}
             100% { text-shadow: 0 0 6px var(--gold-refined-highlight); color: var(--gold-refined); opacity: 1;}
         }
@@ -320,7 +351,7 @@
 
 
         @media (min-width: 768px) {
-          .nav-overlay { width: 350px; } /* Desktop menu width */
+          .nav-overlay { width: 350px; }
           .menu-btn { margin-right: 2rem; }
           .section { padding: 8rem 3rem; }
             h2 { font-size: 2.8rem; }
@@ -351,15 +382,15 @@
     </div>
 
     <section class="hero">
-        <h1 class="motto">
+        <h1 class="motto" data-aos="fade-down" data-aos-duration="1500">
             Born from struggle<br>
             <span style="font-size: 1.2rem; color: var(--text-color-light);">Driven by excellence</span>
         </h1>
     </section>
 
     <section class="section" id="about-us">
-        <h2 data-aos="fade-right" data-aos-duration="800">About Us</h2>
-        <p data-aos="fade-up" data-aos-duration="1000">
+        <h2 data-aos="fade-right" data-aos-duration="1000">About Us</h2>
+        <p data-aos="fade-up" data-aos-duration="1200">
             LuxRide Inc is a premium taxi service dedicated to providing the best in-game transportation experience. We aim to offer fast, reliable, and luxury rides to players, ensuring they get to their destination in style and comfort. Our team of experienced drivers is always ready to assist, with a focus on customer satisfaction and professionalism.<br><br>
 
             Whether you're looking to join our team or just need a ride, LuxRide Inc is here for all your transportation needs!
@@ -367,30 +398,30 @@
     </section>
 
     <section class="section" id="our-legacy">
-        <h2 data-aos="fade-right" data-aos-duration="800">Our Legacy</h2>
-        <blockquote data-aos="fade-up" data-aos-duration="1200">
+        <h2 data-aos="fade-right" data-aos-duration="1000">Our Legacy</h2>
+        <blockquote data-aos="fade-up" data-aos-duration="1400">
             "Enough of this,” the voice on the other end of the line said with urgency. “It’s time for something greater. Use your last savings, and I’ll support you. Together, we’ll forge something formidable.”
             <cite style="display: block; margin-top: 1rem; color: var(--gold)">
                 - Miguel Escobar, Strategic Advisor & Business Partner
             </cite>
         </blockquote>
         <button class="legacy-button wave-effect" onclick="window.open('https://forum.valrisegaming.com/index.php?/topic/40144-lri-luxride-inc/', '_blank');"
-           data-aos="zoom-in" data-aos-duration="1000" data-aos-delay="200">
+           data-aos="zoom-in" data-aos-duration="1200" data-aos-delay="200">
            Read Full Story
         </button>
     </section>
 
     <section class="section" id="fleet">
-        <h2 data-aos="fade-right" data-aos-duration="800">Exclusive Fleet Showcase</h2>
-        <p style="text-align: center; font-size: 0.9rem; color: #aaa; margin-bottom: 2rem;" data-aos="fade-down" data-aos-duration="800">
+        <h2 data-aos="fade-right" data-aos-duration="1000">Exclusive Fleet Showcase</h2>
+        <p style="text-align: center; font-size: 0.9rem; color: #aaa; margin-bottom: 2rem;" data-aos="fade-down" data-aos-duration="1000">
             *A curated selection from our exclusive V&S Tuning fleet.
         </p>
         <div class="fleet-grid">
-            <div class="vehicle-card">
+            <div class="vehicle-card" data-aos="fade-up" data-aos-duration="1200">
                 <img src="https://luxride.neocities.org/Image%20/limo.jpg" alt="Luxury Sedan">
                 <div class="vs-credit">Luxury Sedan - V&S Tuning Edition</div>
             </div>
-            <div class="vehicle-card">
+            <div class="vehicle-card" data-aos="fade-up" data-aos-duration="1400" data-aos-delay="200">
                 <img src="https://luxride.neocities.org/Image%20/limo-interior.jpg" alt="Premium Interior">
                 <div class="vs-credit">Premium Interior - V&S Tuning Edition</div>
             </div>
@@ -412,34 +443,36 @@
 
         gsap.fromTo('.motto', {opacity: 0, y: 20}, {opacity: 1, y: 0, duration: 1.5, ease: "power2.out", delay: 0.5});
 
-        // GSAP for Section Animations on Scroll
+        // GSAP for Section Animations on Scroll - VERSION 48 - RE-ENHANCED - Visuals and Animations only
         const sections = gsap.utils.toArray('.section');
         sections.forEach(section => {
             gsap.fromTo(section, {opacity: 0, y: 30}, {
                 opacity: 1,
                 y: 0,
-                duration: 1,
-                ease: "power2.out",
+                duration: 1.2, // Slightly adjusted duration
+                ease: "power3.out", // Smoother easing
                 scrollTrigger: {
                     trigger: section,
-                    start: "top 80%",
+                    start: "top 75%", // Start animation slightly earlier
                     once: true,
+                    markers: false
                 }
             });
         });
 
-        // GSAP for Vehicle Card Animations on Scroll
+        // GSAP for Vehicle Card Animations on Scroll - VERSION 48 - RE-ENHANCED - Visuals and Animations only
         const vehicleCards = gsap.utils.toArray('.vehicle-card');
         vehicleCards.forEach(card => {
             gsap.fromTo(card, {opacity: 0, y: 20}, {
                 opacity: 1,
                 y: 0,
-                duration: 1,
-                ease: "power2.out",
+                duration: 1.2, // Slightly adjusted duration
+                ease: "power3.out", // Smoother easing
                 scrollTrigger: {
                     trigger: card,
-                    start: "top 90%",
+                    start: "top 85%", // Start animation slightly earlier
                     once: true,
+                    markers: false
                 }
             });
         });
@@ -447,14 +480,20 @@
 
         function toggleMenu() {
             const menu = document.querySelector('.nav-overlay');
-            gsap.to(menu, {right: menu.style.right === '0px'? (window.innerWidth < 768? '-70%': '-300px'): '0px', duration: 0.6, ease: "easeInOutCubic"}); // EASING CHANGE & DURATION - easeInOutCubic & 0.6s
+            gsap.to(menu, {right: menu.style.right === '0px'? (window.innerWidth < 768? '-70%': '-300px'): '0px', duration: 0.6, ease: "power3.out"});
         }
 
         document.addEventListener('click', function(e) {
             const menu = document.querySelector('.nav-overlay');
             if (!menu.contains(e.target) &&!e.target.closest('.menu-btn')) {
-                gsap.to(menu, {right: (window.innerWidth < 768? '-70%': '-300px'), duration: 0.5, ease: "easeInOutCubic"}); // EASING CHANGE & DURATION - easeInOutCubic & 0.5s
+                gsap.to(menu, {right: (window.innerWidth < 768? '-70%': '-300px'), duration: 0.5, ease: "cubic-bezier(0.68, -0.55, 0.27, 1.55)"});
             }
+        });
+
+        // Header active state on scroll - VERSION 48 - RE-ENHANCED - Visuals and Animations only
+        window.addEventListener('scroll', function() {
+            const header = document.querySelector('header');
+            header.classList.toggle('header-active', window.scrollY > 50);
         });
     </script>
 </body>
